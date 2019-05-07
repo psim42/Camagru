@@ -1,7 +1,9 @@
 MISSION 1 : Connection
 	Utiliser la database a 2 avec install.php
+		- Crée db
 		- Conecttion sql (PDO)
 		- crée Table login mail mdp
+		- root root de base hash et pas hash
 		- export .sql
 		- Install
 
