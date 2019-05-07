@@ -1,25 +1,25 @@
 <?php
 	include 'user.php';
 	session_start();
-// try
-// {
-// 	$bdd = new PDO('mysql:host=localhost;dbname=psim;charset=utf8', 'root', '123456');
-// }
-// catch (Exception $e)
-// {
-//         die('Erreur : ' . $e->getMessage());
-// }
+	try
+	{
+		$bdd = new PDO('mysql:host=localhost;dbname=psim;charset=utf8', 'root', '123456');
+	}
+	catch (Exception $e)
+	{
+		   die('Erreur : ' . $e->getMessage());
+	}
 if (isset($_POST['logout']))
 {
 	session_unset();
 	session_destroy();
 	session_start();
 }
-if ($_POST['submit'] == "CREER UN COMPTE")
+if (isset($_POST['submit']))
 {
 	echo '<meta http-equiv="refresh" content="0;URL=user_creation.php">';
 }
-if ($_POST['submit'] == "VOUS CONNECTER")
+if (isset($_POST['submit']))
 {
 	if (isset($_POST['login']) && isset($_POST['passwd']))
 	{		
