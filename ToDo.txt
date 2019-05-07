@@ -1,10 +1,14 @@
 MISSION 1 : Connection
 	Utiliser la database a 2 avec install.php
 		- Conecttion sql (PDO)
-		- crée Table
+		- crée Table login mail mdp
 		- export .sql
-		- 
+		- Install
+
 	Convernir user.php
 		- Connection a sql (PDO)
-		- inscription ajoute une ligne a la table
+		- Page conection
+		- creation
+		- logout
+		- modify
 		- Protegger mdp hash
