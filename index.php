@@ -103,4 +103,4 @@ function stop(e) {
 <img src = "resources/img/crayon.jpg">
 </body>
 </html>
-<!-- test de Jim -->
+<!-- test de Jim blablabla-->
