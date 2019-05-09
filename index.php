@@ -1,6 +1,7 @@
 <?php
 include 'function/db_root_login.php';
 include 'user.php';
+include 'sql/install.php';
 session_start();
 
 
