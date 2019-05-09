@@ -7,7 +7,7 @@ catch (Exception $e)
 {
 	die('Erreur : ' . $e->getMessage());
 }
-$file = file_get_contents("sql/camagru.sql");
+$file = file_get_contents("../sql/camagru.sql");
 $file = explode(';', $file);
 $db->query('DROP DATABASE camagru');
 $db->query('CREATE DATABASE camagru');
