@@ -4,11 +4,10 @@ MISSION 1 : Connection
 		- Conecttion sql (PDO) Ok	
 		- crée Table login mail mdp OK
 		- root root de base hash et pas hash OK
-		- export .sql
-		- Install
-		- Organnisation MVC INSTALL SQL FUNCTION
+		- export .sql OK
+		- Install OK
 	Convernir user.php
-		- Connection a sql (PDO)
+		- Connection a sql (PDO) OK
 		- Page conection
 		- creation
 		- logout
@@ -16,3 +15,4 @@ MISSION 1 : Connection
 		- Protegger mdp hash
 	ORGANISER MVC
 		- dossier
+	Protect install
