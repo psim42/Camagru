@@ -104,4 +104,3 @@ function stop(e) {
 <img src = "resources/img/crayon.jpg">
 </body>
 </html>
-<!-- psim est un genie lolol  -->
