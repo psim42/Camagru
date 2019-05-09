@@ -1,14 +1,9 @@
 <?php
-	include 'user.php';
-	session_start();
-	try
-	{
-		$bdd = new PDO('mysql:host=localhost;dbname=psim;charset=utf8', 'root', '123456');
-	}
-	catch (Exception $e)
-	{
-		   die('Erreur : ' . $e->getMessage());
-	}
+include 'function/db_root_login.php';
+include 'user.php';
+session_start();
+
+
 if (isset($_POST['logout']))
 {
 	session_unset();
