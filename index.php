@@ -100,7 +100,7 @@ function stop(e) {
   video.srcObject = null;
 }
 </script>
+<img src = "resources/img/crayon.jpg">
 </body>
 </html>
-
-<!-- TRUC ULTRA IPORTANT -->
+<!-- test de Jim -->
