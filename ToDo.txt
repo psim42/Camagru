@@ -1,12 +1,12 @@
 MISSION 1 : Connection
 	Utiliser la database a 2 avec install.php
-		- Crée db
-		- Conecttion sql (PDO)
-		- crée Table login mail mdp
-		- root root de base hash et pas hash
+		- Crée db OK
+		- Conecttion sql (PDO) Ok	
+		- crée Table login mail mdp OK
+		- root root de base hash et pas hash OK
 		- export .sql
 		- Install
-
+		- Organnisation MVC INSTALL SQL FUNCTION
 	Convernir user.php
 		- Connection a sql (PDO)
 		- Page conection
@@ -14,3 +14,5 @@ MISSION 1 : Connection
 		- logout
 		- modify
 		- Protegger mdp hash
+	ORGANISER MVC
+		- dossier
