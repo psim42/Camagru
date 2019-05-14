@@ -1,7 +1,6 @@
 <?php
 include 'function/db_root_login.php';
 include 'user.php';
-include 'sql/install.php';
 session_start();
 
 
@@ -11,21 +10,17 @@ if (isset($_POST['logout']))
 	session_destroy();
 	session_start();
 }
-if (isset($_POST['submit']))
+if (isset($_POST['submit']) && $_POST['submit'] == "CREER UN COMPTE")
 {
 	echo '<meta http-equiv="refresh" content="0;URL=user_creation.php">';
 }
-if (isset($_POST['submit']))
+if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 {
 	if (isset($_POST['login']) && isset($_POST['passwd']))
 	{		
 		if (auth($_POST['login'], $_POST['passwd']))
 		{
 			$_SESSION['login'] = $_POST['login'];
-			if ($_SESSION['login'] == "root")
-			{
-				echo '<meta http-equiv="refresh" content="0;URL=admin.php">';
-			}
 		}
 	}
 }

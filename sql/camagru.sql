@@ -42,8 +42,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `password`, `mail`, `VALIDE`, `root`) VALUES
-(1, 'root', 'root', NULL, 1, 0),
-(2, 'root', '06948d93cd1e0855ea37e75ad516a250d2d0772890b073808d831c438509190162c0d890b17001361820cffc30d50f010c387e9df943065aa8f4e92e63ff060c', NULL, 1, 0);
+(1, 'root2', 'root2', NULL, 1, 1),
+(2, 'root', '06948d93cd1e0855ea37e75ad516a250d2d0772890b073808d831c438509190162c0d890b17001361820cffc30d50f010c387e9df943065aa8f4e92e63ff060c', NULL, 1, 1);
 
 --
 -- Indexes for dumped tables
