@@ -1,49 +1,122 @@
 <?php
 
 function auth($login, $passwd){
-	$opasswd = $passwd;
-	$hashopw = hash("sha512", $opasswd);
-	$user["login"] = $login;
+	include 'function/db_root_login.php';
+	if	(!($login) || !($passwd))
+		return(FALSE);
 
-	$top_user = unserialize(file_get_contents("./resources/database/db_user"));
-	if ($top_user) {
-		foreach ($top_user as $arg)
-		{
-			if ($arg['login'] == $login){
-				if(($arg['login'] == $login) && ($arg['passwd'] == $hashopw))
-				{
-					return(true);
-				}
-			}
-		}
+	$passwd = hash("whirlpool", $passwd);
+	// $USER["login"] = $login;
+
+	$good_info = 0;
+	$resultatdeco = $db->query('SELECT login, password, mail FROM user');
+
+	while ($donnees = $resultatdeco->fetch())
+	{
+		if ($login == $donnees['login'] || $login == $donnees['mail'] && $passwd == $donnees['password'])
+			$good_info = 1;
 	}
-	return(false);
+	if ($good_info == 1)
+		return(TRUE);
+	else
+		return(FALSE);
+
 }
 
-function create_user($login, $passwd){
-	if($login == "" || $passwd == "")
-	{
-		return false;
-	}
-	else
-	{
-		$hashpw = hash("sha512", $passwd);
-		$user["login"] = $login;
-		$user["passwd"] = $hashpw;
+function create_user($mail, $login, $passwd, $passwd2){
 
-		if (file_exists("./resources/database/db_user"))
-			$top_user = unserialize(file_get_contents("./resources/database/db_user"));
-		if ($top_user) {
-			foreach ($top_user as $arg)
-			{
-				if ($arg['login'] == $login)
-				return false;
-			}
-		}
-		$top_user[] = $user;
-		file_put_contents("./resources/database/db_user", serialize($top_user));
-		return true;
+	include 'function/db_root_login.php';
+
+	$e = 0;
+
+	if (!($mail) || (strlen($mail) == 0))
+	{
+		echo "<p>Veuillez entrer un E-Mail s'il vous plait</p>";
+		$e = 1;
 	}
+
+	if (!(preg_match(" /^.+@.+\.[a-zA-Z]{2,}$/ ", $mail)) && (strlen($mail) != 0))
+	{
+		echo "<p>Veuillez entrer un E-mail valide s'il vous plait</p>";
+		$e = 1;
+	}
+
+	if (!($login) || (strlen($login) == 0))
+	{
+		echo "<p>Veuillez entrer un Login s'il vous plait</p>";
+		$e = 1;
+	}
+
+	if (isset($login) && (strlen($login) < 3 && (strlen($login) != 0)))
+	{
+		echo "<p>Veuillez entrer un Login avec au moins 3 caractères s'il vous plait</p>";
+		$e = 1;
+	}
+	
+	if (!($passwd) || (strlen($passwd) == 0))
+	{
+		echo "<p>Veuillez entrer un Mot de passe s'il vous plait</p>";
+		$e = 1;
+	}
+
+	if ((strlen($passwd) < 6) && (strlen($passwd) != 0))
+	{
+		echo "<p>Veuillez entrer un Mot de passe avec au mois 6 caractères s'il vous plait</p>";
+		$e = 1;
+	}
+
+	if ($passwd2 != $passwd)
+	{
+		echo "<p>Votre Confirmation de mot de passe est fausse</p>";
+		$e = 1;
+	}
+
+
+
+	$tab = [
+		"mail" => $mail,
+		"passwd" => hash('whirlpool', $passwd) 
+	];
+	
+	$resultat = $db->query('SELECT mail FROM user');
+	while ($donnees = $resultat->fetch())
+	{
+		if ($donnees['mail'] == $tab['mail'])
+		{
+			echo"<p>Cette E-Mail existe deja\n</p>";
+			$e = 1;
+		}
+	}
+	
+	$resultatlogin = $db->query('SELECT login FROM user');
+	while ($donnees = $resultatlogin->fetch())
+	{
+		if ($donnees['login'] == $login)
+		{
+			echo"<p>Ce Login existe deja\n</p>";
+			$e = 1;
+		}
+	}
+
+	if ($e == 1)
+		return(false);
+
+	$stmt = $db->prepare("INSERT INTO user (login, password, mail, VALIDE, root) VALUES (:login, :password, :mail, :VALIDE, :root)");
+	$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+	$stmt->bindValue(':password', $tab['passwd'], PDO::PARAM_STR);
+	$stmt->bindValue(':mail', $tab['mail'], PDO::PARAM_STR);
+	$stmt->bindValue(':VALIDE', 0, PDO::PARAM_INT);
+	$stmt->bindValue(':root', 0, PDO::PARAM_INT);
+	$stmt->execute();
+
+	return(true);
+		
+	// $v1 = mysqli_real_escape_string($db, $tab['login']);
+	// $v2 = $tab['passwd'];
+	// $v3 = intval(0);
+	// mysqli_query($db, "INSERT INTO users (email, passwd, admin_val) VALUES ('" . $v1 . "', '" . $v2 . "', '" . $v3 . "') ");
+	// mysqli_free_result($resultat);
+
 }
 
 function mod_user($login, $passwd, $va2){
