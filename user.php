@@ -13,7 +13,7 @@ function auth($login, $passwd){
 
 	while ($donnees = $resultatdeco->fetch())
 	{
-		if ($login == $donnees['login'] || $login == $donnees['mail'] && $passwd == $donnees['password'])
+		if (($login == $donnees['login'] || $login == $donnees['mail']) && $passwd == $donnees['password'])
 			$good_info = 1;
 	}
 	if ($good_info == 1)
