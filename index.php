@@ -4,7 +4,18 @@ include 'user.php';
 include 'sql/install.php';
 session_start();
 
+// $src = imagecreatefromjpeg('resources/img/crayon.jpg');
+// $dst = imagecreatetruecolor(576,576);
+// $filter = imagecreatefrompng('resources/img/filter.png');
 
+// imagecopy($dst, $src, 0, 0, 0, 0, 576, 576);
+// imagecopy($dst, $filter, 60, 60, 0, 0, 318, 479);
+// imagejpeg($dst, 'resources/img/result.jpg');
+
+if (isset($_POST['name']))
+{ 
+	echo '<p>test</p>';
+}
 if (isset($_POST['logout']))
 {
 	session_unset();
@@ -66,16 +77,17 @@ if (isset($_POST['submit']))
 			</div>
 </div>
 <div id="container">
-	<video autoplay="true" id="videoElement">
-	
-	</video>
+	<video autoplay="true" id="videoElement"></video>
+	<canvas id="canvas" width=1000 height=750></canvas>
 </div>
 <div style="margin-left: 50px; margin-top: 10px;">
 <button type="button" onclick="stop()">Stop</button>
 <button type="button" onclick="start()">Start</button>
+<button type="button" onclick="capture()">Take picture</button>
 </div>
 <script>
 var video = document.querySelector("#videoElement");
+var filter = "";
 
 function start(e){
 	if (navigator.mediaDevices.getUserMedia) {
@@ -100,7 +112,25 @@ function stop(e) {
 
   video.srcObject = null;
 }
+function capture() {
+    canvas.width = 1000;
+    canvas.height = 750;
+    canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
+    var canvasData = canvas.toDataURL("image/png");
+		var ajax = new XMLHttpRequest();
+		alert(canvasData);
+		ajax.open("POST",'pic_save.php',false);
+		ajax.setRequestHeader('Content-Type', 'application/upload');
+		ajax.send(canvasData)
+}
+
+function switch_filter(new_filter)
+{
+		filter = new_filter;
+}
+
 </script>
+
 <img src = "resources/img/crayon.jpg">
 </body>
 </html>

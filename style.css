@@ -67,3 +67,9 @@ p{
     background-color: #666;
 
 }
+#canvas {
+position: relative;
+  top: -750;
+  left: 0;
+  z-index: 10;
+}
