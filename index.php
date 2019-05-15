@@ -79,6 +79,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 <button type="button" onclick="stop()">Stop</button>
 <button type="button" onclick="start()">Start</button>
 <button type="button" onclick="capture()">Take picture</button>
+<br />
+
 </div>
 <script>
 var video = document.querySelector("#videoElement");
