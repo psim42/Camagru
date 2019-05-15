@@ -80,6 +80,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 <button type="button" onclick="start()">Start</button>
 <button type="button" onclick="capture()">Take picture</button>
 <br />
+	<input type="image" src="resources/img/filter.png" alt="quake" onclick="switch_filter('quake')">
+  <input type="submit">
 
 </div>
 <script>
@@ -115,10 +117,13 @@ function capture() {
     canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
     var canvasData = canvas.toDataURL("image/png");
 		var ajax = new XMLHttpRequest();
-		alert(canvasData);
+		alert(filter);
 		ajax.open("POST",'pic_save.php',false);
 		ajax.setRequestHeader('Content-Type', 'application/upload');
-		ajax.send(canvasData)
+		ajax.send(canvasData);
+		ajax.open("POST",'add_filter.php',false);
+		ajax.setRequestHeader('Content-Type', 'application/upload');
+		ajax.send(filter);
 }
 
 function switch_filter(new_filter)
