@@ -14,3 +14,4 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
     }
     file_put_contents("img.png", $data);
 }
+?>
