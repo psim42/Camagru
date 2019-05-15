@@ -45,5 +45,5 @@ if (isset($_POST['submit']))
 				<input type="submit" name="submit" value="OK" href="/index.php"/>
 					<br />
 		</form>
-		<a href= "/index.php">Cliquer ici pour retourner a la page d'accueil</a>
+		<a href= "index.php">Cliquer ici pour retourner a la page d'accueil</a>
 </html>

@@ -10,10 +10,11 @@ MISSION 1 : Connection
 		- Connection a sql (PDO) OK
 		- Page conection OK
 		- creation OK
-		- login 
-		- logout
+		- login ok
+		- logout ok
+		- Protegger mdp hash ok
+		- Who am I
 		- modify
-		- Protegger mdp hash
 	ORGANISER MVC
 		- dossier MVC
 		- function

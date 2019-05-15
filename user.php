@@ -14,7 +14,10 @@ function auth($login, $passwd){
 	while ($donnees = $resultatdeco->fetch())
 	{
 		if (($login == $donnees['login'] || $login == $donnees['mail']) && $passwd == $donnees['password'])
+		{
 			$good_info = 1;
+			$_SESSION['login'] = $donnees['login'];
+		}
 	}
 	if ($good_info == 1)
 		return(TRUE);
@@ -110,13 +113,6 @@ function create_user($mail, $login, $passwd, $passwd2){
 	$stmt->execute();
 
 	return(true);
-		
-	// $v1 = mysqli_real_escape_string($db, $tab['login']);
-	// $v2 = $tab['passwd'];
-	// $v3 = intval(0);
-	// mysqli_query($db, "INSERT INTO users (email, passwd, admin_val) VALUES ('" . $v1 . "', '" . $v2 . "', '" . $v3 . "') ");
-	// mysqli_free_result($resultat);
-
 }
 
 function mod_user($login, $passwd, $va2){
@@ -153,26 +149,8 @@ function mod_user($login, $passwd, $va2){
 	}
 }
 
-function is_there($login){
-	if($login == "")
-	{
-		echo "ERROR\n";
-	}
-	else
-	{
-		$user["login"] = $login;
-
-		if (file_exists("./resources/database/db_user"))
-			$top_user = unserialize(file_get_contents("./resources/database/db_user"));
-		if ($top_user) {
-			foreach ($top_user as $arg)
-			{
-				if ($arg['login'] == $login)
-					return true;
-			}
-		}
-		return false;
-	}
+function whoami($login){
+	
 }
 
 function mod_root($login, $passwd){
