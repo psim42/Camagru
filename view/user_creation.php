@@ -1,5 +1,5 @@
 <?php
-	include 'user.php';
+	include '../controller/user.php';
 	session_start();
 if (isset($_POST['logout']))
 {
@@ -25,7 +25,7 @@ if (isset($_POST['submit']))
 <head>
 	<meta charset="utf-8" />
 	<title>Camagru</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="register.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="css/register.css" />
 </head>
 <body>
 	
@@ -45,5 +45,5 @@ if (isset($_POST['submit']))
 				<input type="submit" name="submit" value="OK" href="/index.php"/>
 					<br />
 		</form>
-		<a href= "index.php">Cliquer ici pour retourner a la page d'accueil</a>
+		<a href= "../index.php">Cliquer ici pour retourner a la page d'accueil</a>
 </html>

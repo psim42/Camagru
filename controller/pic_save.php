@@ -12,6 +12,6 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
     } else {
         throw new \Exception('did not match data URI with image data');
     }
-    file_put_contents("img.png", $data);
+    file_put_contents("../resources/result/img.png", $data);
 }
 ?>

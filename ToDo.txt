@@ -3,9 +3,13 @@ MISSION 1 : Connection
 		- Crée db OK
 		- Conecttion sql (PDO) Ok	
 		- crée Table login mail mdp OK
-		- root root de base hash et pas hash OK
+		- root root de base hash OK
 		- export .sql OK
 		- Install OK
+	ORGANISER MVC OK
+		- dossier MVC OK 
+		- function OK	
+		- css OK
 	Convernir user.php
 		- Connection a sql (PDO) OK
 		- Page conection OK
@@ -13,10 +17,16 @@ MISSION 1 : Connection
 		- login ok
 		- logout ok
 		- Protegger mdp hash ok
-		- Who am I
-		- modify
-	ORGANISER MVC
-		- dossier MVC
-		- function
-		- css
+		- protection injection sql ok
+		- Who am I ok 
+		- modify 
+		- mail de confirmation
+
+	Doc user
+
+	Filtre sur img coter server
+
+	Page perso user
+
+
 	Protect install
