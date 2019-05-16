@@ -32,6 +32,10 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 		auth($_POST['login'], $_POST['passwd']);
 	}
 }
+if (isset($_POST['setting']))
+{
+	echo '<meta http-equiv="refresh" content="0;URL=view/manage.php">';
+}
 ?>
 
 
@@ -61,9 +65,12 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 				<br />
 				<input id= "log_bouton" type="submit" name="submit" value="CREER UN COMPTE"/>
 				<br />';}
-			if (isset($_SESSION['login'])){
+			if (isset($_SESSION['login']))
+			{
 				echo'<div class="dot"></div><div style="display: inline-block; margin-left:5px; "><p>Vous etes connecte '.$_SESSION['login'].'</p></div> </br>';
-				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';}
+				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';
+				echo '<input id= "setting_bouton" type="submit" name="setting" value="Setting"/>';
+			}
 			?>
 				<br />
 			</form>
