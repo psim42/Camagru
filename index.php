@@ -80,7 +80,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 <button type="button" onclick="start()">Start</button>
 <button type="button" onclick="capture()">Take picture</button>
 <br />
-	<input type="image" src="resources/img/filter.png" alt="quake" onclick="switch_filter('quake')">
+	<input type="image" src="resources/img/quake.png" alt="quake" onclick="switch_filter('quake')">
   <input type="submit">
 
 </div>
