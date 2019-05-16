@@ -1,6 +1,6 @@
 <?php
-include 'function/db_root_login.php';
-include 'user.php';
+include 'controller/db_root_login.php';
+include 'controller/user.php';
 session_start();
 
 // $src = imagecreatefromjpeg('resources/img/crayon.jpg');
@@ -23,7 +23,7 @@ if (isset($_POST['logout']))
 }
 if (isset($_POST['submit']) && $_POST['submit'] == "CREER UN COMPTE")
 {
-	echo '<meta http-equiv="refresh" content="0;URL=user_creation.php">';
+	echo '<meta http-equiv="refresh" content="0;URL=view/user_creation.php">';
 }
 if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 {
@@ -40,9 +40,11 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 <head>
   <meta charset="utf-8">
   <title>Camagru</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-  <script src="script.js"></script>
+	<script src="controller/camera.js"></script>
+	<script src="controller/filter.js"></script>
+	
 </head>
 <body>
 
@@ -77,59 +79,9 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 <button type="button" onclick="start()">Start</button>
 <button type="button" onclick="capture()">Take picture</button>
 <br />
-	<input type="image" src="resources/img/filter.png" alt="quake" onclick="switch_filter('quake')">
+	<input type="image" src="resources/img/quake.png" alt="quake" onclick="switch_filter('quake')">
   <input type="submit">
 
 </div>
-<script>
-var video = document.querySelector("#videoElement");
-var filter = "";
-
-function start(e){
-	if (navigator.mediaDevices.getUserMedia) {
- 	 navigator.mediaDevices.getUserMedia({ video: true })
-   	 .then(function (stream) {
-   	   video.srcObject = stream;
-   	 })
-    	.catch(function (err0r) {
-    	  console.log("Something went wrong!");
-  	  });
-	}
-}
-
-function stop(e) {
-  var stream = video.srcObject;
-  var tracks = stream.getTracks();
-
-  for (var i = 0; i < tracks.length; i++) {
-    var track = tracks[i];
-    track.stop();
-  }
-
-  video.srcObject = null;
-}
-function capture() {
-    canvas.width = 1000;
-    canvas.height = 750;
-    canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
-    var canvasData = canvas.toDataURL("image/png");
-		var ajax = new XMLHttpRequest();
-		alert(filter);
-		ajax.open("POST",'pic_save.php',false);
-		ajax.setRequestHeader('Content-Type', 'application/upload');
-		ajax.send(canvasData);
-		ajax.open("POST",'add_filter.php',false);
-		ajax.setRequestHeader('Content-Type', 'application/upload');
-		ajax.send(filter);
-}
-
-function switch_filter(new_filter)
-{
-		filter = new_filter;
-}
-
-</script>
-
-<img src = "resources/img/crayon.jpg">
 </body>
 </html>

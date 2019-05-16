@@ -1,6 +1,6 @@
 <?php
-include 'function/db_root_login.php';
-include 'user.php';
+include 'controller/db_root_login.php';
+include 'controller/user.php';
 session_start();
 
 if (!(isset($_SESSION['login'])))

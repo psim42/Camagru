@@ -1,7 +1,7 @@
 <?php
 
 function auth($login, $passwd){
-	include 'function/db_root_login.php';
+	include 'controller/db_root_login.php';
 	if	(!($login) || !($passwd))
 		return(FALSE);
 
