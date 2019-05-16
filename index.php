@@ -28,11 +28,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == "CREER UN COMPTE")
 if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 {
 	if (isset($_POST['login']) && isset($_POST['passwd']))
-	{		
-		if (auth($_POST['login'], $_POST['passwd']))
-		{
-			$_SESSION['login'] = $_POST['login'];
-		}
+	{
+		auth($_POST['login'], $_POST['passwd']);
 	}
 }
 ?>
@@ -54,7 +51,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 		<div id="log">
 		<form method="POST" action ="">
 			<?php if(!isset($_SESSION['login'])){
-				echo '<input id= "log_bouton" type="text" name="login" value="" placeholder="Identifiant"/>
+				echo '<input id= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login"/>
 				<br />
 				<input id= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe"/>
 				<br/>
@@ -63,7 +60,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 				<input id= "log_bouton" type="submit" name="submit" value="CREER UN COMPTE"/>
 				<br />';}
 			if (isset($_SESSION['login'])){
-				echo'<div class="dot"></div><div style="display: inline-block; margin-left:5px; "><p>Vous etes connecte</p></div> </br>';
+				echo'<div class="dot"></div><div style="display: inline-block; margin-left:5px; "><p>Vous etes connecte '.$_SESSION['login'].'</p></div> </br>';
 				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';}
 			?>
 				<br />
