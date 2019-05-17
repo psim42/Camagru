@@ -1,17 +1,77 @@
 <?php
-try
+
+function install()
 {
-	$db = new PDO('mysql:host=localhost;', 'root', 'admin123');
+	try
+	{
+		$db = new PDO('mysql:host=localhost;', 'root', 'admin123');
+	}
+	catch (Exception $e)
+	{
+		die('Erreur : ' . $e->getMessage());
+	}
+	$file = file_get_contents("camagru.sql");
+	$file = explode(';', $file);
+	$db->query('DROP DATABASE camagru');
+	$db->query('CREATE DATABASE camagru');
+	$db->query('USE camagru');
+	foreach($file as $tmp)
+		$db->query($tmp);
+	file_put_contents("installed", "ok");
+	
 }
-catch (Exception $e)
+if (isset($_GET["done"]))
 {
-	die('Erreur : ' . $e->getMessage());
+	echo "<script>alert('La base de donnee a bien ete intialisee'); window.location = '../index.php';</script>";
 }
-$file = file_get_contents("sql/camagru.sql");
-$file = explode(';', $file);
-$db->query('DROP DATABASE camagru');
-$db->query('CREATE DATABASE camagru');
-$db->query('USE camagru');
-foreach($file as $tmp)
-	$db->query($tmp);
+
+if (isset($_POST['passwd']))
+{
+	if ($_POST['passwd'] == "admin123")
+	{
+		if (file_exists("installed"))
+		{
+			echo "
+			<h2>La base de donnee est deja initialisee. Voulez vous forcer la reinitialisation ?</h2>
+			<form method='POST' action = >
+			<input type='submit' name='force' value='force' href='install.php'/>
+			<br />
+			";
+		}
+		else
+		{
+			install();
+			header('Location: install.php?done'); 
+		}
+	}
+	else
+	{
+		echo "<script>alert('Vous n avez pas la permission d executer cette action'); window.location = '../index.php';</script>";
+	}
+}
+if (isset($_POST['force']))
+	{
+		install();
+		header('Location: install.php?done'); 	
+	}
+
 ?>
+
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>Install</title>
+</head>
+<body>
+<?php
+if (!isset($_POST['passwd']))
+echo"
+<h2>Veuillez entrer le mot de passe root</h2>
+<form method='POST' action = >
+		<input type='password' name='passwd' value='' placeholder='Mot de Passe'/>
+		<br />
+		<input type='submit' name='submit' value='OK' href='install.php'/>
+			<br />
+</form>";
+?>
+</body>
