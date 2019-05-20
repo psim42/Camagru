@@ -1,7 +1,7 @@
 <?php
 
 function auth($login, $passwd){
-	include 'controller/db_root_login.php';
+	include 'db_root_login.php';
 	if	(!($login) || !($passwd))
 		return(FALSE);
 
@@ -28,7 +28,7 @@ function auth($login, $passwd){
 
 function create_user($mail, $login, $passwd, $passwd2){
 
-	include 'function/db_root_login.php';
+	include 'db_root_login.php';
 
 	$e = 0;
 

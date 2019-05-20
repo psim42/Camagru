@@ -20,6 +20,10 @@ MISSION 1 : Connection
 		- protection injection sql ok
 		- Who am I ok 
 		- modify 
+			Delete PSIM
+			Login PSIM
+			Mail jmoussu
+			Password jmoussu
 		- mail de confirmation
 
 	Doc user
