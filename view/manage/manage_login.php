@@ -1,5 +1,5 @@
 <?php
-include '../../controller/manage/change_email.php';
+include '../../controller/manage/change_login.php';
 
 
 ?>
@@ -14,10 +14,10 @@ include '../../controller/manage/change_email.php';
 </head>
 <body>
 	<div id="center" style="color: black;">
-		<h1>Change your Email <h1>
-		<form id='manage.php' name="manage.php" action='manage_email.php' method='post' accept-charset='UTF-8'>
-			<input class="text" placeholder="New E-mail" type="email" name="newemail" value="" />
-			<input class="text" placeholder="E-mail confirmation" type="email" name="newemailconf" value="" />
+		<h1>Change your Login <h1>
+		<form id='manage.php' name="manage.php" action='manage_login.php' method='post' accept-charset='UTF-8'>
+			<input class="text" placeholder="New Login" type="login" name="newlogin" value="" />
+			<input class="text" placeholder="Confirmation" type="login" name="newloginconf" value="" />
 			<br />
 			<input class="text" placeholder="Password" type="password" name="password" value="" />
 			<input type="submit" name="submit" value="OK"/>

@@ -56,6 +56,12 @@ function create_user($mail, $login, $passwd, $passwd2){
 		$e = 1;
 	}
 	
+	if (isset($login) && (strlen($login) > 32 && (strlen($login) != 0)))
+	{
+		echo "<p>Veuillez entrer un Login de moins de 32 caractères s'il vous plait</p>";
+		$e = 1;
+	}
+
 	if (!($passwd) || (strlen($passwd) == 0))
 	{
 		echo "<p>Veuillez entrer un Mot de passe s'il vous plait</p>";
@@ -115,68 +121,68 @@ function create_user($mail, $login, $passwd, $passwd2){
 	return(true);
 }
 
-function mod_user($login, $passwd, $va2){
-	if($login == "" || $passwd == "" || $va2 == "")
-	{
-		return false;
-	}
-	else
-	{
+// function mod_user($login, $passwd, $va2){
+// 	if($login == "" || $passwd == "" || $va2 == "")
+// 	{
+// 		return false;
+// 	}
+// 	else
+// 	{
 		
-		$opasswd = $passwd;
-		$npasswd = $va2;
-		$hashopw = hash("sha512", $opasswd);
-		$hashnpw = hash("sha512", $npasswd);
-		$user["login"] = $login;
-		$i = 0;
+// 		$opasswd = $passwd;
+// 		$npasswd = $va2;
+// 		$hashopw = hash("sha512", $opasswd);
+// 		$hashnpw = hash("sha512", $npasswd);
+// 		$user["login"] = $login;
+// 		$i = 0;
 		
-		$top_user = unserialize(file_get_contents("./resources/database/db_user"));
-		if ($top_user) {
-			foreach ($top_user as $arg)
-			{
-				if ($arg['login'] == $login){
-					if(($arg['login'] == $login) && ($arg['passwd'] == $hashopw))
-					{
-						$top_user[$i]["passwd"] = $hashnpw;
-						file_put_contents("./resources/database/db_user", serialize($top_user));
-						return true;
-					}
-				}
-				$i++;
-			}
-		}
-		return false;
-	}
-}
+// 		$top_user = unserialize(file_get_contents("./resources/database/db_user"));
+// 		if ($top_user) {
+// 			foreach ($top_user as $arg)
+// 			{
+// 				if ($arg['login'] == $login){
+// 					if(($arg['login'] == $login) && ($arg['passwd'] == $hashopw))
+// 					{
+// 						$top_user[$i]["passwd"] = $hashnpw;
+// 						file_put_contents("./resources/database/db_user", serialize($top_user));
+// 						return true;
+// 					}
+// 				}
+// 				$i++;
+// 			}
+// 		}
+// 		return false;
+// 	}
+// }
 
-function whoami($login){
+// function whoami($login){
 	
-}
+// }
 
-function mod_root($login, $passwd){
-	if($login == "" || $passwd == ""){
-		return false;
-	}
-	else{
+// function mod_root($login, $passwd){
+// 	if($login == "" || $passwd == ""){
+// 		return false;
+// 	}
+// 	else{
 		
-		$npasswd = $passwd;
-		$hashnpw = hash("sha512", $npasswd);
-		$user["login"] = $login;
-		$i = 0;
+// 		$npasswd = $passwd;
+// 		$hashnpw = hash("sha512", $npasswd);
+// 		$user["login"] = $login;
+// 		$i = 0;
 		
-		$top_user = unserialize(file_get_contents("./resources/database/db_user"));
-		if ($top_user) {
-			foreach ($top_user as $arg){
-				if ($arg['login'] == $login){	
-						$top_user[$i]["passwd"] = $hashnpw;
-						file_put_contents("./resources/database/db_user", serialize($top_user));
-						return true;
-				}
-				$i++;
-			}
-		}
-		return false;
-	}
-}
+// 		$top_user = unserialize(file_get_contents("./resources/database/db_user"));
+// 		if ($top_user) {
+// 			foreach ($top_user as $arg){
+// 				if ($arg['login'] == $login){	
+// 						$top_user[$i]["passwd"] = $hashnpw;
+// 						file_put_contents("./resources/database/db_user", serialize($top_user));
+// 						return true;
+// 				}
+// 				$i++;
+// 			}
+// 		}
+// 		return false;
+// 	}
+// }
 
 ?>

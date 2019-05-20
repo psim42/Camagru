@@ -34,7 +34,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 }
 if (isset($_POST['setting']))
 {
-	echo '<meta http-equiv="refresh" content="0;URL=view/manage.php">';
+	echo '<meta http-equiv="refresh" content="0;URL=view/manage/manage.php">';
 }
 ?>
 

@@ -17,57 +17,43 @@ if (!(isset($_SESSION['login'])))
 }
 if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 {
-	$mail = $_POST['newemail'];
-	$cmail = $_POST['newemailconf'];
+	$pw = $_POST['newpw'];
+	$cpw = $_POST['newpwconf'];
 	$login = $_SESSION['login'];
 	$e = 0;
-
-	if (!($mail) || (strlen($mail) == 0))
+	
+	if (!($pw) || (strlen($pw) == 0))
 	{
-		echo "<p>Veuillez entrer un E-Mail s'il vous plait</p>";
+		echo "<p>Veuillez entrer un Mot de passe s'il vous plait</p>";
 		$e = 1;
 	}
 
-	if (!(preg_match(" /^.+@.+\.[a-zA-Z]{2,}$/ ", $mail)) && (strlen($mail) != 0))
+	if ((strlen($pw) < 6) && (strlen($pw) != 0))
 	{
-		echo "<p>Veuillez entrer un E-mail valide s'il vous plait</p>";
-		$e = 1;
-	}
-
-	if (auth($login, $_POST['password']) == false)
-	{
-		echo "<p>Mauvais Mot de Passe !</p>";
-		$e = 1;
-	}
-
-	if ($mail != $cmail)
-	{
-		echo "<p>L'E-Mail de confirmation ne corespond pas</p>";
+		echo "<p>Veuillez entrer un Mot de passe avec au mois 6 caractères s'il vous plait</p>";
 		$e = 1;
 	}
 	
-	if ($e == 0)
+	if (auth($login, $_POST['password']) == false)
 	{
-		$stmt = $db->prepare("SELECT mail FROM user WHERE mail = :mail");
-		$stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
-		$res = $stmt->execute();
-		$row = $stmt->fetch();
-		// print_r($row);
-		if (!empty($row))
-		{
-			echo"<p>L'E-Mail ne peut pas être changer, il est déjà utiliser</p>";
-			$e = 1;
-		}
+		echo "<p>Mauvais Mot de Passe de connection !</p>";
+		$e = 1;
+	}
+
+	if ($pw != $cpw)
+	{
+		echo "<p>Vos 2 mots de passes ne coresspondent pas !</p>";
+		$e = 1;
 	}
 
 	if ($e == 0)
 	{
-		
-		$stmt = $db->prepare("UPDATE user SET mail = :mail WHERE login = :login ");
+		$hashpw = hash('whirlpool', $pw);
+		$stmt = $db->prepare("UPDATE user SET password = :hashpw WHERE login = :login ");
+		$stmt->bindValue(':hashpw', $hashpw, PDO::PARAM_STR);
 		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
-		$stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
 		$stmt->execute();
-		echo "<p>Bravo vous avez changer votre adresse E-Mail</p>";
+		echo "<p>Bravo vous avez changer votre Mot de Passe !</p>";
 	}
 
 }

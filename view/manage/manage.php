@@ -5,7 +5,13 @@ session_start();
 
 if (!(isset($_SESSION['login'])))
 {
-	header('Location: ../../index.php');
+	echo"
+	<script> 
+	 alert('Acces interdit au invités'); 
+	 window.location='../../index.php';
+	 </script>";
+	
+	// header('Location: ../../index.php');
 	exit();
 }
 	
@@ -41,14 +47,14 @@ $login = $_SESSION['login'];
 </head>
 <body>
 	<div id="center" style="color: black;">
-	<h1>Change your Email and Password<h1>
+	<h1>Manage your Account<h1>
 	<a href="manage_login.php"><button type="button" >Change your Login</button></a>
 	<a href="manage_email.php"><button type="button" >Change your Email</button></a>
-	<a href="manage_password.php"><button type="button" >Change your Password</button></a>
+	<a href="manage_pw.php"><button type="button" >Change your Password</button></a>
 	<a href="manage_delete.php"><button type="button" >Delete your Account</button></a>
 	<br/>
 	<br/>
-	<a href="../index.php"><button type="button" >Index</button></a>
+	<a href="../../index.php"><button type="button" >Index</button></a>
 	</div>
 </body>
 </html>
