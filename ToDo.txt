@@ -1,13 +1,22 @@
-MISSION 1 : Connection
+MISSION 1 : Connection Fini
+
+bonus requierd html
 
 MISSION 2 : Site
 
-	table photo
+	table sql photo
 
 	Fil d'actualité
 
-	Doc user
+	page cam
+
+	Dossier user
 
 	Page perso user
 
-	Requierd ??
+MISSION 3
+	page cam avec filtre styler
+	deplasable
+
+Mission 4 pagede la photo
+	table like comentaire ++
