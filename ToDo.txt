@@ -1,36 +1,13 @@
 MISSION 1 : Connection
-	Utiliser la database a 2 avec install.php
-		- Crée db OK
-		- Conecttion sql (PDO) Ok	
-		- crée Table login mail mdp OK
-		- root root de base hash OK
-		- export .sql OK
-		- Install OK
-	ORGANISER MVC OK
-		- dossier MVC OK 
-		- function OK	
-		- css OK
-	Convernir user.php
-		- Connection a sql (PDO) OK
-		- Page conection OK
-		- creation OK
-		- login ok
-		- logout ok
-		- Protegger mdp hash ok
-		- protection injection sql ok
-		- Who am I ok 
-		- modify 
-			Delete PSIM
-			Login PSIM
-			Mail jmoussu
-			Password jmoussu
-		- mail de confirmation
+
+MISSION 2 : Site
+
+	table photo
+
+	Fil d'actualité
 
 	Doc user
 
-	Filtre sur img coter server
-
 	Page perso user
 
-
-	Protect install
+	Requierd ??

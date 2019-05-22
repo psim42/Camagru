@@ -36,6 +36,14 @@ if (isset($_POST['setting']))
 {
 	echo '<meta http-equiv="refresh" content="0;URL=view/manage/manage.php">';
 }
+// if (isset($_POST['mail']))
+// {
+// 	$to_email = 'mouenba@hotmail.fr';
+// 	$subject = 'Testing PHP Mail';
+// 	$message = 'This mail is sent using the PHP mail function';
+// 	$headers = 'From: noreply@camagru.com';
+// 	mail($to_email,$subject,$message,$headers);
+// }
 ?>
 
 
@@ -70,6 +78,7 @@ if (isset($_POST['setting']))
 				echo'<div class="dot"></div><div style="display: inline-block; margin-left:5px; "><p>Vous etes connecte '.$_SESSION['login'].'</p></div> </br>';
 				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';
 				echo '<input id= "setting_bouton" type="submit" name="setting" value="Setting"/>';
+				// echo '<input id= "mail_bouton" type="submit" name="mail" value="mail"/>';
 			}
 			?>
 				<br />

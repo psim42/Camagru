@@ -1,4 +1,5 @@
 <?php
+include 'token.php';
 
 function auth($login, $passwd){
 	include 'db_root_login.php';
@@ -8,8 +9,9 @@ function auth($login, $passwd){
 	$passwd = hash("whirlpool", $passwd);
 	// $USER["login"] = $login;
 
+	$valide = 0;
 	$good_info = 0;
-	$resultatdeco = $db->query('SELECT login, password, mail FROM user');
+	$resultatdeco = $db->query('SELECT login, password, mail, VALIDE FROM user');
 
 	while ($donnees = $resultatdeco->fetch())
 	{
@@ -17,12 +19,26 @@ function auth($login, $passwd){
 		{
 			$good_info = 1;
 			$_SESSION['login'] = $donnees['login'];
+			$valide = $donnees['VALIDE'];
+			$mail = $donnees['mail'];
 		}
 	}
-	if ($good_info == 1)
-		return(TRUE);
-	else
+	if ($good_info != 1)
+	{
+		echo "Mauvaise information de connexion";
 		return(FALSE);
+	}
+	
+	if ($valide == 0)
+	{
+		echo "Merci de cliquer sur le lien de validation qui vous as été envoyer par mail à ".$mail." pour vous connecter !";
+		session_unset();
+		session_destroy();
+		session_start();
+		return(FALSE);
+	}
+
+	return(TRUE);
 
 }
 
@@ -110,13 +126,26 @@ function create_user($mail, $login, $passwd, $passwd2){
 	if ($e == 1)
 		return(false);
 
-	$stmt = $db->prepare("INSERT INTO user (login, password, mail, VALIDE, root) VALUES (:login, :password, :mail, :VALIDE, :root)");
+	sleep(1);
+	$token = token();
+	$stmt = $db->prepare("INSERT INTO user (login, password, mail, VALIDE, root, token) VALUES (:login, :password, :mail, :VALIDE, :root, :token)");
 	$stmt->bindValue(':login', $login, PDO::PARAM_STR);
 	$stmt->bindValue(':password', $tab['passwd'], PDO::PARAM_STR);
 	$stmt->bindValue(':mail', $tab['mail'], PDO::PARAM_STR);
 	$stmt->bindValue(':VALIDE', 0, PDO::PARAM_INT);
 	$stmt->bindValue(':root', 0, PDO::PARAM_INT);
+	$stmt->bindValue(':token', $token, PDO::PARAM_STR);
 	$stmt->execute();
+
+	// if (!$stmt->execute()) {
+	// 	print_r($stmt->errorInfo());
+	// }
+	
+	$to_email = $tab['mail'];
+	$subject = 'Bienvenue sur Insta Camagru Confirmation de votre Compte';
+	$message = "Bonjour,\n Pour valider votre compte Cliquer sur ce lien \n http://localhost:8100/Camagru_OurGit/view/validation.php?val=".$token." \n Merci et Bienvenue !";
+	$headers = 'From: noreply@camagru.com';
+	mail($to_email,$subject,$message,$headers);
 
 	return(true);
 }
