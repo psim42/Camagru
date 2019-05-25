@@ -1,8 +1,13 @@
 MISSION 1 : Connection Fini
 
-bonus requierd html
-
 MISSION 2 : Site
+
+Index bouton photo quand tu es co 
+vide pour add fil d'actualité
+Placer les photo dans le bon Dossier 
+
+
+
 
 	table sql photo
 
@@ -20,3 +25,26 @@ MISSION 3
 
 Mission 4 pagede la photo
 	table like comentaire ++
+
+/////////////Idex///////////////////////////
+
+// if (isset($_POST['mail']))
+// {
+// 	$to_email = 'mouenba@hotmail.fr';
+// 	$subject = 'Testing PHP Mail';
+// 	$message = 'This mail is sent using the PHP mail function';
+// 	$headers = 'From: noreply@camagru.com';
+// 	mail($to_email,$subject,$message,$headers);
+// }
+
+// echo '<input id= "mail_bouton" type="submit" name="mail" value="mail"/>';
+
+///////////////////////////////////////////////////////
+
+// $src = imagecreatefromjpeg('resources/img/crayon.jpg');
+// $dst = imagecreatetruecolor(576,576);
+// $filter = imagecreatefrompng('resources/img/filter.png');
+
+// imagecopy($dst, $src, 0, 0, 0, 0, 576, 576);
+// imagecopy($dst, $filter, 60, 60, 0, 0, 318, 479);
+// imagejpeg($dst, 'resources/img/result.jpg');

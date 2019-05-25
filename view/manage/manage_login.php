@@ -16,10 +16,10 @@ include '../../controller/manage/change_login.php';
 	<div id="center" style="color: black;">
 		<h1>Change your Login <h1>
 		<form id='manage.php' name="manage.php" action='manage_login.php' method='post' accept-charset='UTF-8'>
-			<input class="text" placeholder="New Login" type="login" name="newlogin" value="" />
-			<input class="text" placeholder="Confirmation" type="login" name="newloginconf" value="" />
+			<input class="text" placeholder="New Login" type="login" name="newlogin" value="" required=""/>
+			<input class="text" placeholder="Confirmation" type="login" name="newloginconf" value="" required=""/>
 			<br />
-			<input class="text" placeholder="Password" type="password" name="password" value="" />
+			<input class="text" placeholder="Password" type="password" name="password" value="" required=""/>
 			<input type="submit" name="submit" value="OK"/>
 		</form>
 		<a href="../../index.php"><button type="button" >Index</button></a>

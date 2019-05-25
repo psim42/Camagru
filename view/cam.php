@@ -1,40 +1,3 @@
-<?php
-include 'controller/db_root_login.php';
-include 'controller/user.php';
-session_start();
-
-
-
-if (isset($_POST['name']))
-{ 
-	echo '<p>test</p>';
-}
-if (isset($_POST['logout']))
-{
-	session_unset();
-	session_destroy();
-	session_start();
-}
-if (isset($_POST['submit']) && $_POST['submit'] == "CREER UN COMPTE")
-{
-	echo '<meta http-equiv="refresh" content="0;URL=view/user_creation.php">';
-}
-if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
-{
-	if (isset($_POST['login']) && isset($_POST['passwd']))
-	{
-		auth($_POST['login'], $_POST['passwd']);
-	}
-}
-if (isset($_POST['setting']))
-{
-	echo '<meta http-equiv="refresh" content="0;URL=view/manage/manage.php">';
-}
-
-?>
-
-
-
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -74,7 +37,7 @@ if (isset($_POST['setting']))
 			</div>
 </div>
 
-<!-- <div id="container">
+<div id="container">
 	<video autoplay="true" id="videoElement"></video>
 	<canvas id="canvas" width=1000 height=750></canvas>
 </div>
@@ -86,6 +49,6 @@ if (isset($_POST['setting']))
 	<input type="image" src="resources/img/quake.png" alt="quake" onclick="switch_filter('quake')">
   <input type="submit">
 
-</div> -->
+</div>
 </body>
 </html>

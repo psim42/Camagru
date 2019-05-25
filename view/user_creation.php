@@ -33,14 +33,14 @@ if (isset($_POST['submit']))
 		<h2>Entrer un Email, un Identifiant et un Mot de passe pour créer votre compte</h2>
 		<h2>Un Email de confirmation vous sera envoyer pour créer votre compte</h2>
 		<form method="POST" action = >
-				<input type="text" name="email" value="" placeholder="Adresse email"/>
+				<input type="text" name="email" value="" placeholder="Adresse email" required=""/>
 					<br />
-				<input type="text" name="login" value="" placeholder="Identifiant"/>
+				<input type="text" name="login" value="" placeholder="Identifiant" required=""/>
 					<br />
 					
-				<input type="password" name="passwd" value="" placeholder="Mot de Passe"/>
+				<input type="password" name="passwd" value="" placeholder="Mot de Passe" required=""/>
 				<br />
-				<input type="password" name="passwd2" value="" placeholder="Confirmation mot de passe"/>
+				<input type="password" name="passwd2" value="" placeholder="Confirmation mot de passe" required=""/>
 					<br />
 				<input type="submit" name="submit" value="OK" href="/index.php"/>
 					<br />

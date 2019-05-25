@@ -7,8 +7,5 @@
 	<title>Camagru</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="css/register.css" />
 </head>
-<body>
-	
-<html>
 		<a href="../index.php"><button type="button" >Index</button></a>
 </html>

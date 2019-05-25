@@ -16,10 +16,10 @@ include '../../controller/manage/change_pw.php';
 	<div id="center" style="color: black;">
 		<h1>Change your PassWord <h1>
 		<form id='manage.php' name="manage.php" action='manage_pw.php' method='post' accept-charset='UTF-8'>
-			<input class="text" placeholder="New Password" type="password" name="newpw" value="" />
-			<input class="text" placeholder="New Password confirmation" type="password" name="newpwconf" value="" />
+			<input class="text" placeholder="New Password" type="password" name="newpw" value="" required=""/>
+			<input class="text" placeholder="New Password confirmation" type="password" name="newpwconf" value="" required=""/>
 			<br />
-			<input class="text" placeholder="Old Password" type="password" name="password" value="" />
+			<input class="text" placeholder="Old Password" type="password" name="password" value="" required=""/>
 			<input type="submit" name="submit" value="OK"/>
 		</form>
 		<a href="../../index.php"><button type="button" >Index</button></a>
