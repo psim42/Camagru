@@ -49,6 +49,9 @@ if (isset($_POST['setting']))
 
 <div id="banniere">
 		<a href="index.php" style="text-decoration: none"><h1 id="nom-site">CAMAGRU</h1></a>
+	
+		<a href="view/cam.php" class="linkcam" > <img id="cam" src="resources/img/cam.png" alt="cam"> </a>
+
 		<div id="log">
 		<form method="POST" action ="">
 			<?php if(!isset($_SESSION['login'])){
@@ -87,5 +90,6 @@ if (isset($_POST['setting']))
   <input type="submit">
 
 </div> -->
+
 </body>
 </html>

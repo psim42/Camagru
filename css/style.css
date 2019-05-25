@@ -73,3 +73,16 @@ position: relative;
   left: 0;
   z-index: 10;
 }
+
+#cam
+{
+    background-color: black;
+   
+    size: 5px;
+}
+
+.linkcam
+{
+    background-color: black;
+    width: 5px;
+}
