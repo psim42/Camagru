@@ -1,7 +1,7 @@
 <?php
-include '../controller/db_root_login.php';
-include '../controller/user.php';
-session_start();
+// include '../controller/MakePic.php';	
+
+
 ?>
 
 <html lang="fr">
@@ -53,22 +53,7 @@ session_start();
 
 </div>
 
-<div id="container">
-	<video autoplay="true" id="videoElement"></video>
-	<canvas id="canvas" width=1000 height=750></canvas>
-</div>
-<div style="margin-left: 50px; margin-top: 10px;">
-<button type="button" onclick="stop()">Stop</button>
-<button type="button" onclick="start()">Start</button>
+<img src="../resources/result/result.png" alt="YourPic">
 
-<!-- 2 BOUTON DIFERENT EN FONCTION DE SESSION SET OU PAS -->
-<!-- Merci -->
-
-<button type="button" onclick="capture(), window.location.href='YourPic.php'" >Take picture</button>
-<br />
-
-
-	<input type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-</div>
 </body>
 </html>

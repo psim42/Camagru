@@ -7,7 +7,9 @@ vide pour add fil d'actualité
 Placer les photo dans le bon Dossier 
 
 
+ HASH le ADMIN123 INSTALL
 
+ENVOYER SUR PARGE D'inscription a la photo!∂
 
 	table sql photo
 

@@ -7,11 +7,11 @@ function capture() {
 	canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
 	var canvasData = canvas.toDataURL("image/png");
 		var ajax = new XMLHttpRequest();
-		alert(filter);
-		ajax.open("POST",'controller/pic_save.php',false);
+		// alert(filter);
+		ajax.open("POST",'../controller/pic_save.php',false);
 		ajax.setRequestHeader('Content-Type', 'application/upload');
 		ajax.send(canvasData);
-		ajax.open("POST",'controller/add_filter.php',false);
+		ajax.open("POST",'../controller/add_filter.php',false);
 		ajax.setRequestHeader('Content-Type', 'application/upload');
 		ajax.send(filter);
 }

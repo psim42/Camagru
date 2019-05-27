@@ -1,88 +1,90 @@
+
 header{
-    background: linear-gradient( to left top, #eb3349, #F45C43);
-    height : 100px;
-    border-radius: 20px;
+	background: linear-gradient( to left top, #eb3349, #F45C43);
+	height : 100px;
+	border-radius: 20px;
 }
 .headwrap{
-    width : 500px;
+	width : 500px;
 }
 .headwrap2{
-    width : 500px;
-    
+	width : 500px;
+	
 }
 .center {
-    line-height: 100px;
-    margin-left: 30px;
-    background: linear-gradient( to left top, #eb3349, #F45C43);
-    height : 100px;
-    border-radius: 20px;
+	line-height: 100px;
+	margin-left: 30px;
+	background: linear-gradient( to left top, #eb3349, #F45C43);
+	height : 100px;
+	border-radius: 20px;
 }
 h1{
-    line-height: 100px;
-    margin-left: 30px;
-    font-family: 'Rubik';
-    font-size: 70px;
-    color: #5c41f4;
-    width : 500px;
-    text-decoration: none;
+	line-height: 100px;
+	margin-left: 30px;
+	font-family: 'Rubik';
+	font-size: 70px;
+	color: #5c41f4;
+	width : 500px;
+	text-decoration: none;
 }
 p{
-    font-family: 'Rubik';
-    color: #5c41f4;
+	font-family: 'Rubik';
+	color: #5c41f4;
 }
 #nom-site{
-    margin-bottom: -85px;
-    text-decoration: none;
+	margin-bottom: -85px;
+	text-decoration: none;
 }
 #log{
-    float: right;
-    margin-right: 50px;
+	float: right;
+	margin-right: 50px;
 }
-#banniere{
-    position: top;
-    height: 100px ;
-    background: linear-gradient( to left top, #eb3349, #F45C43);
-    height : 100px;
-    border-radius: 20px;
+div.banniere{
+	position: top;
+	height: 100px ;
+	background: linear-gradient( to left top, #eb3349, #F45C43);
+	height : 100px;
+	border-radius: 	20px;
 }
+
 .dot {
-    height: 10px;
-    width: 10px;
-    background-color: #00cc66;
-    border-radius: 50%;
-    display: inline-block;
-    white-space:nowrap;
+	height: 10px;
+	width: 10px;
+	background-color: #00cc66;
+	border-radius: 50%;
+	display: inline-block;
+	white-space:nowrap;
 }
 #container {
 	margin: 0px auto;
 	width: 1000px;
 	height: 750px;
-    border: 10px #5c41f4 solid;
-    margin-left: 50px;
-    margin-top: 30px;
+	border: 10px #5c41f4 solid;
+	margin-left: 50px;
+	margin-top: 30px;
 }
 #videoElement {
 	width: 1000px;
 	height: 750px;
-    background-color: #666;
-
+	background-color: #666;
+	
 }
 #canvas {
-position: relative;
-  top: -750;
-  left: 0;
-  z-index: 10;
+	position: relative;
+	top: -750;
+	left: 0;
+	z-index: 10;
 }
 
-#cam
-{
-    background-color: black;
-   
-    size: 5px;
-}
-
-.linkcam
-{
-    background-color: black;
-    width: 5px;
+img.cam {
+	float: right;
+	width:99px;
+	position: relative;
+	right: 20px;
+	top: -7px;
+	/* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+39,0+41,0+94,0+94,0+100,0+100,0+100 */
+	background: -moz-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 42%, rgba(255,255,255,0) 42%, rgba(255,255,255,0) 94%, rgba(255,255,255,0) 100%); /* FF3.6-15 */
+	background: -webkit-radial-gradient(center, ellipse cover,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 42%,rgba(255,255,255,0) 42%,rgba(255,255,255,0) 94%,rgba(255,255,255,0) 100%);
+	background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 42%,rgba(255,255,255,0%,rgba(255,255,255,0) 94%,rgba(255,255,255,0) 100%)); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
