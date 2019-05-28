@@ -1,6 +1,18 @@
 <?php
-// include '../controller/MakePic.php';	
-
+include '../controller/db_root_login.php';
+include '../controller/user.php';
+session_start();
+if (!(isset($_SESSION['login'])))
+{
+	echo"
+	<script> 
+	 alert('Acces interdit au invités'); 
+	 window.location='../index.php';
+	 </script>";
+	
+	// header('Location: ../../index.php');
+	exit();
+}
 
 ?>
 

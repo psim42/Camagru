@@ -61,10 +61,10 @@ if (isset($_POST['setting']))
 				<input id= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
 				<br/>
 				<input id= "log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
+				echo'<a href="view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>';
 			}
 			?>
 
-			<a href="view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>
 
 			<?php
 			if (isset($_SESSION['login']))

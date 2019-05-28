@@ -14,6 +14,15 @@ session_start();
 	<script src="../controller/filter.js"></script>
 	
 </head>
+
+<script> 
+function alertguest()
+	{
+	 alert('Acces interdit au invités'); 
+	 window.location='../index.php';
+	}
+</script>
+
 <body>
 <div class="banniere">
 		<a href="../index.php" style="text-decoration: none">
@@ -63,8 +72,23 @@ session_start();
 
 <!-- 2 BOUTON DIFERENT EN FONCTION DE SESSION SET OU PAS -->
 <!-- Merci -->
+<?php
 
-<button type="button" onclick="capture(), window.location.href='YourPic.php'" >Take picture</button>
+if(!isset($_SESSION['login']))
+{
+
+	echo'<button type="button" onclick="alertguest()" >Take picture</button>';
+
+}
+
+if (isset($_SESSION['login']))
+{
+	echo'<button type="button" onclick="capture(), window.location.href='.'\'YourPic.php\''.'" >Take picture</button>';
+
+}
+?>
+
+
 <br />
 
 
