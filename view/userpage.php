@@ -15,7 +15,6 @@ if (!(isset($_SESSION['login'])))
 }
 
 ?>
-
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -64,10 +63,45 @@ if (!(isset($_SESSION['login'])))
 		</a>
 
 </div>
-<?php
-$c = count(glob("../resources/user/".$_SESSION['login']."/*.png"));
-echo "<img class='prevu' src='../resources/user/".$_SESSION['login']."/".$c.".png' alt='YourPic'>"
 
+<?php
+if (!isset($_GET['login']))
+{
+	if (!(isset($_GET['login']))) // ou n'est pas dans la base
+{
+	echo"
+	<script> 
+	 alert('Page inexistante'); 
+	 window.location='../index.php';
+	 </script>";
+	
+	// header('Location: ../../index.php');
+	exit();
+}
+}
 ?>
+
+<div class="Fildactu">
+	<?php
+	echo "<h2 class='title'>Profile de ". $_GET['login'] ."<h2>";
+	$stmt = $db->prepare("SELECT path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC");
+	$stmt->bindValue(':user', $_GET['login'], PDO::PARAM_STR);
+	$stmt->execute();
+	while ($data = $stmt->fetch())
+	{
+		echo 
+		"<div class='img'>
+		<div class='imgdetail2'>
+			<div class='likecom'>
+				<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
+				<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
+			</div>
+		</div>
+		<img class='fil' src='".$data['path']."' alt='Pic'>
+	</div>";
+	}
+	?>
+
+</div>
 </body>
 </html>

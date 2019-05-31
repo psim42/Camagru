@@ -69,7 +69,11 @@ if (isset($_POST['setting']))
 			<?php
 			if (isset($_SESSION['login']))
 			{
-				echo'<div class="dot"></div><div style="display: inline-block; margin-left:5px; "><p>Vous etes connecte '.$_SESSION['login'].'</p></div> </br>';
+				echo'<div class="dot"></div>
+				<div style="display: inline-block; margin-left:5px; ">
+				<p>Vous etes connecte <a class="moncompte" href="./view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a> </p>
+				</div> 
+				</br>';
 				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';
 				echo '<input id= "setting_bouton" type="submit" name="setting" value="Setting"/>';
 				
@@ -84,6 +88,28 @@ if (isset($_POST['setting']))
 		</a>
 
 </div>
+<div class="Fildactu">
+<h2 class="title">Derinères Images !<h2>
+	
+<?php
 
+$resultat = $db->query('SELECT user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC');
+while ($data = $resultat->fetch())
+{
+	echo 
+"<div class='img'>
+	<div class='imgdetail1'> <p class='auteur'>". $data['user'] ."<p></div>
+	<div class='imgdetail2'>
+		<div class='likecom'>
+			<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
+			<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
+		</div>
+	</div>
+	<img class='fil' src='".substr($data['path'], 3)."' alt='Pic'>
+</div>";
+}
+?>
+
+</div>
 </body>
 </html>

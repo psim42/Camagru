@@ -88,3 +88,108 @@ img.cam {
 	background: radial-gradient(ellipse at center,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 42%,rgba(255,255,255,0%,rgba(255,255,255,0) 94%,rgba(255,255,255,0) 100%)); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+
+a.moncompte{
+	background-color: rgba(111, 91, 185, 0.795);
+	color: rgb(201, 201, 201);
+	padding: 6px 3px;
+	font-family: 'Rubik';
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	border-radius: 10px;
+}
+a.moncompte:hover, a.moncomte:active{
+	background-color: rgba(91, 49, 245, 0.973);
+	color: rgb(255, 255, 255);
+}
+
+img.prevu{
+	margin-top: 10px;
+	margin-left: 10px;
+}
+
+h2.title{
+	text-align: center;
+	font-size: 40px;
+	font-family: 'Rubik';
+	color: gray;
+}
+
+div.Fildactu{
+	position: relative;
+	margin: 0 auto;
+	width: 1230px;
+}
+div.img{
+	position: relative;
+	float: left;
+}
+
+img.fil{
+	width:400px;
+	padding: 5px;
+	
+}
+
+div div.imgdetail1{
+	width: 400px;
+	height: 40px;
+	font-family: 'Rubik';
+
+	background: rgba(0,0,0,0.8);
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.8)), color-stop(100%, rgba(0,0,0,0.03)));
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
+	background: -o-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
+	background: -ms-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+
+	border-bottom-left-radius: 16px;
+	border-bottom-right-radius: 16px;
+	position: absolute;
+	color:white;
+	top: 5px;
+	left: 5px;
+	
+}
+p.auteur{
+	position: absolute;
+	font-family: 'Rubik';
+	color:white;
+	top: -20px;
+	left: 10px;
+}
+
+div div.imgdetail2{
+	width: 400px;
+	height: 40px;
+	font-family: 'Rubik';
+
+	background: rgba(0,0,0,0.03);
+	background: -moz-linear-gradient(top, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.8) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.03)), color-stop(100%, rgba(0,0,0,0.8)));
+	background: -webkit-linear-gradient(top, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.8) 100%);
+	background: -o-linear-gradient(top, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.8) 100%);
+	background: -ms-linear-gradient(top, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.8) 100%);
+	background: linear-gradient(to bottom, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.8) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#000000', endColorstr='#000000', GradientType=0 );
+
+	border-top-left-radius: 16px;
+	border-top-right-radius: 16px;
+	position: absolute;
+	color:white;
+	bottom: 5px;
+	left: 5px;
+	text-align: right;
+	text-align: end;
+	
+}
+div.likecom{
+	position: absolute;
+	right: 10px;
+}
+img.coeur_com{
+	width: 25px;
+}
