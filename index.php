@@ -96,8 +96,7 @@ if (isset($_POST['setting']))
 $resultat = $db->query('SELECT user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC');
 while ($data = $resultat->fetch())
 {
-	echo 
-"<div class='img'>
+echo "<div class='img'>
 	<div class='imgdetail1'> <p class='auteur'>". $data['user'] ."<p></div>
 	<div class='imgdetail2'>
 		<div class='likecom'>
