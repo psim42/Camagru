@@ -1,4 +1,4 @@
-<?php
+<?php					//PHP_PHP_PHP_PHP_PHP_PHP_PHP//
 include 'controller/db_root_login.php';
 include 'controller/user.php';
 session_start();
@@ -30,19 +30,27 @@ if (isset($_POST['setting']))
 {
 	echo '<meta http-equiv="refresh" content="0;URL=view/manage/manage.php">';
 }
-
-?>
-
+?>					<!-- // PHP_END_PHP_END // -->
 
 
+
+
+					<!-- // HTML_HTML_HTML_HTML // -->
 <html lang="fr">
 <head>
   <meta charset="utf-8">
   <title>Camagru</title>
   <link rel="stylesheet" href="css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+  <!-- ///////////////////////////  SCRIPT  ///////////////////////////////// -->
 	<script src="controller/camera.js"></script>
 	<script src="controller/filter.js"></script>
+	<script src="controller/whitebox.js"></script>
+
+
+
+
+
 
 </head>
 <body>
@@ -92,23 +100,46 @@ if (isset($_POST['setting']))
 <h2 class="title">Derinères Images !<h2>
 	
 <?php
-
 $resultat = $db->query('SELECT user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC');
 while ($data = $resultat->fetch())
 {
 echo "<div class='img'>
-	<div class='imgdetail1'> <p class='auteur'>". $data['user'] ."<p></div>
+	<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
 	<div class='imgdetail2'>
 		<div class='likecom'>
 			<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
 			<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
 		</div>
 	</div>
-	<img class='fil' src='".substr($data['path'], 3)."' alt='Pic'>
+	<img class='fil' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
 </div>";
 }
 ?>
 
 </div>
+
+<div id="id01" class="modal">
+
+	<div class="modal-content animate">
+		<div class="imgcontainer">
+		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+		<div id="bigview" onclick="alert('like?');">
+	</div>	
+
+	<div class="container">
+	</div>
+
+	<div class="container2">
+		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Back</button>
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
 </body>
 </html>
