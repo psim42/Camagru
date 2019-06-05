@@ -3,8 +3,6 @@ include 'controller/db_root_login.php';
 include 'controller/user.php';
 session_start();
 
-
-
 if (isset($_POST['name']))
 { 
 	echo '<p>test</p>';
@@ -30,9 +28,7 @@ if (isset($_POST['setting']))
 {
 	echo '<meta http-equiv="refresh" content="0;URL=view/manage/manage.php">';
 }
-?>					<!-- // PHP_END_PHP_END // -->
-
-
+?>	<!-- // PHP_END_PHP_END // -->
 
 
 					<!-- // HTML_HTML_HTML_HTML // -->
@@ -42,14 +38,13 @@ if (isset($_POST['setting']))
   <title>Camagru</title>
   <link rel="stylesheet" href="css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+
+
   <!-- ///////////////////////////  SCRIPT  ///////////////////////////////// -->
 	<script src="controller/camera.js"></script>
 	<script src="controller/filter.js"></script>
 	<script src="controller/whitebox.js"></script>
-
-
-
-
+	<script src="controller/scroll.js"></script>
 
 
 </head>
@@ -91,39 +86,45 @@ if (isset($_POST['setting']))
 			</form>
 		</div>
 		
-		<a href="view/cam.php" > 
-			<img class="cam" src="resources/img/cam.png" alt="cam">
-		</a>
+	<a href="view/cam.php" > <img class="cam" src="resources/img/cam.png" alt="cam"></a>
 
 </div>
-<div class="Fildactu">
-<h2 class="title">Derinères Images !<h2>
-	
-<?php
-$resultat = $db->query('SELECT user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC');
-while ($data = $resultat->fetch())
-{
-echo "<div class='img'>
-	<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
-	<div class='imgdetail2'>
-		<div class='likecom'>
-			<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
-			<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
-		</div>
+
+<div id='status'>? | ?</div>
+
+<div class="Fildactu" id="warp">
+	<h2 class="title">Derinères Images !</h2>
+	<div class='imgscontainer' id='imgscontainer'>
+	<?php
+	$s = 0;
+	$l = 15; 
+		$resultat = $db->query("SELECT user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT 0, 15");
+		while ($data = $resultat->fetch())
+		{
+			echo "<div class='img'>
+				<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
+				<div class='imgdetail2'>
+					<div class='likecom'>
+						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
+						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
+					</div>
+				</div>
+				<img class='fil' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
+			</div>";
+		}
+	?>
 	</div>
-	<img class='fil' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
-</div>";
-}
-?>
-
 </div>
+
+
+<!-- WHITEBOX WHITEBOX WHITEBOX WHITEBOX WHITEBOX -->
 
 <div id="id01" class="modal">
 
 	<div class="modal-content animate">
 		<div class="imgcontainer">
 		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-		<div id="bigview" onclick="alert('like?');">
+		<div id="bigview">
 	</div>	
 
 	<div class="container">
@@ -133,11 +134,6 @@ echo "<div class='img'>
 		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Back</button>
 	</div>
 </div>
-</div>
-
-
-
-
 
 
 

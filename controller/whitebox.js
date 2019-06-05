@@ -15,6 +15,6 @@ function enlarge(element)
 	var modal = document.getElementById('id01');
 	modal.style.display = "block";
 	var name = element.src;
-	var str = " <img src='" + name + "'>";
+	var str = " <img class='imgWhiteBox' src='" + name + "'>";
 	document.getElementById("bigview").innerHTML = str;
 }

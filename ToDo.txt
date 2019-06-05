@@ -1,32 +1,20 @@
-MISSION 1 : Connection Fini
 
-MISSION 2 : Site
+banier avec user partout
 
-Index bouton photo quand tu es co 
-vide pour add fil d'actualité
-Placer les photo dans le bon Dossier 
+table like comentaire 
 
+Interface like comentaire
+Ajax + scroll infini de comentaire.
 
  HASH le ADMIN123 INSTALL
 
-ENVOYER SUR PARGE D'inscription a la photo!∂
+ENVOYER SUR PARGE D'inscription a la photo! alert mieux
 
-	table sql photo
+page cam mieux avec filtre styler
 
-	Fil d'actualité
 
-	page cam
 
-	Dossier user
 
-	Page perso user
-
-MISSION 3
-	page cam avec filtre styler
-	deplasable
-
-Mission 4 pagede la photo
-	table like comentaire ++
 
 /////////////Idex///////////////////////////
 

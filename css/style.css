@@ -112,10 +112,16 @@ h2.title{
 }
 
 div.Fildactu{
+	/* background: #64b1e1; */
 	position: relative;
 	margin: 0 auto;
 	width: 1230px;
 }
+
+div.imgscontainer{
+	position: relative;
+}
+
 div.img{
 	position: relative;
 	float: left;
@@ -124,13 +130,14 @@ div.img{
 img.fil{
 	width:400px;
 	padding: 5px;
-	
+	cursor: pointer;
 }
 
 div div.imgdetail1{
 	width: 400px;
 	height: 40px;
 	font-family: 'Rubik';
+	font-size: 25px;
 
 	background: rgba(0,0,0,0.8);
 	background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
@@ -170,7 +177,7 @@ div div.imgdetail2{
 	width: 400px;
 	height: 40px;
 	font-family: 'Rubik';
-
+	font-size: 25px;
 	background: rgba(0,0,0,0.03);
 	background: -moz-linear-gradient(top, rgba(0,0,0,0.03) 0%, rgba(0,0,0,0.8) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.03)), color-stop(100%, rgba(0,0,0,0.8)));
@@ -198,17 +205,13 @@ img.coeur_com{
 	width: 25px;
 }
 
+/* WHITE BOX *//* WHITE BOX *//* WHITE BOX *//* WHITE BOX */
 
 /* Center the image and position the close button */
 .imgcontainer {
   text-align: center;
   margin: 24px 0 12px 0;
   position: relative;
-}
-
-img.avatar {
-  width: 50%;
-
 }
 
 .container {
@@ -240,16 +243,20 @@ img.avatar {
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 65%; /* Could be more or less, depending on screen size */
+  width: 55%; /* Could be more or less, depending on screen size */
+}
+
+img.imgWhiteBox{
+	width: 75%;
 }
 
 /* The Close Button (x) */
 .close {
   position: absolute;
   right: 25px;
-  top: -10px;
+  top: -25px;
   color: #000;
-  font-size: 35px;
+  font-size: 70px;
   font-weight: bold;
 }
 
@@ -273,4 +280,10 @@ img.avatar {
 @keyframes animatezoom {
   from {transform: scale(0)} 
   to {transform: scale(1)}
+}
+
+div#status{ 
+	position: fixed;
+	font-size: 20px;
+	/* a sup a la fin */
 }
