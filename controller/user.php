@@ -136,7 +136,7 @@ function create_user($mail, $login, $passwd, $passwd2){
 	$stmt->bindValue(':root', 0, PDO::PARAM_INT);
 	$stmt->bindValue(':token', $token, PDO::PARAM_STR);
 	$stmt->execute();
-
+	// SEE ERROR WITH THAT
 	// if (!$stmt->execute()) {
 	// 	print_r($stmt->errorInfo());
 	// }

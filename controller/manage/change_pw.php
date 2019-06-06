@@ -8,10 +8,9 @@ if (!(isset($_SESSION['login'])))
 {
 	echo"
 	<script> 
-	 alert('Acces interdit au invités'); 
-	 window.location='../../index.php';
-	 </script>";
-	
+	alert('Acces interdit au invités'); 
+	window.location='../../index.php';
+	</script>";
 	// header('Location: ../../index.php');
 	exit();
 }

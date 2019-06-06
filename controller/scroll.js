@@ -1,6 +1,6 @@
 function infini_scroll()
 {
-	var warp = document.getElementById('warp');
+	// var warp = document.getElementById('imgscontainer');
 	var contentHeight = document.body.scrollHeight; // get page content height
 	var yOffset = window.pageYOffset; // get the vertical scroll position
 	var y = yOffset + window.innerHeight;
@@ -24,7 +24,8 @@ function getData(){
 	if (ajax.status == 200)
 	{
 		start += limit;
-		document.getElementById("imgscontainer").innerHTML += ajax.responseText;
+		document.getElementById("imgscontainer").innerHTML += ajax.response;
+		
 	}
 
 }

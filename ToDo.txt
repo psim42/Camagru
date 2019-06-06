@@ -1,18 +1,20 @@
 
-banier avec user partout
 
-table like comentaire 
 
-Interface like comentaire
+interface comentaire
+table comentaire 
+
 Ajax + scroll infini de comentaire.
 
- HASH le ADMIN123 INSTALL
+font de l'index quand 10 like 100 like les div 
+
+ HASH le ADMIN123 INSTALL + prootect prepare in data.php
 
 ENVOYER SUR PARGE D'inscription a la photo! alert mieux
 
 page cam mieux avec filtre styler
 
-
+bonsus liste : ajax server, scroll infini, whitbox, previsualisation, suprimer son comte, changer son mail = 125
 
 
 

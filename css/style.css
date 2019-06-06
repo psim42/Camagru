@@ -195,32 +195,70 @@ div div.imgdetail2{
 	left: 5px;
 	text-align: right;
 	text-align: end;
-	
 }
+/* inerieur des petit image avec les like */
 div.likecom{
 	position: absolute;
 	right: 10px;
 }
 img.coeur_com{
 	width: 25px;
+	padding: 5px;
+	float: right;
+	position: relative;
+	bottom: -4px;
+	left: -25px;
+	text-align: right;
+	text-align: end;
+}
+div.containerlikecom{
+	font-family: 'Rubik';
+	font-size: 25px;
+	position: relative;
+	color:white;
+	bottom: -6px;
+	left: 25px;
+	text-align: right;
+	text-align: end;
+	float: right;
 }
 
 /* WHITE BOX *//* WHITE BOX *//* WHITE BOX *//* WHITE BOX */
 
 /* Center the image and position the close button */
 .imgcontainer {
-  text-align: center;
-  margin: 24px 0 12px 0;
-  position: relative;
+	text-align: center;
+	margin: 24px 0 12px 0;
+	position: relative;
 }
 
 .container {
-  padding: 16px;
+	padding: 16px;
+	background-color:#f4f4f4;
+	height: 100px;
 }
 .container2 {
 	padding: 16px;
 	background-color:#f1f1f1;
-  }
+}
+
+input.coeur_comW{
+	width: 40px;
+	padding: 10px;
+	position: relative;
+	margin-left: 1px;
+	cursor: pointer;
+	float: left;
+}
+div #containerlikeW{
+	position: relative;
+	padding: 10px;
+	text-align: center;
+	float: left;
+	font-family: 'Rubik';
+	font-size: 25px;
+	color: darkslategrey;
+}
 
 
 /* The Modal (background) */

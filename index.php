@@ -3,15 +3,16 @@ include 'controller/db_root_login.php';
 include 'controller/user.php';
 session_start();
 
-if (isset($_POST['name']))
-{ 
-	echo '<p>test</p>';
-}
+// if (isset($_POST['name'])) ?? C'est quoi 
+// { 
+// 	echo '<p>test</p>';
+// }
 if (isset($_POST['logout']))
 {
 	session_unset();
 	session_destroy();
 	session_start();
+	header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
 }
 if (isset($_POST['submit']) && $_POST['submit'] == "CREER UN COMPTE")
 {
@@ -22,6 +23,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 	if (isset($_POST['login']) && isset($_POST['passwd']))
 	{
 		auth($_POST['login'], $_POST['passwd']);
+		header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
 	}
 }
 if (isset($_POST['setting']))
@@ -31,7 +33,10 @@ if (isset($_POST['setting']))
 ?>	<!-- // PHP_END_PHP_END // -->
 
 
-					<!-- // HTML_HTML_HTML_HTML // -->
+
+
+
+				<!-- // HTML_HTML_HTML_HTML // -->
 <html lang="fr">
 <head>
   <meta charset="utf-8">
@@ -98,18 +103,20 @@ if (isset($_POST['setting']))
 	<?php
 	$s = 0;
 	$l = 15; 
-		$resultat = $db->query("SELECT user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT 0, 15");
+		$resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT 0, 15");
 		while ($data = $resultat->fetch())
 		{
 			echo "<div class='img'>
 				<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
 				<div class='imgdetail2'>
 					<div class='likecom'>
-						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
-						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
+						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> 
+						<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
+						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> 
+						<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
 					</div>
 				</div>
-				<img class='fil' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
+				<img class='fil' id='".$data['id']."' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
 			</div>";
 		}
 	?>
@@ -123,15 +130,18 @@ if (isset($_POST['setting']))
 
 	<div class="modal-content animate">
 		<div class="imgcontainer">
-		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 		<div id="bigview">
 	</div>	
 
 	<div class="container">
+		<input type="image" alt="coeur" class="coeur_comW" src="resources/img/coeurP.png" onclick="addlike()">
+		<div id='containerlikeW'></div>
+		
 	</div>
 
 	<div class="container2">
-		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Back</button>
+		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Retour</button>
 	</div>
 </div>
 
