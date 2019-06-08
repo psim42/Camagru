@@ -30,6 +30,32 @@ if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE 
 			</div>";
 		}
 }
+elseif (isset($_GET['start2']) && isset($_GET['limit2']) && isset($_GET['user'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS POUR USER PAGE
+{
+	$s = (int)$_GET['start2'];
+	$l = (int)$_GET['limit2'];
+	$user = $_GET['user'];
+	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
+	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
+	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
+	$stmt->bindValue(':user', $user, PDO::PARAM_STR);
+	$stmt->execute();
+		// $resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT $s, $l");
+		while ($data = $stmt->fetch())
+		{
+			echo "<div class='img'>
+			<div class='imgdetail2'>
+				<div class='likecom'>
+					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
+					<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
+					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
+					<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
+				</div>
+			</div>
+			<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
+		</div>";
+		}
+}
 elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 {
 	$id = $_GET['like'];
@@ -38,6 +64,19 @@ elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 	$stmt->execute();
 	$resultat2 = $stmt->fetch();
 		echo $resultat2['nb_like'];
+}
+elseif (isset($_GET['nbcom'])) // LOAD nbCOM WHITEBOX.JS
+{
+	$id = $_GET['nbcom'];
+	$stmt = $db->prepare("SELECT nb_comment FROM pic WHERE id = :id");
+	$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+	$stmt->execute();
+	$resultat2 = $stmt->fetch();
+		echo $resultat2['nb_comment'];
+}
+elseif (isset($_GET['comment']))
+{
+	
 }
 elseif (isset($_GET['addlike'])) // ADD LIKE UPDATE TABLE LIKE ET PIC WHITEBOX.JS
 {
@@ -96,6 +135,27 @@ elseif (isset($_GET['addlike'])) // ADD LIKE UPDATE TABLE LIKE ET PIC WHITEBOX.J
 			exit($new_nblike);
 		}
 	}
+}
+elseif (isset($_POST['idPicCom']) && isset($_POST['comment']))
+{
+	if (!(isset($_SESSION['login'])))
+	{
+		exit("notlog");
+	}
+	// Je ressois id photo et commentaire j'ai session user aussi date: NOW()
+	//id	date	id_pic	user	comment
+	$comment = htmlentities($_POST['comment']);
+	$id = $_POST['idPicCom'];
+	$stmt = $db->prepare("INSERT INTO tab_comment(id_pic, `date`, user, comment) VALUES (:id_pic, NOW(), :user, :comment) ");
+	$stmt->bindValue(':id_pic', $id, PDO::PARAM_INT);
+	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
+	$stmt->bindValue(':comment', $comment, PDO::PARAM_STR);
+	$stmt->execute();
+	// if (!$stmt->execute()){
+	// 	$error = implode( ", ", $stmt->errorInfo() );
+	// 	exit($error);
+	// }
+	exit($id);
 }
 else
 {

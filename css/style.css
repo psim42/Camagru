@@ -259,7 +259,15 @@ div #containerlikeW{
 	font-size: 25px;
 	color: darkslategrey;
 }
-
+div #containercomW{
+	position: relative;
+	padding: 10px;
+	text-align: center;
+	float: left;
+	font-family: 'Rubik';
+	font-size: 25px;
+	color: darkslategrey;
+}
 
 /* The Modal (background) */
 .modal {
@@ -281,20 +289,33 @@ div #containerlikeW{
   background-color: #fefefe;
   margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 55%; /* Could be more or less, depending on screen size */
+  width: 80%; /* Could be more or less, depending on screen size */
 }
 
 img.imgWhiteBox{
 	width: 75%;
 }
+textarea{
+	float: left;
+	resize: none;
+	width: 95%;
+	font-size: 20px;
+	font-family: 'Rubik';
+}
+
+input.send{
+	width: 5%;
+	position: relative;
+	float: right;
+}
 
 /* The Close Button (x) */
 .close {
   position: absolute;
-  right: 25px;
-  top: -25px;
+  right: 10px;
+  top: -32px;
   color: #000;
-  font-size: 70px;
+  font-size: 50px;
   font-weight: bold;
 }
 
@@ -319,6 +340,8 @@ img.imgWhiteBox{
   from {transform: scale(0)} 
   to {transform: scale(1)}
 }
+
+
 
 div#status{ 
 	position: fixed;

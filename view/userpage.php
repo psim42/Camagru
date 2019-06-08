@@ -23,6 +23,8 @@ if (!(isset($_SESSION['login'])))
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 	<script src="../controller/camera.js"></script>
 	<script src="../controller/filter.js"></script>
+	<script src="../controller/whiteboxuser.js"></script>
+	<script src="../controller/scrolluser.js"></script>
 	
 </head>
 <body>
@@ -81,27 +83,56 @@ if (!isset($_GET['login']))
 }
 ?>
 
+<div id='status'>? | ?</div>
+
 <div class="Fildactu">
 	<?php
-	echo "<h2 class='title'>Profile de ". $_GET['login'] ."<h2>";
-	$stmt = $db->prepare("SELECT path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC");
+	echo "<h2 id='". $_GET['login'] ."' class='title'>Profile de ". $_GET['login'] ."<h2>";
+	?>
+	<div class='imgscontainer' id='imgscontainer'>
+	<?php
+	$stmt = $db->prepare("SELECT id, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT 0, 15");
 	$stmt->bindValue(':user', $_GET['login'], PDO::PARAM_STR);
 	$stmt->execute();
 	while ($data = $stmt->fetch())
 	{
-		echo 
-		"<div class='img'>
+		echo "<div class='img'>
 		<div class='imgdetail2'>
 			<div class='likecom'>
-				<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> ".$data['nb_comment']."
-				<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> ". $data['nb_like']."
+				<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
+				<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
+				<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
+				<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
 			</div>
 		</div>
-		<img class='fil' src='".$data['path']."' alt='Pic'>
+		<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
 	</div>";
 	}
 	?>
+	</div>
 
 </div>
+
+<!-- WHITEBOX WHITEBOX WHITEBOX WHITEBOX WHITEBOX -->
+
+<div id="id01" class="modal">
+
+	<div class="modal-content animate">
+		<div class="imgcontainer">
+			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+		<div id="bigview">
+	</div>	
+
+	<div class="container">
+		<input type="image" alt="coeur" class="coeur_comW" src="../resources/img/coeurP.png" onclick="addlike()">
+		<div id='containerlikeW'></div>
+		
+	</div>
+
+	<div class="container2">
+		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Retour</button>
+	</div>
+</div>
+
 </body>
 </html>

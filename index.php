@@ -111,7 +111,7 @@ if (isset($_POST['setting']))
 				<div class='imgdetail2'>
 					<div class='likecom'>
 						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> 
-						<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
+						<div class='containerlikecom'id='containercom".$data['id']."'>".$data['nb_comment']."</div>
 						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> 
 						<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
 					</div>
@@ -133,15 +133,15 @@ if (isset($_POST['setting']))
 			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 		<div id="bigview">
 	</div>	
-
 	<div class="container">
 		<input type="image" alt="coeur" class="coeur_comW" src="resources/img/coeurP.png" onclick="addlike()">
 		<div id='containerlikeW'></div>
-		
-	</div>
-
-	<div class="container2">
-		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Retour</button>
+		<input type="image" alt="comment" class="coeur_comW" src="resources/img/comment-icon.png" onclick="">
+		<div id='containercomW'></div>
+		<!-- <form> -->
+			<textarea id="myTextarea" rows=“15” cols=“60" minlength=“10” maxlength=“20" name="comment" placeholder="Your comment here..."></textarea>
+			<input id="send" class="send" type="image" src="resources/img/send.png" alt="send" onclick="addcom()">
+		<!-- </form> -->
 	</div>
 </div>
 

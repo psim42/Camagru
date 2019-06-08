@@ -1,4 +1,12 @@
+Récuerer et afficher les comentaitres whitebox.js !
 
+
+petit like clic ?
+
+password avec regex au moins un chifre une letre ? //bonus free dans la corection
+IJEXION XML
+MAIL AU COMENTAIRE
+SETTING POUR RETIRER L'envoie de mail
 
 
 interface comentaire
@@ -12,10 +20,12 @@ font de l'index quand 10 like 100 like les div
 
 ENVOYER SUR PARGE D'inscription a la photo! alert mieux
 
-page cam mieux avec filtre styler
+responsive affichege des photo
 
-bonsus liste : ajax server, scroll infini, whitbox, previsualisation, suprimer son comte, changer son mail = 125
+page cam mieux avec filtre styler css et cadre
 
+bonsus liste : page user ajax server, scroll infini, whitbox, previsualisation, suprimer son comte, changer son mail = 125
+(Forgot password), ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE
 
 
 /////////////Idex///////////////////////////
