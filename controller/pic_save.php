@@ -40,7 +40,16 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
 	$stmt->bindValue(':path', $path, PDO::PARAM_STR);
 	$stmt->execute();
+	// exit();
 }
+// echo"
+// <script> 
+// alert('Page non existante'); 
+// window.location='../index.php';
+// </script>";
+
+// // header('Location: ../../index.php');
+// exit();
 echo"end start of view :  ";
 print_r( count(glob("../resources/user/".$_SESSION['login']."/*.png")));
 ?>

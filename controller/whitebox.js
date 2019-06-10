@@ -1,6 +1,7 @@
 // Get the modal
 var modal = document.getElementById('id01');
-
+var com_start = 0;
+var com_limit = 5;
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event)
 {
@@ -10,6 +11,25 @@ window.onclick = function(event)
 		modal.style.display = "none";
 	}
 }
+
+var el = window;
+var eventName = 'keypress';
+if (el.addEventListener) {
+	el.addEventListener('keydown', keyListener, false); 
+}
+else if (el.attachEvent){ //IE COMPATIBILITY
+	el.attachEvent('on'+eventName, keyListener);
+}
+
+function keyListener(event){ 
+	event = event || modal.event;
+	var key = event.key || event.which || event.keyCode;
+	/* insert conditional here */
+	if (key === "Escape"){ // esc
+		document.getElementById('id01').style.display='none';
+	}
+}
+
 function enlarge(element)
 {
 	var modal = document.getElementById('id01');
@@ -17,29 +37,14 @@ function enlarge(element)
 	var id = element.id;
 	var name = element.src;
 	var str = " <img class='imgWhiteBox' id='"+id+"' src='" + name + "'>";
-	document.getElementById("bigview").innerHTML = str;
-		getLike(id);
-		getNbCom(id);
-		textaera();
-}
-
-function getNbCom(id)
-{
-	var ajax = new XMLHttpRequest();
-	ajax.open("GET", 'controller/data.php?nbcom='+id, false);
-	ajax.setRequestHeader('Content-Type', 'text');
-	ajax.send();
-	if (ajax.status == 200)
-	{
-		// console.log(ajax.response);
-		document.getElementById("containercomW").innerHTML = ajax.response; //whitebox
-		document.getElementById("containercom"+id).innerHTML = ajax.response; //small preview
-	}
-	
-}
-function getComment(id)
-{
-	
+	document.getElementById("bigview").innerHTML = str;	
+	getLike(id);
+	getNbCom(id);
+	textaera();
+	document.getElementById("coms_container").innerHTML = ''; //vider les com charger d'avant
+	com_start = 0;
+	com_limit = 5;
+	getComment(id); 
 }
 function getLike(id)
 {
@@ -51,9 +56,50 @@ function getLike(id)
 	{
 		// console.log(ajax.response);
 		document.getElementById("containerlikeW").innerHTML = ajax.response; //whitebox
-		document.getElementById("containerlike"+id).innerHTML = ajax.response; //small preview
+		document.getElementById("containerlike"+id).innerHTML = "<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>"+ajax.response; //small preview
 	}
 }
+
+function getNbCom(id)
+{
+	var ajax = new XMLHttpRequest();
+	ajax.open("GET", 'controller/data.php?idnbcom='+id, false);
+	ajax.setRequestHeader('Content-Type', 'text');
+	ajax.send();
+	if (ajax.status == 200)
+	{
+		// console.log(ajax.response);
+		document.getElementById("containercomW").innerHTML = ajax.response; //whitebox
+		document.getElementById("containercom"+id).innerHTML = "<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'>"+ajax.response; //small preview
+	}
+	
+}
+function getComment(id) // variable global remetre a valeur de base dans enlage ? ou ajouter un parametre de fonction ?
+{
+	var ajax = new XMLHttpRequest();
+	ajax.open("POST",'controller/data.php', false);
+	ajax.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+	ajax.send('com_start='+com_start+'&com_limit='+com_limit+'&pic_id='+id);
+	if (ajax.status == 200)
+	{
+		var coms_container = document.getElementById("coms_container");
+		var input_load = document.getElementById('input_load_com');
+		//si ya le load boutton le sup pour pas en avoir 2
+		if (input_load)
+		{
+			coms_container.removeChild(input_load);
+		}
+		coms_container.innerHTML += ajax.response;
+		input_load = document.getElementById('input_load_com');
+		com_start += com_limit;
+		var nbcom = document.getElementById('containercomW').innerHTML;
+		if(com_start >= nbcom && nbcom > 0)
+		{
+			coms_container.removeChild(input_load);
+		}
+	}
+}
+
 function addlike()
 {
 	var id = document.getElementsByClassName("imgWhiteBox")[0].id;
@@ -70,7 +116,7 @@ function addlike()
 		}	
 		else{
 			document.getElementById("containerlikeW").innerHTML = ajax.response; //whitebox
-			document.getElementById("containerlike"+id).innerHTML = ajax.response; //small preview
+			document.getElementById("containerlike"+id).innerHTML = "<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>"+ajax.response; //small preview
 		}
 	}
 }
@@ -87,7 +133,11 @@ function addcom(){
 		return;
 	}
 	if (comment.length > 255){
-		alert("Votre commentaire est trop grand ! 255 caractère maximum !");
+		alert("Votre commentaire est trop grand ! \n255 caractère maximum !");
+		return;
+	}
+	if ((comment.split("\n").length - 1 >= 5)){
+		alert("Votre commentaire est trop grand ! \nTrop de retour a la ligne !");
 		return;
 	}
 	var id = document.getElementsByClassName("imgWhiteBox")[0].id;
@@ -103,7 +153,7 @@ function addcom(){
 			window.location='./view/user_creation.php';
 		}
 		enlarge(document.getElementById(ajax.responseText)); // Ajouter chargement des comentaire dans enlarge
-		alert(ajax.responseText);
+		// alert(ajax.responseText);
 	}
 }
 
@@ -113,12 +163,11 @@ function textaera()
 	var input = document.getElementById("myTextarea");
 		var map = {}; // 
 		input.onkeydown = input.onkeyup = function(e){
-			// e = e || event; // to deal with IE
+			e = e || event; // to deal with IE
 			map[e.keyCode] = e.type == 'keydown';
 			/* insert conditional here */
 			if (map[13] && map[16]){ // SHIFT+ENTRER
 				delete map[13];
-				delete map[16];
 			}
 			else if (map[13])
 			{

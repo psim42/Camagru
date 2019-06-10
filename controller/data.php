@@ -11,24 +11,24 @@ if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE 
 	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
 	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
 	$stmt->execute();
-
-	
-		// $resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT $s, $l");
-		while ($data = $stmt->fetch())
-		{
-			echo "<div class='img'>
-				<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
-				<div class='imgdetail2'>
-					<div class='likecom'>
-						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> 
-						<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
-						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> 
-						<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
+	while ($data = $stmt->fetch())
+	{
+		echo "<div class='img_previw'>
+			<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
+			<div class='imgdetail2'>
+				<div class='likecom'>
+					 
+					<div class='containerlikecom'id='containercom".$data['id']."'>
+						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
+					</div>
+					<div class='containerlikecom' id='containerlike".$data['id']."'>
+						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>". $data['nb_like']."
 					</div>
 				</div>
-				<img class='fil' id='".$data['id']."' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
-			</div>";
-		}
+			</div>
+			<img class='fil' id='".$data['id']."' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
+		</div>";
+	}
 }
 elseif (isset($_GET['start2']) && isset($_GET['limit2']) && isset($_GET['user'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS POUR USER PAGE
 {
@@ -63,20 +63,51 @@ elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 	$stmt->bindValue(':id', $id, PDO::PARAM_INT);
 	$stmt->execute();
 	$resultat2 = $stmt->fetch();
-		echo $resultat2['nb_like'];
+		exit($resultat2['nb_like']);
 }
-elseif (isset($_GET['nbcom'])) // LOAD nbCOM WHITEBOX.JS
+elseif (isset($_GET['idnbcom'])) // LOAD nbCOM WHITEBOX.JS
 {
-	$id = $_GET['nbcom'];
-	$stmt = $db->prepare("SELECT nb_comment FROM pic WHERE id = :id");
-	$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+	//comter le nb de com
+	$id = $_GET['idnbcom'];
+	$stmt = $db->prepare("SELECT count(id) FROM tab_comment WHERE id_pic = :id_pic");
+	$stmt->bindValue(':id_pic', $id, PDO::PARAM_INT);
 	$stmt->execute();
-	$resultat2 = $stmt->fetch();
-		echo $resultat2['nb_comment'];
+	$nbcom = $stmt->fetch();
+	//Changer la nb de com table pic
+	$new_nbcom = $nbcom['count(id)'];
+	$stmt = $db->prepare("UPDATE `pic` SET `nb_comment`= :new_nbcom WHERE id = :id_pic");
+	$stmt->bindValue(':id_pic', $id, PDO::PARAM_INT);
+	$stmt->bindValue(':new_nbcom', $new_nbcom, PDO::PARAM_INT);
+	$stmt->execute();
+	exit($new_nbcom);
 }
-elseif (isset($_GET['comment']))
+elseif (isset($_POST['com_start']) && isset($_POST['com_limit']) && isset($_POST['pic_id'])) // afficher les com petit a petit.
 {
-	
+	$s = (int)$_POST['com_start'];
+	$l = (int)$_POST['com_limit'];
+	$id = $_POST['pic_id'];
+	$stmt = $db->prepare("SELECT id, `date`, user, comment FROM tab_comment WHERE id_pic = :id_pic ORDER BY date DESC LIMIT :s, :l");
+	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
+	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
+	$stmt->bindValue(':id_pic', $id, PDO::PARAM_INT);
+	if (!$stmt->execute()){
+		$error = implode( ", ", $stmt->errorInfo() );
+		exit($error);
+	}
+	$x = 0;
+	while ($data = $stmt->fetch())
+	{
+		if ($x == 1)
+			$x = 0;
+		else
+			$x = 1;
+		echo "<div class='com_container".$x."' id='".$data['id']."'>
+		<div class='author_date_com'>".$data['user'].", le ".$data['date'].":</div> <hr>
+			<div class='txt_com'>".nl2br($data['comment'])."</div>
+			</div> </br>";
+	}
+	echo "<input id='input_load_com' class='load_bouton' type='button' value='Load more comments' onclick='getComment(".$id.")'>";
+	exit();
 }
 elseif (isset($_GET['addlike'])) // ADD LIKE UPDATE TABLE LIKE ET PIC WHITEBOX.JS
 {

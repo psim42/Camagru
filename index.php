@@ -64,26 +64,22 @@ if (isset($_POST['setting']))
 			<?php 
 			if(!isset($_SESSION['login']))
 			{
-				echo '<input id= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
+				echo '<input class= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
 				<br />
-				<input id= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
+				<input class= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
 				<br/>
-				<input id= "log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
+				<input class="log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
 				echo'<a href="view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>';
 			}
-			?>
-
-
-			<?php
 			if (isset($_SESSION['login']))
 			{
 				echo'<div class="dot"></div>
-				<div style="display: inline-block; margin-left:5px; ">
-				<p>Vous etes connecte <a class="moncompte" href="./view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a> </p>
+				<div class="imconected" style="display: inline-block; margin-left:5px; ">
+				Vous etes connecte <a class="moncompte" href="./view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a>
 				</div> 
 				</br>';
-				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';
-				echo '<input id= "setting_bouton" type="submit" name="setting" value="Setting"/>';
+				echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
+				echo '<input class= "setting_bouton" type="submit" name="setting" value="Setting"/>';
 				
 			}
 			?>
@@ -106,14 +102,17 @@ if (isset($_POST['setting']))
 		$resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT 0, 15");
 		while ($data = $resultat->fetch())
 		{
-			echo "<div class='img'>
+			echo "<div class='img_previw'>
 				<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
 				<div class='imgdetail2'>
 					<div class='likecom'>
-						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'> 
-						<div class='containerlikecom'id='containercom".$data['id']."'>".$data['nb_comment']."</div>
-						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'> 
-						<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
+						 
+						<div class='containerlikecom'id='containercom".$data['id']."'>
+							<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
+						</div>
+						<div class='containerlikecom' id='containerlike".$data['id']."'>
+							<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>". $data['nb_like']."
+						</div>
 					</div>
 				</div>
 				<img class='fil' id='".$data['id']."' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
@@ -133,16 +132,15 @@ if (isset($_POST['setting']))
 			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 		<div id="bigview">
 	</div>	
-	<div class="container">
+	<div class="containerWB1">
 		<input type="image" alt="coeur" class="coeur_comW" src="resources/img/coeurP.png" onclick="addlike()">
 		<div id='containerlikeW'></div>
 		<input type="image" alt="comment" class="coeur_comW" src="resources/img/comment-icon.png" onclick="">
 		<div id='containercomW'></div>
-		<!-- <form> -->
-			<textarea id="myTextarea" rows=“15” cols=“60" minlength=“10” maxlength=“20" name="comment" placeholder="Your comment here..."></textarea>
-			<input id="send" class="send" type="image" src="resources/img/send.png" alt="send" onclick="addcom()">
-		<!-- </form> -->
+		<textarea id="myTextarea" rows=“15” cols=“60" minlength=“10” maxlength=“20" name="comment" placeholder="Your comment here..."></textarea>
+		<input id="send" class="send" type="image" src="resources/img/send.png" alt="send" onclick="addcom()">
 	</div>
+	<div id="coms_container" class="coms_container"></div>
 </div>
 
 

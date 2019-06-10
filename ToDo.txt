@@ -1,31 +1,32 @@
-Récuerer et afficher les comentaitres whitebox.js !
-
-
-petit like clic ?
+Page d'utilisateur whiteboxuser scrolluser data.php
+pour add tout les feature on it
 
 password avec regex au moins un chifre une letre ? //bonus free dans la corection
-IJEXION XML
 MAIL AU COMENTAIRE
 SETTING POUR RETIRER L'envoie de mail
 
 
-interface comentaire
-table comentaire 
-
-Ajax + scroll infini de comentaire.
-
-font de l'index quand 10 like 100 like les div 
-
  HASH le ADMIN123 INSTALL + prootect prepare in data.php
 
-ENVOYER SUR PARGE D'inscription a la photo! alert mieux
+ENVOYER SUR PARGE D'inscription a la photo! alert (mieux)
 
-responsive affichege des photo
+responsive affichege des photo (fait mais mieux ?)
 
 page cam mieux avec filtre styler css et cadre
 
-bonsus liste : page user ajax server, scroll infini, whitbox, previsualisation, suprimer son comte, changer son mail = 125
-(Forgot password), ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE
+bonsus liste : page user 
+ajax server 
+scroll infini 
+whitbox
+previsualisation (A FAIRE MIEUX) 
+suprimer son comte (A FAIRE MIEUX) 
+changer son mail (A FAIRE MIEUX)
+(Forgot password) (A FAIRE)
+ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE 
+	POUR CA MAP KEY EN JS (diferent de add event listener pour gerer plusieur touche) 
+	CONVERT \N TO BR nl2br + POST (GET MARCHE PAS) + protection si trop de \n
+Echap pour quiter la WB !
+
 
 
 /////////////Idex///////////////////////////

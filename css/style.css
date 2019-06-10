@@ -1,35 +1,15 @@
-
-header{
-	background: linear-gradient( to left top, #eb3349, #F45C43);
-	height : 100px;
-	border-radius: 20px;
-}
-.headwrap{
-	width : 500px;
-}
-.headwrap2{
-	width : 500px;
-	
-}
-.center {
-	line-height: 100px;
-	margin-left: 30px;
-	background: linear-gradient( to left top, #eb3349, #F45C43);
-	height : 100px;
-	border-radius: 20px;
-}
 h1{
 	line-height: 100px;
 	margin-left: 30px;
 	font-family: 'Rubik';
 	font-size: 70px;
-	color: #5c41f4;
+	color: #4345ad;
 	width : 500px;
 	text-decoration: none;
 }
 p{
 	font-family: 'Rubik';
-	color: #5c41f4;
+	color: #4345ad;
 }
 #nom-site{
 	margin-bottom: -85px;
@@ -42,9 +22,9 @@ p{
 div.banniere{
 	position: top;
 	height: 100px ;
-	background: linear-gradient( to left top, #eb3349, #F45C43);
+	background: linear-gradient( to left top, #E6627B, rgba(253, 131, 60, 0.952));
 	height : 100px;
-	border-radius: 	20px;
+	border-radius: 	25px;
 }
 
 .dot {
@@ -55,6 +35,37 @@ div.banniere{
 	display: inline-block;
 	white-space:nowrap;
 }
+
+		/* BUTTON *//* BUTTON *//* BUTTON *//* BUTTON */
+input[type=text], input[type=password] {
+	width: 100%;
+	padding: 2px 5px;
+	margin: 0px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	box-sizing: border-box;
+}
+
+input[type=submit], input[type=button]{
+	background-color: #9188c7;
+	color: white;
+	padding: 2px 5px;
+	margin: 2px 0;
+	border: none;
+	cursor: pointer;
+	width: 100%;
+}
+input.load_bouton{
+	width: 40%;
+	height: 20px;
+	font-size: 14px;
+}
+input[type=submit]:hover, input[type=button]:hover{
+	background-color: #5949aa;
+	transition: 0.35s;
+	transform:translate(2px,2px);
+}
+
 #container {
 	margin: 0px auto;
 	width: 1000px;
@@ -89,6 +100,12 @@ img.cam {
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
 
+div.imconected{
+	font-family: 'Rubik';
+	color: #5c41f4;
+	padding: 5px;
+}
+
 a.moncompte{
 	color: rgb(228, 228, 228);
 	font-family: 'Rubik';
@@ -112,19 +129,20 @@ h2.title{
 }
 
 div.Fildactu{
-	/* background: #64b1e1; */
 	position: relative;
 	margin: 0 auto;
 	width: 1230px;
 }
 
+
 div.imgscontainer{
 	position: relative;
 }
 
-div.img{
+div.img_previw{ 
 	position: relative;
 	float: left;
+
 }
 
 img.fil{
@@ -139,7 +157,7 @@ div div.imgdetail1{
 	font-family: 'Rubik';
 	font-size: 25px;
 
-	background: rgba(0,0,0,0.8);
+	background: rgba(0,0,0,0.03);
 	background: -moz-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
 	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(0,0,0,0.8)), color-stop(100%, rgba(0,0,0,0.03)));
 	background: -webkit-linear-gradient(top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.03) 100%);
@@ -204,42 +222,72 @@ div.likecom{
 img.coeur_com{
 	width: 25px;
 	padding: 5px;
-	float: right;
+	bottom: -8px;
 	position: relative;
-	bottom: -4px;
-	left: -25px;
-	text-align: right;
-	text-align: end;
 }
 div.containerlikecom{
+	padding: 5px;
 	font-family: 'Rubik';
 	font-size: 25px;
 	position: relative;
 	color:white;
-	bottom: -6px;
-	left: 25px;
+	bottom: 10px;
+	left: 4px;
+	vertical-align: middle;
 	text-align: right;
-	text-align: end;
 	float: right;
 }
 
 /* WHITE BOX *//* WHITE BOX *//* WHITE BOX *//* WHITE BOX */
 
-/* Center the image and position the close button */
-.imgcontainer {
+div.imgcontainer {
 	text-align: center;
 	margin: 24px 0 12px 0;
 	position: relative;
 }
 
-.container {
+   /* COMMENT ZONE */
+div.containerWB1 { /* container du text area pour le commentaire*/
 	padding: 16px;
 	background-color:#f4f4f4;
 	height: 100px;
 }
-.container2 {
+div.coms_container {
 	padding: 16px;
-	background-color:#f1f1f1;
+	/* color: red; */
+	background-color:;
+}
+div.com_container0, div.com_container1
+{
+	width: 85%;
+	padding: 10px;
+	position: relative;
+	margin: auto;
+	text-align: left;
+	border-radius: 7px;
+	font-family: 'Rubik';
+	word-wrap : break-word;
+}
+div.com_container0
+{
+	background-color:#d4cfe08f;
+	color: darkslategrey;
+}
+div.com_container1
+{
+	background-color:#937fc093;
+	color: whitesmoke;
+}
+div.author_date_com
+{
+	font-size: 12px;
+	font-style: italic;
+	padding: -1px;
+}
+div.txt_com{
+	font-size: 20px;
+	margin-left: 14 px;
+	padding: 4px;
 }
 
 input.coeur_comW{
@@ -287,9 +335,9 @@ div #containercomW{
 /* Modal Content/Box */
 .modal-content {
   background-color: #fefefe;
-  margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  margin: 0% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
   border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
+  width: 70%; /* Could be more or less, depending on screen size */
 }
 
 img.imgWhiteBox{
@@ -305,8 +353,11 @@ textarea{
 
 input.send{
 	width: 5%;
+	max-width: 65px;
+	height: 50%;
 	position: relative;
 	float: right;
+	vertical-align: middle;
 }
 
 /* The Close Button (x) */
@@ -347,4 +398,55 @@ div#status{
 	position: fixed;
 	font-size: 20px;
 	/* a sup a la fin */
+}
+
+
+
+/* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */
+/* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */
+
+
+@media all and (max-width:1250px){
+
+	div.img_previw{ 
+		position: relative;
+		width: 100%;
+		float: none;
+		margin: auto;
+	
+	}
+	div.Fildactu{
+		position: relative;
+		margin: auto auto;
+		width: 90%;
+	}
+	img.fil{
+		width:100%;
+		margin: auto;
+		cursor: pointer;
+	}
+	div div.imgdetail1{
+		width: 100%; /*KEEP */
+		height: 80px; /* KEEP TRY */
+		font-size: 45px; /* KEEP TRY*/
+	}
+	div div.imgdetail2{
+		width: 100%;
+		height: 40px;
+		/* font-size: 25px; */
+		font-size: 5px;
+	}
+	div.likecom{
+		right: 3%;
+	}
+	img.coeur_com{
+		width: 50px;
+		padding: 5px;
+		
+		position: relative;
+	}
+	div.containerlikecom{
+		font-size: 45px;
+		bottom: 42px;
+	}
 }
