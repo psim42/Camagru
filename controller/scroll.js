@@ -8,8 +8,8 @@ function infini_scroll()
 	{
 		getData();
 	}
-	var status = document.getElementById('status');
-	status.innerHTML = contentHeight+" | "+y; 
+	// var status = document.getElementById('status');
+	// status.innerHTML = contentHeight+" | "+y; 
 }
 window.onscroll = infini_scroll;
 

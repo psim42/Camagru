@@ -13,7 +13,13 @@ if (!(isset($_SESSION['login'])))
 	// header('Location: ../../index.php');
 	exit();
 }
-
+if (isset($_POST['logout']))
+{
+	session_unset();
+	session_destroy();
+	session_start();
+	header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
+}
 ?>
 <html lang="fr">
 <head>
@@ -34,25 +40,26 @@ if (!(isset($_SESSION['login'])))
 		</a>
 		
 		<div id="log">
-			<form method="POST" action ="../index.php">
-				<?php 
+			<form method="POST" action ="">
+			<?php 
 			if(!isset($_SESSION['login']))
 			{
-				echo '<input id= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
+				echo '<input class= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
 				<br />
-				<input id= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
+				<input class= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
 				<br/>
-				<input id= "log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/>
-				<br />
-				<input id= "log_bouton" type="submit" name="submit" value="CREER UN COMPTE"/>
-				<br />';
+				<input class="log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
+				echo'<a href="../view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>';
 			}
-			
 			if (isset($_SESSION['login']))
 			{
-				echo'<div class="dot"></div><div style="display: inline-block; margin-left:5px; "><p>Vous etes connecte '.$_SESSION['login'].'</p></div> </br>';
-				echo '<input id= "log_bouton" type="submit" name="logout" value="Logout"/>';
-				echo '<input id= "setting_bouton" type="submit" name="setting" value="Setting"/>';
+				echo'<div class="dot"></div>
+				<div class="imconected" style="display: inline-block; margin-left:5px; ">
+				Vous etes connecte <a class="moncompte" href="../view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a>
+				</div> 
+				</br>';
+				echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
+				echo '<input class= "setting_bouton" type="button" name="setting" value="Setting" onclick="window.location.href=\'manage/manage.php\'"/>';
 				
 			}
 			?>
@@ -60,10 +67,7 @@ if (!(isset($_SESSION['login'])))
 			</form>
 		</div>
 		
-		<a href="cam.php" > 
-			<img class="cam" src="../resources/img/cam.png" alt="cam">
-		</a>
-
+	<a href="../view/cam.php" > <img class="cam" src="../resources/img/cam.png" alt="cam"></a>
 </div>
 
 <?php
@@ -83,8 +87,6 @@ if (!isset($_GET['login']))
 }
 ?>
 
-<div id='status'>? | ?</div>
-
 <div class="Fildactu">
 	<?php
 	echo "<h2 id='". $_GET['login'] ."' class='title'>Profile de ". $_GET['login'] ."<h2>";
@@ -96,13 +98,15 @@ if (!isset($_GET['login']))
 	$stmt->execute();
 	while ($data = $stmt->fetch())
 	{
-		echo "<div class='img'>
+		echo "<div class='img_previw'>
 		<div class='imgdetail2'>
 			<div class='likecom'>
-				<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
-				<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
-				<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
-				<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
+				<div class='containerlikecom'id='containercom".$data['id']."'>
+					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
+				</div>
+				<div class='containerlikecom' id='containerlike".$data['id']."'>
+					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'>". $data['nb_like']."
+				</div>
 			</div>
 		</div>
 		<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
@@ -122,16 +126,15 @@ if (!isset($_GET['login']))
 			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
 		<div id="bigview">
 	</div>	
-
-	<div class="container">
-		<input type="image" alt="coeur" class="coeur_comW" src="../resources/img/coeurP.png" onclick="addlike()">
+	<div class="containerWB1">
+		<input type="image" alt="coeur" class="coeur_comW" id="coeurW" src="../resources/img/coeurP.png" onclick="addlike()">
 		<div id='containerlikeW'></div>
-		
+		<input type="image" alt="comment" class="coeur_comW" src="../resources/img/comment-icon.png" onclick="">
+		<div id='containercomW'></div>
+		<textarea id="myTextarea" rows=“15” cols=“60" minlength=“10” maxlength=“20" name="comment" placeholder="Your comment here..."></textarea>
+		<input id="send" class="send" type="image" src="../resources/img/send.png" alt="send" onclick="addcom()">
 	</div>
-
-	<div class="container2">
-		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Retour</button>
-	</div>
+	<div id="coms_container" class="coms_container"></div>
 </div>
 
 </body>

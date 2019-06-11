@@ -74,18 +74,6 @@ input[type=submit]:hover, input[type=button]:hover{
 	margin-left: 50px;
 	margin-top: 30px;
 }
-#videoElement {
-	width: 1000px;
-	height: 750px;
-	background-color: #666;
-	
-}
-#canvas {
-	position: relative;
-	top: -750;
-	left: 0;
-	z-index: 10;
-}
 
 img.cam {
 	float: right;
@@ -255,7 +243,7 @@ div.containerWB1 { /* container du text area pour le commentaire*/
 div.coms_container {
 	padding: 16px;
 	/* color: red; */
-	background-color:;
+	background-color:#f4f4f4;
 }
 div.com_container0, div.com_container1
 {

@@ -14,47 +14,20 @@ if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE 
 	while ($data = $stmt->fetch())
 	{
 		echo "<div class='img_previw'>
-			<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
 			<div class='imgdetail2'>
 				<div class='likecom'>
 					 
 					<div class='containerlikecom'id='containercom".$data['id']."'>
-						<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
+						<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
 					</div>
 					<div class='containerlikecom' id='containerlike".$data['id']."'>
-						<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>". $data['nb_like']."
+						<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'>". $data['nb_like']."
 					</div>
-				</div>
-			</div>
-			<img class='fil' id='".$data['id']."' src='".substr($data['path'], 3)."' alt='Pic' onclick='enlarge(this)'>
-		</div>";
-	}
-}
-elseif (isset($_GET['start2']) && isset($_GET['limit2']) && isset($_GET['user'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS POUR USER PAGE
-{
-	$s = (int)$_GET['start2'];
-	$l = (int)$_GET['limit2'];
-	$user = $_GET['user'];
-	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
-	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
-	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
-	$stmt->bindValue(':user', $user, PDO::PARAM_STR);
-	$stmt->execute();
-		// $resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT $s, $l");
-		while ($data = $stmt->fetch())
-		{
-			echo "<div class='img'>
-			<div class='imgdetail2'>
-				<div class='likecom'>
-					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
-					<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
-					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
-					<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
 				</div>
 			</div>
 			<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
 		</div>";
-		}
+	}
 }
 elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 {
@@ -67,10 +40,6 @@ elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 }
 elseif (isset($_GET['likepic'])) // LOAD LIKE WHITEBOX.JS
 {
-	if (!isset($_SESSION['login']))
-	{
-		exit("resources/img/coeurV.png");
-	}
 	$id = $_GET['likepic'];
 	$stmt = $db->prepare("SELECT id_pic, `login` FROM tab_like WHERE id_pic = :id_pic AND `login` = :user");
 	$stmt->bindValue(':id_pic', $id, PDO::PARAM_INT);
@@ -78,10 +47,10 @@ elseif (isset($_GET['likepic'])) // LOAD LIKE WHITEBOX.JS
 	$stmt->execute();
 	$resultat = $stmt->fetch();
 	if (isset($resultat) && $resultat != NULL){
-		exit("resources/img/coeurP.png");
+		exit("../resources/img/coeurP.png");
 	}
 	else{
-		exit("resources/img/coeurV.png");
+		exit("../resources/img/coeurV.png");
 	}
 }
 elseif (isset($_GET['idnbcom'])) // LOAD nbCOM WHITEBOX.JS

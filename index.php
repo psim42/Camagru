@@ -22,8 +22,8 @@ if (isset($_POST['submit']) && $_POST['submit'] == "VOUS CONNECTER")
 {
 	if (isset($_POST['login']) && isset($_POST['passwd']))
 	{
-		auth($_POST['login'], $_POST['passwd']);
-		header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
+		if (auth($_POST['login'], $_POST['passwd']))
+			header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
 	}
 }
 if (isset($_POST['setting']))
@@ -46,8 +46,8 @@ if (isset($_POST['setting']))
 
 
   <!-- ///////////////////////////  SCRIPT  ///////////////////////////////// -->
-	<script src="controller/camera.js"></script>
-	<script src="controller/filter.js"></script>
+	<script src="controller/cam/camera.js"></script>
+	<script src="controller/cam/filter.js"></script>
 	<script src="controller/whitebox.js"></script>
 	<script src="controller/scroll.js"></script>
 
@@ -80,21 +80,19 @@ if (isset($_POST['setting']))
 				</br>';
 				echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
 				echo '<input class= "setting_bouton" type="submit" name="setting" value="Setting"/>';
-				
 			}
 			?>
 				<br />
 			</form>
 		</div>
-		
 	<a href="view/cam.php" > <img class="cam" src="resources/img/cam.png" alt="cam"></a>
-
 </div>
 
-<div id='status'>? | ?</div>
+
+<!-- <div id='status'>? | ?</div> -->
 
 <div class="Fildactu" id="warp">
-	<h2 class="title">Derinères Images !</h2>
+	<h2 class="title">Dernières Images !</h2>
 	<div class='imgscontainer' id='imgscontainer'>
 	<?php
 	$s = 0;
@@ -106,7 +104,6 @@ if (isset($_POST['setting']))
 				<div class='imgdetail1'> <a class='auteur' href='./view/userpage.php?login=". $data['user'] ." '>". $data['user'] ."</a></div>
 				<div class='imgdetail2'>
 					<div class='likecom'>
-						 
 						<div class='containerlikecom'id='containercom".$data['id']."'>
 							<img class='coeur_com' src='resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
 						</div>
@@ -133,7 +130,7 @@ if (isset($_POST['setting']))
 		<div id="bigview">
 	</div>	
 	<div class="containerWB1">
-		<input type="image" alt="coeur" class="coeur_comW" src="resources/img/coeurP.png" onclick="addlike()">
+		<input type="image" alt="coeur" class="coeur_comW" id="coeurW" src="resources/img/coeurP.png" onclick="addlike()">
 		<div id='containerlikeW'></div>
 		<input type="image" alt="comment" class="coeur_comW" src="resources/img/comment-icon.png" onclick="">
 		<div id='containercomW'></div>

@@ -8,10 +8,10 @@ function capture() {
 	var canvasData = canvas.toDataURL("image/png");
 		var ajax = new XMLHttpRequest();
 		// alert(filter);
-		ajax.open("POST",'../controller/pic_save.php',false);
+		ajax.open("POST",'../controller/cam/pic_save.php', false);
 		ajax.setRequestHeader('Content-Type', 'application/upload');
 		ajax.send(canvasData);
-		ajax.open("POST",'../controller/add_filter.php',false);
+		ajax.open("POST",'../controller/cam/add_filter.php', false);
 		ajax.setRequestHeader('Content-Type', 'application/upload');
 		ajax.send(filter);
 }

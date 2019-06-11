@@ -22,10 +22,16 @@ else if (el.attachEvent){ //IE COMPATIBILITY
 }
 
 function keyListener(event){ 
+	var modal = document.getElementById('id01');
 	event = event || modal.event;
 	var key = event.key || event.which || event.keyCode;
+	var txtarea = document.getElementById("myTextarea");
 	/* insert conditional here */
-	if (key === "Escape"){ // esc
+	if (modal.style.display == "block" && key === "Enter" && txtarea != document.activeElement){
+		event.preventDefault();
+		document.getElementById('myTextarea').focus();
+	}
+	if (key === "Escape" && modal.style.display == "block"){ // esc
 		document.getElementById('id01').style.display='none';
 	}
 }
@@ -57,6 +63,13 @@ function getLike(id)
 		// console.log(ajax.response);
 		document.getElementById("containerlikeW").innerHTML = ajax.response; //whitebox
 		document.getElementById("containerlike"+id).innerHTML = "<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>"+ajax.response; //small preview
+	}
+	ajax.open("GET", 'controller/data.php?likepic='+id, false);
+	ajax.setRequestHeader('Content-Type', 'text');
+	ajax.send();
+	if (ajax.status == 200)
+	{
+		document.getElementById("coeurW").src = ajax.response; //whitebox
 	}
 }
 
@@ -93,7 +106,7 @@ function getComment(id) // variable global remetre a valeur de base dans enlage 
 		input_load = document.getElementById('input_load_com');
 		com_start += com_limit;
 		var nbcom = document.getElementById('containercomW').innerHTML;
-		if(com_start >= nbcom && nbcom > 0)
+		if(com_start >= nbcom || nbcom == 0)
 		{
 			coms_container.removeChild(input_load);
 		}
@@ -117,6 +130,7 @@ function addlike()
 		else{
 			document.getElementById("containerlikeW").innerHTML = ajax.response; //whitebox
 			document.getElementById("containerlike"+id).innerHTML = "<img class='coeur_com' src='resources/img/coeurP.png' alt='C'>"+ajax.response; //small preview
+			getLike(id);
 		}
 	}
 }

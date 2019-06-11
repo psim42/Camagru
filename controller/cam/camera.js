@@ -5,7 +5,8 @@ function start(e){
 			.then(function (stream) {
 			  video.srcObject = stream;
 			})
-			.catch(function (err0r) {
+			.catch(function (err)
+			 {
 			  console.log("Something went wrong!");
 			});
 		}
