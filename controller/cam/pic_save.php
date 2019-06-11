@@ -1,5 +1,5 @@
 <?php
-include '../controller/db_root_login.php';
+include '../../controller/db_root_login.php';
 session_start();
 
 if (!(isset($_SESSION['login'])))
@@ -7,7 +7,7 @@ if (!(isset($_SESSION['login'])))
 	echo"
 	<script> 
 	 alert('Acces interdit au invités'); 
-	 window.location='../index.php';
+	 window.location='../../index.php';
 	 </script>";
 	
 	// header('Location: ../../index.php');
@@ -23,17 +23,18 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 		if ($data === false) {
 			throw new \Exception('base64_decode failed');
 		}
-	} else {
+	}
+	else {
 		throw new \Exception('did not match data URI with image data');
 	}
 
-	if (!(file_exists("../resources/user/".$_SESSION['login']."")))
+	if (!(file_exists("../../resources/user/".$_SESSION['login']."")))
 	{
-		mkdir("../resources/user/".$_SESSION['login']."");
+		mkdir("../../resources/user/".$_SESSION['login']."");
 	}
-	$c = count(glob("../resources/user/".$_SESSION['login']."/*.png"));
+	$c = count(glob("../../resources/user/".$_SESSION['login']."/*.png"));
 	$r = $c + 1;
-	file_put_contents("../resources/user/".$_SESSION['login']."/".$r.".png", $data);
+	file_put_contents("../../resources/user/".$_SESSION['login']."/".$r.".png", $data);
 	$path = "../resources/user/".$_SESSION['login']."/".$r.".png";
 	
 	$stmt = $db->prepare("INSERT INTO pic (user, path, date) VALUES (:user, :path, NOW())");
@@ -51,6 +52,6 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 // // header('Location: ../../index.php');
 // exit();
 echo"end start of view :  ";
-print_r( count(glob("../resources/user/".$_SESSION['login']."/*.png")));
+print_r( count(glob("../../resources/user/".$_SESSION['login']."/*.png")));
 ?>
 <!-- Faire le dossier l'algo de control et tout -->

@@ -1,18 +1,17 @@
-Page d'utilisateur whiteboxuser scrolluser data.php
-pour add tout les feature on it
+page cam mieux avec filtre styler css et cadre
+
 
 password avec regex au moins un chifre une letre ? //bonus free dans la corection
 MAIL AU COMENTAIRE
 SETTING POUR RETIRER L'envoie de mail
 
+HASH le ADMIN123 INSTALL + prootect prepare in data.php
 
- HASH le ADMIN123 INSTALL + prootect prepare in data.php
+favicon
 
 ENVOYER SUR PARGE D'inscription a la photo! alert (mieux)
-
 responsive affichege des photo (fait mais mieux ?)
-
-page cam mieux avec filtre styler css et cadre
+.ht accsess
 
 bonsus liste : page user 
 ajax server 
@@ -25,7 +24,8 @@ changer son mail (A FAIRE MIEUX)
 ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE 
 	POUR CA MAP KEY EN JS (diferent de add event listener pour gerer plusieur touche) 
 	CONVERT \N TO BR nl2br + POST (GET MARCHE PAS) + protection si trop de \n
-Echap pour quiter la WB !
+entrer pour comment et Echap pour quiter la WB !
+coeur vide coeur plein.
 
 
 

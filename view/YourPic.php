@@ -22,8 +22,8 @@ if (!(isset($_SESSION['login'])))
   <title>Camagru</title>
   <link rel="stylesheet" href="../css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-	<script src="../controller/camera.js"></script>
-	<script src="../controller/filter.js"></script>
+	<script src="../controller/cam/camera.js"></script>
+	<script src="../controller/cam/filter.js"></script>
 	
 </head>
 <body>

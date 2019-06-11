@@ -9,9 +9,10 @@ session_start();
   <meta charset="utf-8">
   <title>Camagru</title>
   <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/cam.css">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-	<script src="../controller/camera.js"></script>
-	<script src="../controller/filter.js"></script>
+	<script src="../controller/cam/camera.js"></script>
+	<script src="../controller/cam/filter.js"></script>
 	
 </head>
 
@@ -55,15 +56,13 @@ function alertguest()
 				<br />
 			</form>
 		</div>
-		
 		<a href="cam.php" > 
 			<img class="cam" src="../resources/img/cam.png" alt="cam">
 		</a>
-
 </div>
 
 <div id="container">
-	<video autoplay="true" id="videoElement"></video>
+	<video id="videoElement" autoplay="true" ></video>
 	<canvas id="canvas" width=1000 height=750></canvas>
 </div>
 <div style="margin-left: 50px; margin-top: 10px;">
@@ -73,26 +72,20 @@ function alertguest()
 <!-- 2 BOUTON DIFERENT EN FONCTION DE SESSION SET OU PAS -->
 <!-- Merci -->
 <?php
-
-if(!isset($_SESSION['login']))
+if (!isset($_SESSION['login']))
 {
-
 	echo'<button type="button" onclick="alertguest()" >Take picture</button>';
-
 }
-
 if (isset($_SESSION['login']))
 {
 	echo'<button type="button" onclick="capture(), window.location.href='.'\'YourPic.php\''.'" >Take picture</button>';
-
+	//
 }
 ?>
 
 
 <br />
-
-
-	<input type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+	<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 </div>
 </body>
 </html>

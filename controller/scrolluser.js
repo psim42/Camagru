@@ -8,8 +8,8 @@ function infini_scroll()
 	{
 		getData();
 	}
-	var status = document.getElementById('status');
-	status.innerHTML = contentHeight+" | "+y; 
+	// var status = document.getElementById('status');
+	// status.innerHTML = contentHeight+" | "+y; 
 }
 window.onscroll = infini_scroll;
 
@@ -19,7 +19,7 @@ var limit = 6;
 function getData(){
 	var ajax = new XMLHttpRequest();
 	var user = document.getElementsByClassName("title")[0].id;
-	ajax.open("GET",'../controller/data.php?start2='+start+'&limit2='+limit+'&user='+user, false);
+	ajax.open("GET",'../controller/data_user.php?start='+start+'&limit='+limit+'&user='+user, false);
 	ajax.setRequestHeader('Content-Type', 'text');
 	ajax.send();
 	if (ajax.status == 200)

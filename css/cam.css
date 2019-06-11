@@ -1,0 +1,12 @@
+#videoElement {
+	width: 1000px;
+	height: 750px;
+	background-color: #666;
+	
+}
+#canvas {
+	position: relative;
+	top: -750;
+	left: 0;
+	z-index: 10;
+}
