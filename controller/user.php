@@ -86,8 +86,12 @@ function create_user($mail, $login, $passwd, $passwd2){
 
 	if ((strlen($passwd) < 6) && (strlen($passwd) != 0))
 	{
-		echo "<p>Veuillez entrer un Mot de passe avec au mois 6 caractères s'il vous plait</p>";
+		echo "<p>Veuillez entrer un Mot de passe avec entre 6 et 16 caractères s'il vous plait</p>";
 		$e = 1;
+	}
+	elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,16}$/', $passwd))
+	{
+		echo "<p>Veuillez entrer un Mot de passe avec au moins 1 minuscule, 1 majuscule et 1 chiffre</p>";
 	}
 
 	if ($passwd2 != $passwd)

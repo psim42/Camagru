@@ -1,7 +1,6 @@
 page cam mieux avec filtre styler css et cadre
 
 
-password avec regex au moins un chifre une letre ? //bonus free dans la corection
 MAIL AU COMENTAIRE
 SETTING POUR RETIRER L'envoie de mail
 
@@ -13,7 +12,7 @@ ENVOYER SUR PARGE D'inscription a la photo! alert (mieux)
 responsive affichege des photo (fait mais mieux ?)
 .ht accsess
 
-bonsus liste : page user 
+bonus liste : page user 
 ajax server 
 scroll infini 
 whitbox
