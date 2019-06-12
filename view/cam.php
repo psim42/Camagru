@@ -6,24 +6,33 @@ if (!(isset($_SESSION['login'])))
 {
 	echo"
 	<script> 
-	 alert('Acces interdit au invités\n Merci de vous inscrire ou de vous connecter'); 
+	 alert('Acces interdit au invités Merci de vous inscrire ou de vous connecter');
 	 window.location='../index.php';
 	 </script>";
 	
 	// header('Location: ../../index.php');
 	exit();
 }
+if (isset($_POST['logout']))
+{
+	session_unset();
+	session_destroy();
+	session_start();
+	header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
+}
 ?>
 
 <html lang="fr">
 <head>
-  <meta charset="utf-8">
-  <title>Camagru</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link rel="stylesheet" href="../css/cam.css">
-  <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
+	<meta charset="utf-8">
+	<title>Camagru</title>
+	<link rel="stylesheet" href="../css/style.css">
+	<link rel="stylesheet" href="../css/cam.css">
+	<link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 	<script src="../controller/cam/camera.js"></script>
 	<script src="../controller/cam/filter.js"></script>
+	<script src="../controller/whiteboxuser.js"></script>
+	<script src="../controller/scrolluser.js"></script>
 </head>
 <script> 
 function alertguest()
@@ -97,8 +106,55 @@ function alertguest()
 
 </div>
 <br />
-<div class="container2">
-	
+<div class="Fildactu">
+	<?php
+	echo "<h2 id='". $_SESSION['login'] ."' class='title'>Profile de ". $_SESSION['login'] ."<h2>";
+	?>
+	<div class='imgscontainer' id='imgscontainer'>
+	<?php
+	$stmt = $db->prepare("SELECT id, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT 0, 15");
+	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
+	$stmt->execute();
+	while ($data = $stmt->fetch())
+	{
+		echo "<div class='img_previw'>
+		<div class='imgdetail1'> <img class='croix' src='../resources/img/croix.png' alt='X' onclick='sup(this)'></div>
+		<div class='imgdetail2'>
+			<div class='likecom'>
+				<div class='containerlikecom'id='containercom".$data['id']."'>
+					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
+				</div>
+				<div class='containerlikecom' id='containerlike".$data['id']."'>
+					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'>". $data['nb_like']."
+				</div>
+			</div>
+		</div>
+		<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
+	</div>";
+	}
+	?>
+	</div>
+
+</div>
+
+<!-- WHITEBOX WHITEBOX WHITEBOX WHITEBOX WHITEBOX -->
+
+<div id="id01" class="modal">
+
+	<div class="modal-content animate">
+		<div class="imgcontainer">
+			<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+		<div id="bigview">
+	</div>	
+	<div class="containerWB1">
+		<input type="image" alt="coeur" class="coeur_comW" id="coeurW" src="../resources/img/coeurP.png" onclick="addlike()">
+		<div id='containerlikeW'></div>
+		<input type="image" alt="comment" class="coeur_comW" src="../resources/img/comment-icon.png" onclick="">
+		<div id='containercomW'></div>
+		<textarea id="myTextarea" rows=“15” cols=“60" minlength=“10” maxlength=“20" name="comment" placeholder="Your comment here..."></textarea>
+		<input id="send" class="send" type="image" src="../resources/img/send.png" alt="send" onclick="addcom()">
+	</div>
+	<div id="coms_container" class="coms_container"></div>
 </div>
 </body>
 </html>

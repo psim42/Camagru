@@ -4,6 +4,7 @@ div.container1{
 	border:blue solid;
 	margin-top: 20px;
 	width: 100%;
+	vertical-align: top;
 	/* float: left;	 */
 }
 div.containerCam {
@@ -14,10 +15,11 @@ div.containerCam {
 	border: 10px #7a60ffc8 solid;
 	border-radius: 20px;
 	display: inline-block;
+	margin: auto auto;
 }
 #videoElement {
 	position: relative;
-	width: 1000px;
+	width: 100%;
 	height: 750px;
 	background-color: #666;
 	border-radius: 10px;
@@ -32,6 +34,19 @@ div.containerCam {
 	border: red solid;
 	display: none;
 }
+div.container_button{
+	position: relative;
+	text-align: center;
+	background: #7a60ffc8;
+	padding: 2px;
+	border-radius: 10px;
+	margin: 25px auto;
+	display: inline block;
+}
+button{
+	margin: 5px auto;
+}
+
 div.container_filtre{
 	border: red solid;
 	position: relative;
@@ -39,26 +54,19 @@ div.container_filtre{
 	/* padding: 50px; */
 	display: inline-block;
 	vertical-align: top;
-	height: 800px;
-	margin: auto auto;
+	height: 500px;
 	margin-left: 50px;
+	margin-top: 80px;
+	margin: center;
 	overflow-y: auto;
 }
-div.container_button{
-	text-align: center;
-	background: #7a60ffc8;
-	padding: 2px;
-	border-radius: 10px;
-	margin: 25px auto;
-}
-button{
-	margin: 5px auto;
-}
-
-
 div.container2{
 	position: relative;
 	background: rgba(0, 0, 255, 0.479);
 	width: 100%;
 	height: 1000px;
+}
+img.croix{
+	width : 50px;
+	cursor: pointer;
 }
