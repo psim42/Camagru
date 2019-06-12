@@ -4,10 +4,16 @@ page cam mieux avec filtre styler css et cadre
 MAIL AU COMENTAIRE
 SETTING POUR RETIRER L'envoie de mail
 
+`Un fichier config/setup.php, capable de créer ou recréer le schéma de la base de
+données, en utilisant les infos contenues dans le fichier config/database.php.
+Un fichier config/database.php, contenant la configuration de votre base de
+données qui sera instanciée via PDO au format suivant :`
+
+
 HASH le ADMIN123 INSTALL + prootect prepare in data.php
-
+(Forgot password) (Obligatoire)
 favicon
-
+footer obligatoire
 ENVOYER SUR PARGE D'inscription a la photo! alert (mieux)
 responsive affichege des photo (fait mais mieux ?)
 .ht accsess
@@ -19,7 +25,7 @@ whitbox
 previsualisation (A FAIRE MIEUX) 
 suprimer son comte (A FAIRE MIEUX) 
 changer son mail (A FAIRE MIEUX)
-(Forgot password) (A FAIRE)
+
 ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE 
 	POUR CA MAP KEY EN JS (diferent de add event listener pour gerer plusieur touche) 
 	CONVERT \N TO BR nl2br + POST (GET MARCHE PAS) + protection si trop de \n
