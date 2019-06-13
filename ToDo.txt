@@ -1,5 +1,6 @@
-page cam mieux avec filtre styler css et cadre
-jim: sup(the) scrolluser et data_user.pph
+Protection cam sans filter et video pas lancer
+Reload le js directement.
+previsualisation du filtre
 
 MAIL AU COMENTAIRE
 SETTING POUR RETIRER L'envoie de mail

@@ -3,20 +3,21 @@ include '../controller/db_root_login.php';
 include '../controller/user.php';
 session_start();
 
-if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS
+if (isset($_GET['start']) && isset($_GET['limit']) && isset($_GET['user'])) // SCROLL USERPAGE INFINI LOAD IMAGE SCROLLUSER.JS
 {
 	$s = (int)$_GET['start'];
-	$l = (int)$_GET['limit']; 
-	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT :s, :l");
+	$l = (int)$_GET['limit'];
+	$user = $_GET['user'];
+	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
 	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
 	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
+	$stmt->bindValue(':user', $_GET['user'], PDO::PARAM_STR);
 	$stmt->execute();
 	while ($data = $stmt->fetch())
 	{
 		echo "<div class='img_previw'>
 			<div class='imgdetail2'>
 				<div class='likecom'>
-					
 					<div class='containerlikecom'id='containercom".$data['id']."'>
 						<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
 					</div>
@@ -29,18 +30,20 @@ if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE 
 		</div>";
 	}
 }
-if (isset($_GET['start2']) && isset($_GET['limit2'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS
+if (isset($_GET['start2']) && isset($_GET['limit2'])) //CAM SCROLL INFINI LOAD IMAGE SCROLLUSER.JS
 {
 	$s = (int)$_GET['start2'];
-	$l = (int)$_GET['limit2']; 
-	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT :s, :l");
+	$l = (int)$_GET['limit2'];
+	$user = $_GET['user'];
+	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
 	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
 	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
+	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
 	$stmt->execute();
 	while ($data = $stmt->fetch())
 	{
 		echo "<div class='img_previw'>
-		<div class='imgdetail1'> <img class='croix' src='../resources/img/croix.png' alt='X' onclick='sup(this)'></div>
+		<div class='imgdetail1'> <img id='croix".$data['id']."' class='croix' src='../resources/img/croix.png' alt='X' onclick='sup(this)'></div>
 			<div class='imgdetail2'>
 				<div class='likecom'>
 					<div class='containerlikecom'id='containercom".$data['id']."'>
@@ -201,6 +204,41 @@ elseif (isset($_POST['idPicCom']) && isset($_POST['comment']))
 	// 	exit($error);
 	// }
 	exit($id);
+}
+elseif (isset($_GET['supId']))
+{
+	$id =$_GET['supId'];
+	$stmt = $db->prepare("DELETE FROM pic WHERE user = :user AND id = :id");
+	$stmt->bindValue(':id', $id, PDO::PARAM_INT);
+	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
+	if (!$stmt->execute()){
+		$error = implode( ", ", $stmt->errorInfo() );
+		exit($error);
+	}
+	$s = 0;
+	$l = 15;
+	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT :s, :l");
+	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
+	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
+	$stmt->execute();
+	while ($data = $stmt->fetch())
+	{
+		echo "<div class='img_previw'>
+		<div class='imgdetail1'> <img id='croix".$data['id']."' class='croix' src='../resources/img/croix.png' alt='X' onclick='sup(this)'></div>
+			<div class='imgdetail2'>
+				<div class='likecom'>
+					<div class='containerlikecom'id='containercom".$data['id']."'>
+						<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'>".$data['nb_comment']."
+					</div>
+					<div class='containerlikecom' id='containerlike".$data['id']."'>
+						<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'>". $data['nb_like']."
+					</div>
+				</div>
+			</div>
+			<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
+		</div>";
+	}
+	exit();
 }
 else
 {

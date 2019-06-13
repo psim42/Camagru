@@ -23,15 +23,17 @@ function infini_scroll()
 function getData(){
 	var ajax = new XMLHttpRequest();
 	var user = document.getElementsByClassName("title")[0].id;
-	ajax.open("GET",'../controller/data_user.php?start='+start+'&limit='+limit+'&user='+user, false);
+	ajax.onload = () => {
+		if (ajax.status == 200)
+		{
+			start += limit;
+			document.getElementById("imgscontainer").innerHTML += ajax.response;
+			
+		}
+	}
+	ajax.open("GET",'../controller/data_user.php?start='+start+'&limit='+limit+'&user='+user, true);
 	ajax.setRequestHeader('Content-Type', 'text');
 	ajax.send();
-	if (ajax.status == 200)
-	{
-		start += limit;
-		document.getElementById("imgscontainer").innerHTML += ajax.response;
-		
-	}
 
 }
 
@@ -52,17 +54,39 @@ function infini_scroll2()
 function getData2(){
 	var ajax = new XMLHttpRequest();
 	var user = document.getElementsByClassName("title")[0].id;
-	ajax.open("GET",'../controller/data_user.php?start2='+start+'&limit2='+limit+'&user='+user, false);
+	ajax.onload = () => {
+		if (ajax.status == 200)
+		{
+			start += limit;
+			document.getElementById("imgscontainer").innerHTML += ajax.response;
+			
+		}
+	}
+	ajax.open("GET",'../controller/data_user.php?start2='+start+'&limit2='+limit+'&user='+user, true);
 	ajax.setRequestHeader('Content-Type', 'text');
 	ajax.send();
-	if (ajax.status == 200)
-	{
-		start += limit;
-		document.getElementById("imgscontainer").innerHTML += ajax.response;
-		
-	}
 
 }
 function sup(element){
-	confirm("sup this "+element);
+	r = confirm("Voulez vous vraiment supprimer cette image ?");
+	id = element.id.substring(5); // croix+id to id
+	if (r == true){
+		var ajax = new XMLHttpRequest();
+		ajax.onload = () => {
+			if (ajax.status == 200)
+			{
+				//vider avant ? non hein 
+				start = 0;
+				limit = 0;
+				document.getElementById("imgscontainer").innerHTML = '';
+				document.getElementById("imgscontainer").innerHTML = ajax.response;
+				start = 15;
+				limit = 6;
+				alert(ajax.response);
+			}
+		}
+		ajax.open("GET",'../controller/data_user.php?supId='+id, true);
+		ajax.setRequestHeader('Content-Type', 'text');
+		ajax.send();
+	}
 }

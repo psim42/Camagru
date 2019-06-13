@@ -85,13 +85,8 @@ function alertguest()
 		<canvas id="canvas" width=1000 height=750></canvas>
 		<div class="container_button">
 			<button type="button" onclick="stop()">Stop</button>
-			<button type="button" onclick="start()">Start</button>
-			<?php // 2 BOUTON DIFERENT EN FONCTION DE SESSION SET OU PAS 
-			if (!isset($_SESSION['login']))
-				echo'<button type="button" onclick="alertguest()" >Take picture</button>';
-			if (isset($_SESSION['login']))
-				echo'<button type="button" onclick="capture(), window.location.href='.'\'YourPic.php\''.'" >Take picture</button>';
-			?>
+			<button type="button" onclick="startcam()">Start</button>
+			<button type="button" onclick="capture()" >Take picture</button>
 		</div>
 	</div>
 	<div class="container_filtre">
@@ -118,7 +113,7 @@ function alertguest()
 	while ($data = $stmt->fetch())
 	{
 		echo "<div class='img_previw'>
-		<div class='imgdetail1'> <img class='croix' src='../resources/img/croix.png' alt='X' onclick='sup(this)'></div>
+		<div class='imgdetail1'> <img id='croix".$data['id']."' class='croix' src='../resources/img/croix.png' alt='X' onclick='sup(this)'></div>
 		<div class='imgdetail2'>
 			<div class='likecom'>
 				<div class='containerlikecom'id='containercom".$data['id']."'>

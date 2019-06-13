@@ -18,14 +18,16 @@ var limit = 6;
 
 function getData(){
 	var ajax = new XMLHttpRequest();
-	ajax.open("GET",'controller/data.php?start='+start+'&limit='+limit, false);
+	ajax.onload = () => {
+		if (ajax.status == 200)
+		{
+			start += limit;
+			document.getElementById("imgscontainer").innerHTML += ajax.response;
+			
+		}
+	}
+	ajax.open("GET",'controller/data.php?start='+start+'&limit='+limit, true);
 	ajax.setRequestHeader('Content-Type', 'text');
 	ajax.send();
-	if (ajax.status == 200)
-	{
-		start += limit;
-		document.getElementById("imgscontainer").innerHTML += ajax.response;
-		
-	}
 
 }

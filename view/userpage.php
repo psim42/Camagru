@@ -38,7 +38,6 @@ if (isset($_POST['logout']))
 		<a href="../index.php" style="text-decoration: none">
 			<h1 id="nom-site">CAMAGRU</h1>
 		</a>
-		
 		<div id="log">
 			<form method="POST" action ="">
 			<?php 

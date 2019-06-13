@@ -30,32 +30,32 @@ if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE 
 		</div>";
 	}
 }
-elseif (isset($_GET['start2']) && isset($_GET['limit2']) && isset($_GET['user'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS POUR USER PAGE
-{
-	$s = (int)$_GET['start2'];
-	$l = (int)$_GET['limit2'];
-	$user = $_GET['user'];
-	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
-	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
-	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
-	$stmt->bindValue(':user', $user, PDO::PARAM_STR);
-	$stmt->execute();
-		// $resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT $s, $l");
-		while ($data = $stmt->fetch())
-		{
-			echo "<div class='img'>
-			<div class='imgdetail2'>
-				<div class='likecom'>
-					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
-					<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
-					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
-					<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
-				</div>
-			</div>
-			<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
-		</div>";
-		}
-}
+// elseif (isset($_GET['start2']) && isset($_GET['limit2']) && isset($_GET['user'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS POUR USER PAGE
+// {
+// 	$s = (int)$_GET['start2'];
+// 	$l = (int)$_GET['limit2'];
+// 	$user = $_GET['user'];
+// 	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
+// 	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
+// 	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
+// 	$stmt->bindValue(':user', $user, PDO::PARAM_STR);
+// 	$stmt->execute();
+// 		// $resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT $s, $l");
+// 		while ($data = $stmt->fetch())
+// 		{
+// 			echo "<div class='img'>
+// 			<div class='imgdetail2'>
+// 				<div class='likecom'>
+// 					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
+// 					<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
+// 					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
+// 					<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
+// 				</div>
+// 			</div>
+// 			<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
+// 		</div>";
+// 		}
+// }
 elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 {
 	$id = $_GET['like'];
