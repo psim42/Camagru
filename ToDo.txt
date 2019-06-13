@@ -1,8 +1,12 @@
 page cam mieux avec filtre styler css et cadre
-
+jim: sup(the) scrolluser et data_user.pph
 
 MAIL AU COMENTAIRE
 SETTING POUR RETIRER L'envoie de mail
+
+color:
+https://www.google.com/search?q=instagram+color&rlz=1C5CHFA_enFR835FR835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiWqNaUoOTiAhWPlhQKHVM-BaEQ_AUIECgB&biw=2309&bih=1241#imgrc=LMShOGG4T5Si0M:
+https://www.google.com/search?q=instagram+color&rlz=1C5CHFA_enFR835FR835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiWqNaUoOTiAhWPlhQKHVM-BaEQ_AUIECgB&biw=2309&bih=1241#imgrc=LMShOGG4T5Si0M:
 
 `Un fichier config/setup.php, capable de créer ou recréer le schéma de la base de
 données, en utilisant les infos contenues dans le fichier config/database.php.
