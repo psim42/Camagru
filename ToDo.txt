@@ -13,6 +13,8 @@ https://www.google.com/search?q=instagram+color&rlz=1C5CHFA_enFR835FR835&source=
 données, en utilisant les infos contenues dans le fichier config/database.php.
 Un fichier config/database.php, contenant la configuration de votre base de
 données qui sera instanciée via PDO au format suivant :`
+REPARER BANNIERE
+INTERDIRE LES CARACTERES SPECIAUX DANS USERNAME : ? /\ <> ; , "" '' [] || . + - =  *
 
 
 HASH le ADMIN123 INSTALL + prootect prepare in data.php

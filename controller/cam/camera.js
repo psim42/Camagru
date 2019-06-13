@@ -1,4 +1,4 @@
-function startcam(){
+function startcam(e){
 	if (navigator.mediaDevices.getUserMedia) {
 		var video = document.querySelector("#videoElement");
 		  navigator.mediaDevices.getUserMedia({ video: true })

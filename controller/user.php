@@ -77,6 +77,11 @@ function create_user($mail, $login, $passwd, $passwd2){
 		echo "<p>Veuillez entrer un Login de moins de 32 caractères s'il vous plait</p>";
 		$e = 1;
 	}
+	if (isset($login) && !preg_match('/^[a-z\d_-]{2,20}$/i', $login))
+	{
+		echo "<p>Veuillez entrer un login ne contenant pas de caractères spéciaux</p>";
+		$e = 1;	
+	}
 
 	if (!($passwd) || (strlen($passwd) == 0))
 	{
@@ -92,6 +97,7 @@ function create_user($mail, $login, $passwd, $passwd2){
 	elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,16}$/', $passwd))
 	{
 		echo "<p>Veuillez entrer un Mot de passe avec au moins 1 minuscule, 1 majuscule et 1 chiffre</p>";
+		$e = 1;
 	}
 
 	if ($passwd2 != $passwd)
