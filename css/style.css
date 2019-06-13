@@ -38,7 +38,8 @@ div.banniere{
 }
 
 		/* BUTTON *//* BUTTON *//* BUTTON *//* BUTTON */
-input[type=text], input[type=password] {
+ input[type=text], input[type=password] {
+	/* input.log_bouton{ */
 	width: 100%;
 	padding: 2px 5px;
 	margin: 0px 0;
@@ -55,6 +56,7 @@ input[type=submit], input[type=button]{
 	border: none;
 	cursor: pointer;
 	width: 100%;
+	transition: 0.10s;
 }
 input.load_bouton{
 	width: 40%;
@@ -64,7 +66,10 @@ input.load_bouton{
 input[type=submit]:hover, input[type=button]:hover{
 	background-color: #5949aa;
 	transition: 0.35s;
-	transform:translate(2px,2px);
+	transform:translate(0px,-2px);
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	   -moz-box-shadow: 0 8px 6px -6px black;
+	        box-shadow: 0 8px 6px -6px black;
 }
 
 

@@ -1,6 +1,12 @@
 <?php
-include '../../controller/manage/change_email.php';
-
+include '../../controller/manage/change_login.php';
+if (isset($_POST['logout']))
+{
+	session_unset();
+	session_destroy();
+	session_start();
+	header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
+}
 
 ?>
 
@@ -11,19 +17,64 @@ include '../../controller/manage/change_email.php';
 	<title>Change Email</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/extern.css">
+	<link rel="stylesheet" href="../../css/style.css">
+	<link rel="stylesheet" href="../../css/manage.css">
+	<link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 </head>
 <body>
-	<div id="center" style="color: black;">
-		<h1>Change your Email <h1>
+<div class="banniere">
+			<a href="../index.php" style="text-decoration: none">
+				<h1 id="nom-site">CAMAGRU</h1>
+			</a>
+			
+			<div id="log">
+				<form method="POST" action ="">
+				<?php 
+				if(!isset($_SESSION['login']))
+				{
+					echo '<input class= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
+					<br />
+					<input class= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
+					<br/>
+					<input class="log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
+					echo'<a href="../view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>';
+				}
+				if (isset($_SESSION['login']))
+				{
+					echo'<div class="dot"></div>
+					<div class="imconected" style="display: inline-block; margin-left:5px; ">
+					Vous etes connecte <a class="moncompte" href="../view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a>
+					</div> 
+					</br>';
+					echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
+					echo '<input class= "setting_bouton" type="button" name="setting" value="Setting" onclick="window.location.href=\'manage/manage.php\'"/>';
+					
+				}
+				?>
+					<br />
+				</form>
+			</div>
+			
+		<a href="../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
+	</div>	
+	<div class="center" style="color: black;">
+	<p class='main_title'>Manage your account</p>
+	<a href="manage_login.php"><button class="button">Change your Login</button></a>
+	<a href="manage_email.php"><button class="button_selected" >Change your Email</button></a>
+	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
+	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
+	<div style="color: black;">
+	<br />
 		<form id='manage.php' name="manage.php" action='manage_email.php' method='post' accept-charset='UTF-8'>
-			<input class="text" placeholder="New E-mail" type="email" name="newemail" value="" required=""/>
-			<input class="text" placeholder="E-mail confirmation" type="email" name="newemailconf" value="" required=""/>
+			<input class="manage_text" placeholder="New E-mail" type="email" name="newemail" value="" required=""/>
+			<input class="manage_text" placeholder="E-mail confirmation" type="email" name="newemailconf" value="" required=""/>
 			<br />
-			<input class="text" placeholder="Password" type="password" name="password" value="" required=""/>
-			<input type="submit" name="submit" value="OK"/>
+			<br />
+			<input class="manage_text" placeholder="Password" type="password" name="password" value="" required=""/>
+			<input type="submit" name="submit" value="OK" style="width : 5%;"/>
 		</form>
-		<a href="../../index.php"><button type="button" >Index</button></a>
-		<a href="manage.php"><button type="button" >Back</button></a>
+		<a href="../../index.php"><button type="button" class="submit"><span>Index</button></span></a>
+		</div>
 	</div>
 </body>
 </html>
