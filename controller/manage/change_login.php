@@ -39,6 +39,12 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		echo "<p>Veuillez entrer un Login de moins de 32 caractères s'il vous plait</p>";
 		$e = 1;
 	}
+
+	if (isset($login) && !preg_match('/^[a-z\d_-]{2,20}$/i', $login))
+	{
+		echo "<p>Veuillez entrer un login ne contenant pas de caractères spéciaux</p>";
+		$e = 1;	
+	}
 	
 	if (auth($_SESSION['login'], $_POST['password']) == false)
 	{
