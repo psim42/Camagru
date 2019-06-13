@@ -1,5 +1,5 @@
 <?php
-include '../../controller/manage/change_login.php';
+include '../../controller/manage/del_account.php';
 if (isset($_POST['logout']))
 {
 	session_unset();
