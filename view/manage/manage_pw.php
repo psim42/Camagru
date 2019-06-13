@@ -64,7 +64,6 @@ if (isset($_POST['logout']))
 	<a href="manage_pw.php"><button class="button_selected" >Change your Password</button></a>
 	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
 	<div style="color: black;">
-	<br />
 		<form id='manage.php' name="manage.php" action='manage_pw.php' method='post' accept-charset='UTF-8'>
 			<input class="manage_text" placeholder="New Password" type="password" name="newpw" value="" required=""/>
 			<input class="manage_text" placeholder="New Password confirmation" type="password" name="newpwconf" value="" required=""/>

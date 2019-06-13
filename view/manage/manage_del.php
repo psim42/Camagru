@@ -64,7 +64,6 @@ if (isset($_POST['logout']))
 	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
 	<a href="manage_del.php" ><button class="button_delete_selected" >Delete your Account</button></a>
 	<div style="color: black;">
-	<br />
 	<p>Do you really want to delete your account? (irreversible)</p>
 		<form id='manage.php' name="manage.php" action='manage_del.php' method='post' accept-charset='UTF-8'>
 			<input type="submit" name="submit" value="OK" style="width : 5%; background-color: red; margin-left:auto;"/>
