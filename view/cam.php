@@ -85,7 +85,7 @@ function alertguest()
 		<canvas id="canvas" width=1000 height=750></canvas>
 		<div class="container_button">
 			<button type="button" onclick="stop()">Stop</button>
-			<button type="button" onclick="start()">Start</button>
+			<button type="button" onclick="startcam()">Start</button>
 			<?php // 2 BOUTON DIFERENT EN FONCTION DE SESSION SET OU PAS 
 			if (!isset($_SESSION['login']))
 				echo'<button type="button" onclick="alertguest()" >Take picture</button>';

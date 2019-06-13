@@ -96,7 +96,7 @@ if (isset($_POST['logout']))
 	<a href="manage_login.php"><button class="button">Change your Login</button></a>
 	<a href="manage_email.php"><button class="button" >Change your Email</button></a>
 	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
-	<a href="manage_del.php" ><button class="button" >Delete your Account</button></a>
+	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
 	<br/>
 	<br/>
 	<a href="../../index.php"><button type="button" class="submit"><span>Index</button></span></a>

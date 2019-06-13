@@ -72,6 +72,18 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
 		$stmt->bindValue(':oldlogin', $_SESSION['login'], PDO::PARAM_STR);
 		$stmt->execute();
+		$stmt = $db->prepare("UPDATE tab_comment SET user = :login WHERE user = :oldlogin");
+		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+		$stmt->bindValue(':oldlogin', $_SESSION['login'], PDO::PARAM_STR);
+		$stmt->execute();
+		$stmt = $db->prepare("UPDATE pic SET user = :login WHERE user = :oldlogin");
+		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+		$stmt->bindValue(':oldlogin', $_SESSION['login'], PDO::PARAM_STR);
+		$stmt->execute();
+		$stmt = $db->prepare("UPDATE tab_like SET login = :login WHERE login = :oldlogin");
+		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+		$stmt->bindValue(':oldlogin', $_SESSION['login'], PDO::PARAM_STR);
+		$stmt->execute();
 		session_unset();
 		session_destroy();
 		session_start();
