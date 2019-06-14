@@ -90,7 +90,7 @@ function alertguest()
 		</div>
 	</div>
 	<div class="container_filtre">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input id="f_quake" type="image" src="../resources/filter/no_filter.png" alt="no_filter" onclick="switch_filter('no_filter')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">

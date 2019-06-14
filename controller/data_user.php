@@ -34,11 +34,11 @@ if (isset($_GET['start2']) && isset($_GET['limit2'])) //CAM SCROLL INFINI LOAD I
 {
 	$s = (int)$_GET['start2'];
 	$l = (int)$_GET['limit2'];
-	$user = $_GET['user'];
+	$user = $_SESSION['login'];
 	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
 	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
 	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
-	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
+	$stmt->bindValue(':user', $user, PDO::PARAM_STR);
 	$stmt->execute();
 	while ($data = $stmt->fetch())
 	{

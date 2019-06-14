@@ -37,36 +37,36 @@ function getData(){
 
 }
 
-function infini_scroll2()
-{
-	// var warp = document.getElementById('imgscontainer');
-	var contentHeight = document.body.scrollHeight; // get page content height
-	var yOffset = window.pageYOffset; // get the vertical scroll position
-	var y = yOffset + window.innerHeight;
-	if (y >= contentHeight)
-	{
-		getData2();
-	}
-	// var status = contentHeight+" | "+y;
-	// console.log(status);
-}
+// function infini_scroll2()
+// {
+// 	// var warp = document.getElementById('imgscontainer');
+// 	var contentHeight = document.body.scrollHeight; // get page content height
+// 	var yOffset = window.pageYOffset; // get the vertical scroll position
+// 	var y = yOffset + window.innerHeight;
+// 	if (y >= contentHeight)
+// 	{
+// 		getData2();
+// 	}
+// 	// var status = contentHeight+" | "+y;
+// 	// console.log(status);
+// }
 
-function getData2(){
-	var ajax = new XMLHttpRequest();
-	var user = document.getElementsByClassName("title")[0].id;
-	ajax.onload = () => {
-		if (ajax.status == 200)
-		{
-			start += limit;
-			document.getElementById("imgscontainer").innerHTML += ajax.response;
+// function getData2(){
+// 	var ajax = new XMLHttpRequest();
+// 	var user = document.getElementsByClassName("title")[0].id;
+// 	ajax.onload = () => {
+// 		if (ajax.status == 200)
+// 		{
+// 			start += limit;
+// 			document.getElementById("imgscontainer").innerHTML += ajax.response;
 			
-		}
-	}
-	ajax.open("GET",'../controller/data_user.php?start2='+start+'&limit2='+limit+'&user='+user, true);
-	ajax.setRequestHeader('Content-Type', 'text');
-	ajax.send();
+// 		}
+// 	}
+// 	ajax.open("GET",'../controller/data_user.php?start2='+start+'&limit2='+limit+'&user='+user, true);
+// 	ajax.setRequestHeader('Content-Type', 'text');
+// 	ajax.send();
 
-}
+// }
 function sup(element){
 	r = confirm("Voulez vous vraiment supprimer cette image ?");
 	id = element.id.substring(5); // croix+id to id
