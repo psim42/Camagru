@@ -33,5 +33,4 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 	imagecopy($dst, $src, 0, 0, 0, 0, 1000, 750);
 	imagecopy($dst, $filter, 60, 60, 0, 0, $width, $height); // 60, 60, 0, 0, 318, 479)
 	imagejpeg($dst, "../../resources/user/".$_SESSION['login']."/".$c.".png");
-	exit("width: " . $width . "<br />");
 }
