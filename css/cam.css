@@ -27,15 +27,16 @@ div.containerCam {
 }
 #canvas {
 	position: relative;
-	/* top: -750px; */
-	left: 0;
+	top: -753px;
+	left: -3;
 	/* z-index: 1; */
 	border-radius: 20px;
 	border: red solid;
-	display: none;
+	/* display: none; */
 }
 div.container_button{
 	position: relative;
+	top: -750px;
 	text-align: center;
 	background: #7a60ffc8;
 	padding: 2px;

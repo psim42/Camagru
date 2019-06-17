@@ -155,7 +155,6 @@ function create_user($mail, $login, $passwd, $passwd2){
 	$subject = 'Bienvenue sur Insta Camagru Confirmation de votre Compte';
 	$message = "Bonjour,\n Pour valider votre compte Cliquer sur ce lien \n http://localhost:8100".$path."/view/validation.php?val=".$token." \n Merci et Bienvenue !";
 	$headers = 'From: noreply@camagru.com';
-	mail($to_email,$subject,$message,$headers);
 
 	return(true);
 }

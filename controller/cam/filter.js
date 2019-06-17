@@ -11,16 +11,28 @@ function capture() {
 	// if cam not allumed =D
 	// varaible pour pas spam les photo;
 	var video = document.querySelector("#videoElement");
-	canvas.width = 1000;
-	canvas.height = 750;
+	// canvas.width = 1000;
+	// canvas.height = 750;
 	canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
-	var canvasData = canvas.toDataURL("image/png");
-	var ajax = new XMLHttpRequest();
-	if (filter == "")
+	var canvasData = canvas.toDataURL("image/png"); // ici = blanc apres = noir
+	var pix = canvas.getContext('2d').getImageData(500, 375, 1, 1).data
+	alert(pix);
+	// alert(document.getElementById('image-file').files[0].name);
+	if ((video.srcObject == null && document.getElementById('inp').value == "" ) || pix == '0,0,0,0')
 	{
-		alert("Merci de selectionner un filter (Sujet restriction)");
+		alert("Merci d'allumer la camera ! Ou d'ajouter une image");
+		canvas.getContext('2d').clearRect(0, 0, 1000, 750);
+		document.getElementById('inp').value = "";
 		return;
 	}
+	if (filter == "")
+	{
+		alert("Merci de selectionner un filter (Restriction du Sujet)");
+		canvas.getContext('2d').clearRect(0, 0, 1000, 750);
+		return; //enlever l'input file name
+	}
+	
+	var ajax = new XMLHttpRequest();
 	ajax.open("POST",'../controller/cam/pic_save.php', false);
 	ajax.setRequestHeader('Content-Type', 'application/upload');
 	ajax.send(canvasData);

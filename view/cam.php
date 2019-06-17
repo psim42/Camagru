@@ -87,6 +87,7 @@ function alertguest()
 			<button type="button" onclick="stop()">Stop</button>
 			<button type="button" onclick="startcam()">Start</button>
 			<button type="button" onclick="capture()" >Take picture</button>
+			<input id="inp" type="file" onclick="file()">
 		</div>
 	</div>
 	<div class="container_filtre">
