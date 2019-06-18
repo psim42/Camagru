@@ -23,17 +23,31 @@ div.containerCam {
 	height: 750px;
 	background-color: #666;
 	border-radius: 10px;
+	-moz-transform: scale(-1, 1);
+	-webkit-transform: scale(-1, 1);
+	-o-transform: scale(-1, 1);
+	-ms-transform: scale(-1, 1);
+	transform: scale(-1, 1);
 
 }
 #canvas {
 	position: relative;
-	top: -753px;
-	left: -3;
+	top: -750px;
+	left: 0px;
 	/* z-index: 1; */
-	border-radius: 20px;
-	border: red solid;
+	/* border-radius: 20px; */
+	/* border: red solid; */
 	/* display: none; */
 }
+
+div #filterPreviw{
+	position:absolute; 
+	z-index:1;
+	height: 750px;
+	width: 1000px;
+	overflow: hidden;
+}
+
 div.container_button{
 	position: relative;
 	top: -750px;

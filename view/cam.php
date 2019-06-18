@@ -81,6 +81,9 @@ function alertguest()
 
 <div class="container1">
 	<div class="containerCam">
+		<div id='filterPreviw'>
+			<!-- <img src='../resources/filter/quake.png' style="position:absolute; top:60px; left:60px"> -->
+		</div>
 		<video id="videoElement" autoplay="true" ></video>
 		<canvas id="canvas" width=1000 height=750></canvas>
 		<div class="container_button">
@@ -93,13 +96,12 @@ function alertguest()
 	<div class="container_filtre">
 		<input id="f_quake" type="image" src="../resources/filter/no_filter.png" alt="no_filter" onclick="switch_filter('no_filter')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input id="f_quake" type="image" src="../resources/filter/pink-blush.png" alt="pink-blush" onclick="switch_filter('pink-blush')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 	</div>
-
 </div>
 <br />
 <div class="Fildactu">

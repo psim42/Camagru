@@ -39,6 +39,7 @@ ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE
 	CONVERT \N TO BR nl2br + POST (GET MARCHE PAS) + protection si trop de \n
 entrer pour comment et Echap pour quiter la WB !
 coeur vide coeur plein.
+camera mirrored view + photo (en cours)
 
 
 

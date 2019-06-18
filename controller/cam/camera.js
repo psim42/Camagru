@@ -51,7 +51,7 @@ function startcam(e){
 		})
 		.catch(function (e)
 		{
-			console.log("Something went wrong!");
+			console.log("Something went wrong no camera!");
 		});
 	}
 }

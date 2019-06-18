@@ -1,18 +1,82 @@
 var filter = "";
+var img = new Image();
 window.onscroll = infini_scroll2;
 var start = 15;
 var limit = 6;
+var size = 300;
+var ratio = 4/3;
+var height = 200;
+var topp = 60;
+var left = 60;
+var el = window;
+var eventName = 'keypress';
+if (el.addEventListener) {
+	el.addEventListener('keydown', keyListener, false); 
+}
+else if (el.attachEvent){ //IE COMPATIBILITY
+	el.attachEvent('on'+eventName, keyListener);
+}
+
+function keyListener(event){ 
+	event = event || modal.event;
+	var key = event.key || event.which || event.keyCode;
+	//
+	var prev = document.getElementById('filterPreviw');
+	if (filter == 'no_filter' || filter == "")
+	{
+		prev.innerHTML = "";
+		size = 300;
+		return;
+	}
+	img.src = "../resources/filter/"+filter+".png";
+	var sizemax= 600;
+	var sizemin = 100;
+	// img.
+	if (key == '+' && size < sizemax)
+	{
+		size += 20;
+		ratio = img.width/img.height;
+		height = size*(1/ratio);
+		topp = (750/2)-(height/2);
+		left = 1000/2 - size/2;
+		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
+	}
+	if (key == '-' && size > sizemin)
+	{
+		size -= 20;
+		ratio = img.width/img.height;
+		height = size*(1/ratio);
+		topp = 750/2 - height/2;
+		left = 1000/2 - size/2;
+		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
+	}
+}
 
 function switch_filter(new_filter)
 {
 	filter = new_filter;
+	var prev = document.getElementById('filterPreviw');
+	if (new_filter == 'no_filter')
+	{
+		prev.innerHTML = "";
+		size = 300;
+		return;
+	}
+	img.src = "../resources/filter/"+filter+".png";
+	ratio = img.width/img.height;
+	height = size*(1/ratio);
+	topp = 750/2 - height/2;
+	left = 1000/2 - size/2;
+	prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
 }
+
 function capture() { 
 	// if cam not allumed =D
 	// varaible pour pas spam les photo;
-	var video = document.querySelector("#videoElement");
 	// canvas.width = 1000;
 	// canvas.height = 750;
+	var video = document.querySelector("#videoElement");
+	var prev = document.getElementById('filterPreviw');
 	canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
 	var canvasData = canvas.toDataURL("image/png"); // ici = blanc apres = noir
 	var pix = canvas.getContext('2d').getImageData(500, 375, 1, 1).data
@@ -31,19 +95,35 @@ function capture() {
 		canvas.getContext('2d').clearRect(0, 0, 1000, 750);
 		return; //enlever l'input file name
 	}
-	
 	var ajax = new XMLHttpRequest();
 	ajax.open("POST",'../controller/cam/pic_save.php', false);
 	ajax.setRequestHeader('Content-Type', 'application/upload');
 	ajax.send(canvasData);
+	// console.log(ajax.response);
 	if (filter != "no_filter"){
 		ajax.open("POST",'../controller/cam/add_filter.php', false);
-		ajax.setRequestHeader('Content-Type', 'application/upload');
-		ajax.send(filter);
+		ajax.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+		ajax.send('filter='+filter+'&new_width='+size); // size SIZE size Size size SIZE // // //
 	}
+	// console.log(ajax.response);
 	filter = "";
 	reload_images();
+	prev.innerHTML = "";
+	if (navigator.mediaDevices.getUserMedia) {
+		document.getElementById('canvas').getContext('2d').clearRect(0, 0, 1000, 750);
+		document.getElementById('inp').value = "";
+		var video = document.querySelector("#videoElement");
+		navigator.mediaDevices.getUserMedia({ video: true })
+		.then(function (stream) {
+			video.srcObject = stream;
+		})
+		.catch(function (e)
+		{
+			console.log("Something went wrong no camera!");
+		});
+	}
 }
+
 function reload_images()
 {
 	var ajax = new XMLHttpRequest();

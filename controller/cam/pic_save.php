@@ -24,9 +24,9 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 			throw new \Exception('base64_decode failed');
 		}
 	}
-	else {
-		throw new \Exception('did not match data URI with image data');
-	}
+	// else {
+	// 	throw new \Exception('did not match data URI with image data');
+	// }
 
 	if (!(file_exists("../../resources/user/".$_SESSION['login']."")))
 	{
@@ -34,9 +34,10 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 	}
 	$c = count(glob("../../resources/user/".$_SESSION['login']."/*.png"));
 	$r = $c + 1;
-	file_put_contents("../../resources/user/".$_SESSION['login']."/".$r.".png", $data);
 	$path = "../resources/user/".$_SESSION['login']."/".$r.".png";
-	
+	$img = imagecreatefromstring($data);
+	imageflip($img, IMG_FLIP_HORIZONTAL);
+	imagepng($img, "../../resources/user/".$_SESSION['login']."/".$r.".png");
 	$stmt = $db->prepare("INSERT INTO pic (user, path, date) VALUES (:user, :path, NOW())");
 	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
 	$stmt->bindValue(':path', $path, PDO::PARAM_STR);
