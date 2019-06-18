@@ -1,6 +1,7 @@
 <?php
 include '../../controller/db_root_login.php';
 include '../../controller/user.php';
+include '../../controller/token4.php';
 
 session_start();
 
@@ -15,11 +16,47 @@ if (!(isset($_SESSION['login'])))
 	// header('Location: ../../index.php');
 	exit();
 }
+if (isset($_POST['submit']) && $_POST['submit'] == 'Token')
+{
+	$to_email = $_POST["newmail"];
+	$e = 0;
+	if (strlen($to_email) == 0)
+	{
+		echo "Veuillez rentrer un email";
+		$e = 1;
+	}
+	if (!(preg_match(" /^.+@.+\.[a-zA-Z]{2,}$/ ", $to_email)) && (strlen($to_email) != 0))
+	{
+		echo "<p>Veuillez entrer un E-mail valide s'il vous plait</p>";
+		$e = 1;
+	}
+	if ($_POST["newmail"] != $_POST["newmailconf"])
+	{
+		echo "Les deux emails ne correspondent pas";
+		$e = 1;
+	}
+	if ($e == 0)
+	{
+		$token = token4();
+		$stmt = $db->prepare("UPDATE user SET token = :token WHERE login = :login");
+		$stmt->bindValue(':token', $token, PDO::PARAM_STR);
+		$stmt->bindValue(':login', $_SESSION['login'], PDO::PARAM_STR);
+		$stmt->execute();
+		$subject = "Camagru - Changement d'adresse mail";
+		$message = "sandwich sandwich $token";
+		$headers = 'From: noreply@camagru.com';
+		mail($to_email,$subject,$message,$headers);
+	}
+}
 if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 {
-	$mail = $_POST['newemail'];
-	$cmail = $_POST['newemailconf'];
+	$mail = $_POST['newmail'];
+	$cmail = $_POST['newmailconf'];
 	$login = $_SESSION['login'];
+	$stmt = $db->prepare("SELECT token FROM user WHERE login = :login");
+	$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+	$res = $stmt->execute();
+	$row = $stmt->fetch();
 	$e = 0;
 
 	if (!($mail) || (strlen($mail) == 0))
@@ -34,9 +71,21 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		$e = 1;
 	}
 
-	if (auth($login, $_POST['password']) == false)
+	// if (auth($login, $_POST['password']) == false)
+	// {
+	// 	echo "<p>Mauvais Mot de Passe !</p>";
+	// 	$e = 1;
+	// }
+
+	if ($_POST['token'] == '')
 	{
-		echo "<p>Mauvais Mot de Passe !</p>";
+		echo "<p>Veuillez entrer le token reçu sur la nouvelle adresse mail s'il vous plait</p>";
+		$e = 1;
+	}
+	if ($_POST['token'] != $row['token'])
+	{
+		echo $_POST['token'].$row['token'];
+		echo "<p>Mauvais token</p>";
 		$e = 1;
 	}
 
@@ -68,6 +117,9 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		$stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
 		$stmt->execute();
 		echo "<p>Bravo vous avez changer votre adresse E-Mail</p>";
+		$stmt = $db->prepare("UPDATE user SET token = '' WHERE login = :login ");
+		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+		$stmt->execute();
 	}
 
 }
