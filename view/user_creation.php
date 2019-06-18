@@ -21,29 +21,38 @@ if (isset($_POST['submit']))
 	// 	echo "<p>Veuillez rentrer un mot de passe svp</p>";
 }
 ?>
-<html>
+<html lang="fr">
 <head>
-	<meta charset="utf-8" />
-	<title>Camagru</title>
-	<link rel="stylesheet" type="text/css" media="screen" href="css/register.css" />
+  <meta charset="utf-8">
+  <title>Camagru</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/manage.css">
+  <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 </head>
 <body>
+<div class="banniere">
+		<a href="index.php" style="text-decoration: none">
+			<h1 id="nom-site">CAMAGRU</h1>
+		</a>
+</div>
 	
 <html>
-		<h2>Entrer un Email, un Identifiant et un Mot de passe pour créer votre compte</h2>
-		<h2>Un Email de confirmation vous sera envoyer pour créer votre compte</h2>
-		<form method="POST" action = >
-				<input type="text" name="email" value="" placeholder="Adresse email" required=""/>
+<div class="center" style="color: black;">
+		<p class ='main_title'>Créer votre compte</p>
+		<p>Veuillez compléter ce formulaire. Un email de confirmation vous sera envoyé.</p>
+		<form method="POST" action ='' accept-charset='UTF-8'>
+				<input class="manage_text" type="text" name="email" value="" placeholder="Adresse email" required=""/>
 					<br />
-				<input type="text" name="login" value="" placeholder="Identifiant" required=""/>
+				<input class="manage_text" type="text" name="login" value="" placeholder="Identifiant" required=""/>
 					<br />
 					
-				<input type="password" name="passwd" value="" placeholder="Mot de Passe" required=""/>
+				<input class="manage_text" type="password" name="passwd" value="" placeholder="Mot de Passe" required=""/>
 				<br />
-				<input type="password" name="passwd2" value="" placeholder="Confirmation mot de passe" required=""/>
+				<input class="manage_text" type="password" name="passwd2" value="" placeholder="Confirmation mot de passe" required=""/>
 					<br />
-				<input type="submit" name="submit" value="OK" href="/index.php"/>
+				<input type="submit" name="submit" value="OK" style="width : 5%;" href="/index.php"/>
 					<br />
 		</form>
-		<a href= "../index.php">Cliquer ici pour retourner a la page d'accueil</a>
+		<a href="../index.php"><button type="button" class="submit"><span>Index</button></span></a>
+</div>
 </html>

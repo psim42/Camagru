@@ -25,7 +25,9 @@ function auth($login, $passwd){
 	}
 	if ($good_info != 1)
 	{
-		echo "Mauvaise information de connexion";
+		echo "Mauvaise information de connexion"." ";
+		echo "<a href='./view/manage/forgot_pwd.php'>Mot de passe oublié ?</a>";
+
 		return(FALSE);
 	}
 	
@@ -155,43 +157,31 @@ function create_user($mail, $login, $passwd, $passwd2){
 	$subject = 'Bienvenue sur Insta Camagru Confirmation de votre Compte';
 	$message = "Bonjour,\n Pour valider votre compte Cliquer sur ce lien \n http://localhost:8100".$path."/view/validation.php?val=".$token." \n Merci et Bienvenue !";
 	$headers = 'From: noreply@camagru.com';
-
+	mail($to_email,$subject,$message,$headers);
 	return(true);
 }
 
-// function mod_user($login, $passwd, $va2){
-// 	if($login == "" || $passwd == "" || $va2 == "")
-// 	{
-// 		return false;
-// 	}
-// 	else
-// 	{
+function mod_user($login, $va2){
+	include 'db_root_login.php';
+	if($login == "" || $va2 == "")
+	{
+		return false;
+	}
+	else
+	{
 		
-// 		$opasswd = $passwd;
-// 		$npasswd = $va2;
-// 		$hashopw = hash("sha512", $opasswd);
-// 		$hashnpw = hash("sha512", $npasswd);
-// 		$user["login"] = $login;
-// 		$i = 0;
+		$npasswd = $va2;
+		$hashnpw = hash("sha512", $npasswd);
+		$hashpw = hash('whirlpool', $va2);
+		$stmt = $db->prepare("UPDATE user SET password = :hashpw WHERE login = :login ");
+		$stmt->bindValue(':hashpw', $hashpw, PDO::PARAM_STR);
+		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
+		$stmt->execute();
+
 		
-// 		$top_user = unserialize(file_get_contents("./resources/database/db_user"));
-// 		if ($top_user) {
-// 			foreach ($top_user as $arg)
-// 			{
-// 				if ($arg['login'] == $login){
-// 					if(($arg['login'] == $login) && ($arg['passwd'] == $hashopw))
-// 					{
-// 						$top_user[$i]["passwd"] = $hashnpw;
-// 						file_put_contents("./resources/database/db_user", serialize($top_user));
-// 						return true;
-// 					}
-// 				}
-// 				$i++;
-// 			}
-// 		}
-// 		return false;
-// 	}
-// }
+		return true;
+	}
+}
 
 // function whoami($login){
 	

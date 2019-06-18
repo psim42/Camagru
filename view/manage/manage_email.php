@@ -65,11 +65,12 @@ if (isset($_POST['logout']))
 	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
 	<div style="color: black;">
 		<form id='manage.php' name="manage.php" action='manage_email.php' method='post' accept-charset='UTF-8'>
-			<input class="manage_text" placeholder="New E-mail" type="email" name="newemail" value="" required=""/>
-			<input class="manage_text" placeholder="E-mail confirmation" type="email" name="newemailconf" value="" required=""/>
 			<br />
-			<br />
-			<input class="manage_text" placeholder="Password" type="password" name="password" value="" required=""/>
+			<input class="manage_text" placeholder="New E-mail" type="email" name="newmail" value="<?php echo isset($_POST['newmail']) ? $_POST['newmail'] : '' ?>" required=""/>
+			<input class="manage_text" placeholder="New E-mail confirmation" type="email" name="newmailconf" value="<?php echo isset($_POST['newmailconf']) ? $_POST['newmailconf'] : '' ?>" required=""/>
+			<input type="submit" name="submit" value="Token" placeholder="test" style="width : 5%;"/>
+			<p>Un token sera envoyé sur votre nouvelle adresse. Connectez vous afin de récuperer et rentrez le token ci dessous</p>
+			<input class="manage_text" placeholder="Token" type="text" name="token" value=""/>
 			<input type="submit" name="submit" value="OK" style="width : 5%;"/>
 		</form>
 		<a href="../../index.php"><button type="button" class="submit"><span>Index</button></span></a>
