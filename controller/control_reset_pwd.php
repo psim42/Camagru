@@ -11,7 +11,7 @@ if (!isset($_GET['reset']))
 }
 
 $stmt = $db->prepare("SELECT token FROM user WHERE token = :token");
-$stmt->bindValue(':token', $_GET['reset'], PDO::PARAM_STR);
+$stmt->bindValue(':token', hash('whirlpool', $_GET['reset']), PDO::PARAM_STR);
 $res = $stmt->execute();
 $row = $stmt->fetch();
 if (empty($row))
@@ -21,7 +21,7 @@ if (empty($row))
 }
 if ($e == 0)
 {
-	echo "<meta http-equiv='refresh' content='0;URL=../view/manage/reset_pwd.php?reset=".$row['token']."'>";
+	echo "<meta http-equiv='refresh' content='0;URL=../view/manage/reset_pwd.php?reset=".$_GET['reset']."'>";
 	// echo "<meta http-equiv='refresh' content='0;URL=view/user_creation.php'>";
 
 	// $stmt = $db->prepare("UPDATE user SET token = '' WHERE token = :token");

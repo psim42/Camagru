@@ -29,7 +29,7 @@ include '../db_root_login.php';
     {
         $stmt = $db->prepare("UPDATE user SET token = :token WHERE login = :login");
         $stmt->bindValue(':login', $login, PDO::PARAM_STR);
-        $stmt->bindValue(':token', $token, PDO::PARAM_STR);
+        $stmt->bindValue(':token', hash('whirlpool', $token), PDO::PARAM_STR);
         $stmt->execute();
         $path = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '/', 1)); // '/Camagru_OurGit'
         $stmt = $db->prepare("SELECT mail FROM user WHERE login = :login");

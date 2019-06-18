@@ -39,11 +39,13 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Token')
 	{
 		$token = token4();
 		$stmt = $db->prepare("UPDATE user SET token = :token WHERE login = :login");
-		$stmt->bindValue(':token', $token, PDO::PARAM_STR);
+		$stmt->bindValue(':token', hash('whirlpool', $token), PDO::PARAM_STR);
 		$stmt->bindValue(':login', $_SESSION['login'], PDO::PARAM_STR);
 		$stmt->execute();
 		$subject = "Camagru - Changement d'adresse mail";
-		$message = "sandwich sandwich $token";
+		$message = "Bonjour,\nNous avons enregistré votre demande de changement de mail, voici le token a saisir:\n $token\n\n\n
+		Vous n'etes pas l'auteur de cette demande ? Votre compte a peut etre été piraté, veuillez changer de mot de passe :\n
+		http://localhost:8100/Camagru/view/manage/manage_pw.php";
 		$headers = 'From: noreply@camagru.com';
 		mail($to_email,$subject,$message,$headers);
 	}
@@ -82,7 +84,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		echo "<p>Veuillez entrer le token reçu sur la nouvelle adresse mail s'il vous plait</p>";
 		$e = 1;
 	}
-	if ($_POST['token'] != $row['token'])
+	if (hash('whirlpool', $_POST['token']) != $row['token'])
 	{
 		echo $_POST['token'].$row['token'];
 		echo "<p>Mauvais token</p>";

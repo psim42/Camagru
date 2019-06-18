@@ -27,12 +27,12 @@ if (isset($_POST['submit']) && isset($_POST['newpw']) && isset($_POST['newpwconf
 	if ($e == 0)
 	{	
 		$stmt = $db->prepare("SELECT login FROM user WHERE token = :token");
-		$stmt->bindValue(':token', $_POST['reset'], PDO::PARAM_STR);
+		$stmt->bindValue(':token', hash('whirlpool', $_POST['reset']), PDO::PARAM_STR);
 		$res = $stmt->execute();
 		$row = $stmt->fetch();
 		mod_user($row['login'], $_POST['newpw']);
 		$stmt = $db->prepare("UPDATE user SET token = '' WHERE token = :token");
-		$stmt->bindValue(':token', $_POST['reset'], PDO::PARAM_STR);
+		$stmt->bindValue(':token', hash('whirlpool', $_POST['reset']), PDO::PARAM_STR);
 		$res = $stmt->execute();
 		$row = $stmt->fetch();
 		$_POST['reset'] = "";
