@@ -140,12 +140,12 @@ function create_user($mail, $login, $passwd, $passwd2){
 
 	sleep(1);
 	$token = token();
-	$stmt = $db->prepare("INSERT INTO user (login, password, mail, VALIDE, root, token) VALUES (:login, :password, :mail, :VALIDE, :root, :token)");
+	$stmt = $db->prepare("INSERT INTO user (login, password, mail, VALIDE, sendmail, token) VALUES (:login, :password, :mail, :VALIDE, :sendmail, :token)");
 	$stmt->bindValue(':login', $login, PDO::PARAM_STR);
 	$stmt->bindValue(':password', $tab['passwd'], PDO::PARAM_STR);
 	$stmt->bindValue(':mail', $tab['mail'], PDO::PARAM_STR);
 	$stmt->bindValue(':VALIDE', 0, PDO::PARAM_INT);
-	$stmt->bindValue(':root', 0, PDO::PARAM_INT);
+	$stmt->bindValue(':sendmail', 1, PDO::PARAM_INT);
 	$stmt->bindValue(':token', $token, PDO::PARAM_STR);
 	$stmt->execute();
 	// SEE ERROR WITH THAT

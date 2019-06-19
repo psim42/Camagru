@@ -36,7 +36,6 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 	$r = $c + 1;
 	$path = "../resources/user/".$_SESSION['login']."/".$r.".png";
 	$img = imagecreatefromstring($data);
-	imageflip($img, IMG_FLIP_HORIZONTAL);
 	imagepng($img, "../../resources/user/".$_SESSION['login']."/".$r.".png");
 	$stmt = $db->prepare("INSERT INTO pic (user, path, date) VALUES (:user, :path, NOW())");
 	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
@@ -44,3 +43,15 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 	$stmt->execute();
 	// exit();
 }
+// echo"
+// <script> 
+// alert('Page non existante'); 
+// window.location='../index.php';
+// </script>";
+
+// // header('Location: ../../index.php');
+// exit();
+echo"end start of view :  ";
+print_r( count(glob("../../resources/user/".$_SESSION['login']."/*.png")));
+?>
+<!-- Faire le dossier l'algo de control et tout -->

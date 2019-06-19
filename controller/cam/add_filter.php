@@ -30,7 +30,7 @@ if (!(isset($_SESSION['login'])))
 	exit();
 }
 
-if (isset($_POST['filter']) && isset($_POST['new_width']))
+if (isset($_POST['filter']) && isset($_POST['new_width']) && isset($_POST['t_x']) && isset($_POST['t_y']))
 {
 	$c = count(glob("../../resources/user/".$_SESSION['login']."/*.png"));
 	$set_filter = $_POST['filter'];
@@ -47,13 +47,13 @@ if (isset($_POST['filter']) && isset($_POST['new_width']))
 	imagecopy($dst, $src, 0, 0, 0, 0, 1000, 750);
 	if ($newHeight > 0 && $newWidth > 0)
 	{
-		$x = (1000/2) - ($newWidth/2);
-		$y = (750/2) - ($newHeight/2);
+		$x = ((1000/2) - ($newWidth/2)) + $_POST['t_x'];
+		$y = ((750/2) - ($newHeight/2)) + $_POST['t_y'];
 	}
 	else
 	{
-		$x = 499;
-		$y = 374;
+		$x = 100;
+		$y = 100;
 	}
 	imagecopy($dst, $new_filter, $x, $y, 0, 0, $newWidth, $newHeight); // 60, 60, 0, 0, 318, 479)
 	imagepng($dst, "../../resources/user/".$_SESSION['login']."/".$c.".png");

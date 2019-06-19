@@ -3,7 +3,7 @@ h1{
 	margin-left: 30px;
 	font-family: 'Rubik';
 	font-size: 70px;
-	color: #4345ad;
+	color: #ffffff;
 	width : 500px;
 	text-decoration: none;
 }
@@ -22,7 +22,7 @@ p{
 div.banniere{
 	position: top;
 	height: 100px ;
-	background: linear-gradient( to left top, #e6ac73, rgba(253, 131, 60, 0.952));
+	background: linear-gradient( to left top, #FEDA75,#FA7E1E,#D62975,#962FBF, #4F5BD5);
 	/* background: linear-gradient( to left top, #ffa369, #f55f87d9); */
 	height : 100px;
 	border-radius: 	25px;

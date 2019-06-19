@@ -1,14 +1,12 @@
 function file(){
 	document.getElementById('inp').onchange = function(e) {
 		stop2();
-		alert(document.getElementById('inp').value)
 		var img = new Image();
 		img.src = URL.createObjectURL(this.files[0]);
 		img.onload = draw;
 		img.onerror = failed;
 	};
 	function draw() {
-		alert(this);
 		var canvas = document.getElementById('canvas');
 		// canvas.width = this.width;
 		// canvas.height = this.height;
@@ -21,13 +19,12 @@ function file(){
 			var ratio = img_w / img_h;
 			if (ratio > (4/3))
 			{
-				alert('toobig');
 				img_h = Math.round(img_h*(1000/img_w));
 				img_w = 1000;
 			}
 			else
 			{
-				alert('tooheight');
+
 				img_w = Math.round(img_w*(750/img_h));
 				img_h = 750;
 			}
@@ -36,7 +33,8 @@ function file(){
 	}
 	function failed() {
 		console.error("The provided file couldn't be loaded as an Image media");
-		alert('error');
+		document.getElementById('inp').value = "";
+		alert('Merci d\'utiliser un fichier image');
 	}
 }
 
