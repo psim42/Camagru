@@ -25,6 +25,11 @@ if (isset($_POST['logout']))
 	session_start();
 	header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
 }
+	$stmt = $db->prepare("SELECT sendmail FROM user WHERE login = :login");
+	$stmt->bindValue(":login", $login, PDO::PARAM_STR);
+	$res = $stmt->execute();
+	$row = $stmt->fetch();
+	$row = $row['sendmail'];
 ?>
 
 <html>
@@ -32,48 +37,46 @@ if (isset($_POST['logout']))
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Index_login</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 	<link rel="stylesheet" type="text/css" href="../../css/extern.css">
 	<link rel="stylesheet" href="../../css/style.css">
 	<link rel="stylesheet" href="../../css/manage.css">
 	<link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
 </head>
 <body>
-	<div class="banniere">
-			<a href="../index.php" style="text-decoration: none">
-				<h1 id="nom-site">CAMAGRU</h1>
-			</a>
-			
-			<div id="log">
-				<form method="POST" action ="">
-				<?php 
-				if(!isset($_SESSION['login']))
-				{
-					echo '<input class= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
-					<br />
-					<input class= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
-					<br/>
-					<input class="log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
-					echo'<a href="../view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>';
-				}
-				if (isset($_SESSION['login']))
-				{
-					echo'<div class="dot"></div>
-					<div class="imconected" style="display: inline-block; margin-left:5px; ">
-					Vous etes connecte <a class="moncompte" href="../view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a>
-					</div> 
-					</br>';
-					echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
-					echo '<input class= "setting_bouton" type="button" name="setting" value="Setting" onclick="window.location.href=\'manage/manage.php\'"/>';
-					
-				}
-				?>
-					<br />
-				</form>
-			</div>
-			
-		<a href="../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
-	</div>
+<div class="banniere">
+		<a href="../../index.php" style="text-decoration: none">
+			<h1 id="nom-site">CAMAGRU</h1>
+		</a>
+		
+		<div id="log">
+			<form method="POST" action ="">
+			<?php 
+			if(!isset($_SESSION['login']))
+			{
+				echo '<input class= "log_bouton" type="text" name="login" value="" placeholder="Mail ou Login" required=""/>
+				<br />
+				<input class= "log_bouton" type="password" name="passwd" value="" placeholder="Mot de passe" required=""/>
+				<br/>
+				<input class="log_bouton" type="submit" name="submit" value="VOUS CONNECTER"/><br>';
+				echo'<a href="view/user_creation.php"> <input type="button" value="CREE VOTRE COMPTE"> </a>';
+			}
+			if (isset($_SESSION['login']))
+			{
+				echo'<div class="dot"></div>
+				<div class="imconected" style="display: inline-block; margin-left:5px; ">
+				Vous etes connecte <a class="moncompte" href="./view/userpage.php?login='.$_SESSION['login'].'">'.$_SESSION['login'].'</a>
+				</div> 
+				</br>';
+				echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
+				echo '<input class= "setting_bouton" type="submit" name="setting" value="Setting"/>';
+			}
+			?>
+				<br />
+			</form>
+		</div>	
+	<a href="../../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
+</div>
 	<div class="center" style="color: black;">
 
 	<p class='main_title'>Manage your account</p>
@@ -85,9 +88,9 @@ if (isset($_POST['logout']))
 	<div style="color: black;">
 		<form id='settings.php' name="settings.php" action='manage.php' method='post' accept-charset='UTF-8'>
 		<p>Voulez vous recevoir un email lorsque qu'un utilisateur commente vos photos ?</p>
-		<input type="radio" id="yes" name="choice" value="oui" checked>
+		<input type="radio" id="yes" name="choice" value="oui" <?php if ($row == 1){echo"checked";}?>>
 		<label for="yes">Oui</label>
-		<input type="radio" id="no" name="choice" value="non">
+		<input type="radio" id="no" name="choice" value="non" <?php if ($row == 0){echo"checked";}?>>
 		<label for="non">Non</label>
 		<br/>
 		<br/>

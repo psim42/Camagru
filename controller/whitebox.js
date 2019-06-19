@@ -179,6 +179,7 @@ function addcom(){
 				alert("Vous ne pouvez pas commenter de photo pour le moment. Merci de vous inscrire");
 				window.location='./view/user_creation.php';
 			}
+			// alert(ajax.response); for debug
 			com_start = 0;
 			com_limit = 6;
 			document.getElementById("myTextarea").value = ''; // vider textarea
