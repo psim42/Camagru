@@ -8,6 +8,8 @@ var ratio = 4/3;
 var height = 200;
 var topp = 60;
 var left = 60;
+var t_x = 0;
+var t_y = 0;
 var el = window;
 var eventName = 'keypress';
 if (el.addEventListener) {
@@ -26,30 +28,72 @@ function keyListener(event){
 	{
 		prev.innerHTML = "";
 		size = 300;
+		t_x = 0;
+		t_y = 0;
 		return;
 	}
 	img.src = "../resources/filter/"+filter+".png";
+	ratio = img.width/img.height;
 	var sizemax= 600;
 	var sizemin = 100;
+	var t_xmin = -400;
+	var t_xmax = 400;
+	var t_ymin = -350;
+	var t_ymax = 350;
 	// img.
 	if (key == '+' && size < sizemax)
 	{
-		size += 20;
-		ratio = img.width/img.height;
+		size += 10;
 		height = size*(1/ratio);
-		topp = (750/2)-(height/2);
-		left = 1000/2 - size/2;
+		topp = ((750/2) - (height/2)) + t_y;
+		left = ((1000/2) - (size/2)) + t_x;
 		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
 	}
 	if (key == '-' && size > sizemin)
 	{
-		size -= 20;
-		ratio = img.width/img.height;
+		size -= 10;
 		height = size*(1/ratio);
-		topp = 750/2 - height/2;
-		left = 1000/2 - size/2;
+		topp = ((750/2) - (height/2)) + t_y;
+		left = ((1000/2) - (size/2)) + t_x;
 		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
 	}
+	if (key == 'ArrowUp' && t_y > t_ymin)
+	{
+		event.preventDefault();
+		t_y -= 5;
+		height = size*(1/ratio);
+		topp = ((750/2) - (height/2)) + t_y;
+		left = ((1000/2) - (size/2)) + t_x;
+		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
+	}
+	if (key == 'ArrowDown' && t_y < t_ymax)
+	{
+		event.preventDefault();
+		t_y += 5;
+		height = size*(1/ratio);
+		topp = ((750/2) - (height/2)) + t_y;
+		left = ((1000/2) - (size/2)) + t_x;
+		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
+	}
+	if (key == 'ArrowLeft' && t_x > t_xmin)
+	{
+		event.preventDefault();
+		t_x -= 5;
+		height = size*(1/ratio);
+		topp = ((750/2) - (height/2)) + t_y;
+		left = ((1000/2) - (size/2)) + t_x;
+		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
+	}
+	if (key == 'ArrowRight' && t_x < t_xmax)
+	{
+		event.preventDefault();
+		t_x += 5;
+		height = size*(1/ratio);
+		topp = ((750/2) - (height/2)) + t_y;
+		left = ((1000/2) - (size/2)) + t_x;
+		prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
+	}
+
 }
 
 function switch_filter(new_filter)
@@ -67,6 +111,8 @@ function switch_filter(new_filter)
 	height = size*(1/ratio);
 	topp = 750/2 - height/2;
 	left = 1000/2 - size/2;
+	t_x = 0;
+	t_y = 0;
 	prev.innerHTML = "<img src='"+img.src+"'style='position:absolute; width:"+size+"; top:"+topp+"px; left:"+left+"px'></img>";
 }
 
@@ -78,10 +124,9 @@ function capture() {
 	var video = document.querySelector("#videoElement");
 	var prev = document.getElementById('filterPreviw');
 	canvas.getContext('2d').drawImage(video, 0, 0, 1000, 750);
-	var canvasData = canvas.toDataURL("image/png"); // ici = blanc apres = noir
+
 	var pix = canvas.getContext('2d').getImageData(500, 375, 1, 1).data
-	alert(pix);
-	// alert(document.getElementById('image-file').files[0].name);
+	// console.log(document.getElementById('image-file').files[0].name);
 	if ((video.srcObject == null && document.getElementById('inp').value == "" ) || pix == '0,0,0,0')
 	{
 		alert("Merci d'allumer la camera ! Ou d'ajouter une image");
@@ -93,19 +138,28 @@ function capture() {
 	{
 		alert("Merci de selectionner un filter (Restriction du Sujet)");
 		canvas.getContext('2d').clearRect(0, 0, 1000, 750);
-		return; //enlever l'input file name
+		document.getElementById('inp').value = "";
+		return;
 	}
 	var ajax = new XMLHttpRequest();
-	ajax.open("POST",'../controller/cam/pic_save.php', false);
-	ajax.setRequestHeader('Content-Type', 'application/upload');
-	ajax.send(canvasData);
-	// console.log(ajax.response);
+	var video = document.querySelector("#videoElement");
+	var canvasData = canvas.toDataURL("image/png"); // ici = blanc apres = noir
+	if (video.srcObject == null && document.getElementById('inp').value != "")
+	{
+		ajax.open("POST",'../controller/cam/file_save.php', false);
+		ajax.setRequestHeader('Content-Type', 'application/upload');
+		ajax.send(canvasData);
+	}
+	else{
+		ajax.open("POST",'../controller/cam/pic_save.php', false);
+		ajax.setRequestHeader('Content-Type', 'application/upload');
+		ajax.send(canvasData);
+	}
 	if (filter != "no_filter"){
 		ajax.open("POST",'../controller/cam/add_filter.php', false);
 		ajax.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-		ajax.send('filter='+filter+'&new_width='+size); // size SIZE size Size size SIZE // // //
+		ajax.send('filter='+filter+'&new_width='+size+'&t_x='+t_x+'&t_y='+t_y); // size SIZE size Size size SIZE // // //
 	}
-	// console.log(ajax.response);
 	filter = "";
 	reload_images();
 	prev.innerHTML = "";
