@@ -1,7 +1,7 @@
 <?php
 include '../../controller/db_root_login.php';
-include '../../controller/user.php';
-session_start();
+// include '../../controller/user.php';
+include '../../controller/manage/settings.php';
 
 if (!(isset($_SESSION['login'])))
 {
@@ -17,22 +17,6 @@ if (!(isset($_SESSION['login'])))
 	
 $login = $_SESSION['login'];
 
-// $resultat = mysqli_query($db, 'SELECT id, email FROM users');
-// while($donnees = mysqli_fetch_assoc($resultat))
-// {
-// 	if ($donnees['email'] == $login)
-// 	{
-// 		$id = $donnees['id'];
-// 		break;
-// 	}
-// }
-// mysqli_free_result($resultat);
-
-// if (!(isset($id)))
-// {
-// 	header('Location: ../index.php');
-// }
-// echo "$id";
 
 if (isset($_POST['logout']))
 {
@@ -98,8 +82,18 @@ if (isset($_POST['logout']))
 	<a href="manage_email.php"><button class="button" >Change your Email</button></a>
 	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
 	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
-	<br/>
-	<br/>
+	<div style="color: black;">
+		<form id='settings.php' name="settings.php" action='manage.php' method='post' accept-charset='UTF-8'>
+		<p>Voulez vous recevoir un email lorsque qu'un utilisateur commente vos photos ?</p>
+		<input type="radio" id="yes" name="choice" value="oui" checked>
+		<label for="yes">Oui</label>
+		<input type="radio" id="no" name="choice" value="non">
+		<label for="non">Non</label>
+		<br/>
+		<br/>
+		<input type="submit" name="submit" value="OK" style="width : 5%;"/>
+		</form>
+		</div>
 	<a href="../../index.php"><button type="button" class="submit"><span>Index</button></span></a>
 	</div>
 </body>

@@ -59,12 +59,14 @@ if (isset($_POST['logout']))
 	</div>	
 	<div class="center" style="color: black;">
 	<p class='main_title'>Manage your account</p>
+	<a href="manage.php"><button class="button">Settings</button></a>
 	<a href="manage_login.php"><button class="button">Change your Login</button></a>
 	<a href="manage_email.php"><button class="button" >Change your Email</button></a>
 	<a href="manage_pw.php"><button class="button_selected" >Change your Password</button></a>
 	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
 	<div style="color: black;">
 		<form id='manage.php' name="manage.php" action='manage_pw.php' method='post' accept-charset='UTF-8'>
+		<br />
 			<input class="manage_text" placeholder="New Password" type="password" name="newpw" value="" required=""/>
 			<input class="manage_text" placeholder="New Password confirmation" type="password" name="newpwconf" value="" required=""/>
 			<br />

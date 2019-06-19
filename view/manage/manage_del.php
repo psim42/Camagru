@@ -59,12 +59,13 @@ if (isset($_POST['logout']))
 	</div>	
 	<div class="center" style="color: black;">
 	<p class='main_title'>Manage your account</p>
+	<a href="manage.php"><button class="button">Settings</button></a>
 	<a href="manage_login.php"><button class="button">Change your Login</button></a>
 	<a href="manage_email.php"><button class="button" >Change your Email</button></a>
 	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
 	<a href="manage_del.php" ><button class="button_delete_selected" >Delete your Account</button></a>
 	<div style="color: black;">
-	<p>Do you really want to delete your account? (irreversible)</p>
+	<p>Voulez vous vraiment supprimer votre compte ? (irreversible)</p>
 		<form id='manage.php' name="manage.php" action='manage_del.php' method='post' accept-charset='UTF-8'>
 			<input type="submit" name="submit" value="OK" style="width : 5%; background-color: red; margin-left:auto;"/>
 		</form>

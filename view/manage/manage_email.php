@@ -59,6 +59,7 @@ if (isset($_POST['logout']))
 	</div>	
 	<div class="center" style="color: black;">
 	<p class='main_title'>Manage your account</p>
+	<a href="manage.php"><button class="button">Settings</button></a>
 	<a href="manage_login.php"><button class="button">Change your Login</button></a>
 	<a href="manage_email.php"><button class="button_selected" >Change your Email</button></a>
 	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
