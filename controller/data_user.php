@@ -203,6 +203,35 @@ elseif (isset($_POST['idPicCom']) && isset($_POST['comment']))
 	// 	$error = implode( ", ", $stmt->errorInfo() );
 	// 	exit($error);
 	// }
+		//Si sendmail est == 1 j'envoie les mails
+	//Je select le login de l'auteur de l'image
+	$sender = $_SESSION['login'];
+	$stmt = $db->prepare("SELECT user FROM pic WHERE id = :id");
+	$stmt->bindValue(":id", $id, PDO::PARAM_INT);
+	$stmt->execute();
+	$row = $stmt->fetch();
+	$row = $row['user'];
+	//Je select l'adresse mail du login
+	$stmt = $db->prepare("SELECT mail FROM user WHERE login = :login");
+	$stmt->bindValue(":login", $row, PDO::PARAM_STR);
+	$stmt->execute();
+	$row = $stmt->fetch();
+	$row = $row['mail'];
+	//Si sendmail est == 1 j'envoie les mails
+	$stmt = $db->prepare("SELECT sendmail FROM user WHERE mail = :mail");
+	$stmt->bindValue(":mail", $row, PDO::PARAM_STR);
+	$stmt->execute();
+	$sendmail= $stmt->fetch();
+	$sendmail= $sendmail['sendmail'];
+	if ($sendmail == 1)
+	{
+		$to_email = $row;
+		$subject = "Camagru - Nouveau commentaire de $sender";
+		$message = "Bonjour,\n Vous avez reçu un nouveau commentaire de $sender sur votre photo :\n
+		$comment";
+		$headers = 'From: noreply@camagru.com';
+		mail($to_email,$subject,$message,$headers);
+	}
 	exit($id);
 }
 elseif (isset($_GET['supId']))

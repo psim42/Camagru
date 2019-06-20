@@ -82,7 +82,6 @@ function sup(element){
 				document.getElementById("imgscontainer").innerHTML = ajax.response;
 				start = 15;
 				limit = 6;
-				alert(ajax.response);
 			}
 		}
 		ajax.open("GET",'../controller/data_user.php?supId='+id, true);
