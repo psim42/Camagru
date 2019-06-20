@@ -27,7 +27,9 @@ div.banniere{
 	height : 100px;
 	border-radius: 	25px;
 }
-
+a{
+	text-decoration:none; 
+}
 .dot {
 	height: 10px;
 	width: 10px;
@@ -68,8 +70,8 @@ input[type=submit]:hover, input[type=button]:hover{
 	transition: 0.35s;
 	transform:translate(0px,-2px);
 	-webkit-box-shadow: 0 8px 6px -6px black;
-	   -moz-box-shadow: 0 8px 6px -6px black;
-	        box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
 }
 
 
@@ -308,7 +310,7 @@ div #containercomW{
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
+  z-index: 100; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */

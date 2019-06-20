@@ -43,15 +43,3 @@ if (isset($GLOBALS['HTTP_RAW_POST_DATA']))
 	$stmt->execute();
 	// exit();
 }
-// echo"
-// <script> 
-// alert('Page non existante'); 
-// window.location='../index.php';
-// </script>";
-
-// // header('Location: ../../index.php');
-// exit();
-echo"end start of view :  ";
-print_r( count(glob("../../resources/user/".$_SESSION['login']."/*.png")));
-?>
-<!-- Faire le dossier l'algo de control et tout -->

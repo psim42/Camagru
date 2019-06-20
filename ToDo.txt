@@ -1,32 +1,29 @@
-Protection cam sans filter et video pas lancer
-Reload le js directement.
-previsualisation du filtre
+HASH le ADMIN123 INSTALL + prootect prepare in data.php
+install makefavicon racine /
+REPARER BANNIERE (verif)
+.ht accsess
+
+footer obligatoire toute les page view (pagination infini oups ballec)
+
+verif lien de validation mail et redirection
+(verif)ENVOYER SUR PARGE protect quand non co
+FIFERFOX COMPATIBILITY (verif)
 
 MAIL AU COMENTAIRE
-SETTING POUR RETIRER L'envoie de mail
-
-color:
-https://www.google.com/search?q=instagram+color&rlz=1C5CHFA_enFR835FR835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiWqNaUoOTiAhWPlhQKHVM-BaEQ_AUIECgB&biw=2309&bih=1241#imgrc=LMShOGG4T5Si0M:
-https://www.google.com/search?q=instagram+color&rlz=1C5CHFA_enFR835FR835&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiWqNaUoOTiAhWPlhQKHVM-BaEQ_AUIECgB&biw=2309&bih=1241#imgrc=LMShOGG4T5Si0M:
+SETTING POUR RETIRER L'envoie de mail (test)
 
 `Un fichier config/setup.php, capable de créer ou recréer le schéma de la base de
 données, en utilisant les infos contenues dans le fichier config/database.php.
 Un fichier config/database.php, contenant la configuration de votre base de
-données qui sera instanciée via PDO au format suivant :`
-REPARER BANNIERE
-INTERDIRE LES CARACTERES SPECIAUX DANS USERNAME : ? /\ <> ; , "" '' [] || . + - =  * (fait)
+données qui sera instanciée via PDO au format suivant :` (relou balec)
 
 
-HASH le ADMIN123 INSTALL + prootect prepare in data.php
-install makefavicon racine /
-(Forgot password) (Obligatoire)
-favicon
-footer obligatoire
-ENVOYER SUR PARGE D'inscription a la photo! alert (mieux)
-responsive affichege des photo (fait mais mieux ?)
-.ht accsess
+pregmatch user a verifier pregmatch...strlen
+(Forgot password) (a verif)
 
-bonus liste : page user 
+
+
+Bonus liste : page user 
 ajax server 
 scroll infini 
 whitbox

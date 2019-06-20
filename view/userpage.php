@@ -27,8 +27,6 @@ if (isset($_POST['logout']))
   <title>Camagru</title>
   <link rel="stylesheet" href="../css/style.css">
   <link href='https://fonts.googleapis.com/css?family=Rubik' rel='stylesheet'>
-	<script src="../controller/cam/camera.js"></script>
-	<script src="../controller/cam/filter.js"></script>
 	<script src="../controller/whiteboxuser.js"></script>
 	<script src="../controller/scrolluser.js"></script>
 	

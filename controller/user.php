@@ -74,12 +74,12 @@ function create_user($mail, $login, $passwd, $passwd2){
 		$e = 1;
 	}
 	
-	if (isset($login) && (strlen($login) > 32 && (strlen($login) != 0)))
+	if (isset($login) && (strlen($login) > 20 && (strlen($login) != 0)))
 	{
-		echo "<p>Veuillez entrer un Login de moins de 32 caractères s'il vous plait</p>";
+		echo "<p>Veuillez entrer un Login de moins de 20 caractères s'il vous plait</p>";
 		$e = 1;
 	}
-	if (isset($login) && !preg_match('/^[a-z\d_-]{2,20}$/i', $login))
+	if (isset($login) && !preg_match('/^[a-zA-Z\d_-]$/i', $login))
 	{
 		echo "<p>Veuillez entrer un login ne contenant pas de caractères spéciaux</p>";
 		$e = 1;	
@@ -155,7 +155,7 @@ function create_user($mail, $login, $passwd, $passwd2){
 	$path = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '/', 1)); // '/Camagru_OurGit'
 	$to_email = $tab['mail'];
 	$subject = 'Bienvenue sur Insta Camagru Confirmation de votre Compte';
-	$message = "Bonjour,\n Pour valider votre compte Cliquer sur ce lien \n http://localhost:8100".$path."/view/validation.php?val=".$token." \n Merci et Bienvenue !";
+	$message = "Bonjour,\n Pour valider votre compte Cliquer sur ce lien \n http://".$_SERVER['HTTP_HOST'].$path."/view/validation.php?val=".$token." \n Merci et Bienvenue !";
 	$headers = 'From: noreply@camagru.com';
 	mail($to_email,$subject,$message,$headers);
 	return(true);
@@ -182,7 +182,6 @@ function mod_user($login, $va2){
 		return true;
 	}
 }
-
 // function whoami($login){
 	
 // }

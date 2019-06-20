@@ -47,8 +47,6 @@ if (isset($_POST['setting']))
 
 
   <!-- ///////////////////////////  SCRIPT  ///////////////////////////////// -->
-	<script src="controller/cam/camera.js"></script>
-	<script src="controller/cam/filter.js"></script>
 	<script src="controller/whitebox.js"></script>
 	<script src="controller/scroll.js"></script>
 

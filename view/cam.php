@@ -78,29 +78,40 @@ function alertguest()
 		
 	<a href="../view/cam.php" > <img class="cam" src="../resources/img/cam.png" alt="cam"></a>
 </div>
-
+<div class="container_filtre">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/no_filter.png" alt="no_filter" onclick="switch_filter('no_filter')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/pink-blush.png" alt="pink-blush" onclick="switch_filter('pink-blush')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+	</div>
 <div class="container1">
 	<div class="containerCam">
 		<div id='filterPreviw'>
 			<!-- <img src='../resources/filter/quake.png' style="position:absolute; top:60px; left:60px"> -->
 		</div>
 		<video id="videoElement" autoplay="true" ></video>
-		<canvas id="canvas" width=1000 height=750></canvas>
+		<div class='canvasdiv'>
+			<canvas id="canvas" width=1000 height=750></canvas>
+		</div>
+		<input id="capture" type="image" onclick="capture()" src="../resources/img/capture.png">
 		<div class="container_button">
 			<button type="button" onclick="stop()">Stop</button>
 			<button type="button" onclick="startcam()">Start</button>
 			<button type="button" onclick="capture()" >Take picture</button>
-			<input id="inp" type="file" onclick="file()">
+			<input id="inp" type="file" accept="image/*" onclick="file()">
 		</div>
-	</div>
-	<div class="container_filtre">
-		<input id="f_quake" type="image" src="../resources/filter/no_filter.png" alt="no_filter" onclick="switch_filter('no_filter')">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input id="f_quake" type="image" src="../resources/filter/pink-blush.png" alt="pink-blush" onclick="switch_filter('pink-blush')">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
 	</div>
 </div>
 <br />

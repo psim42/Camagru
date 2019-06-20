@@ -137,8 +137,8 @@ function capture() {
 	if (filter == "")
 	{
 		alert("Merci de selectionner un filter (Restriction du Sujet)");
-		canvas.getContext('2d').clearRect(0, 0, 1000, 750);
-		document.getElementById('inp').value = "";
+		// canvas.getContext('2d').clearRect(0, 0, 1000, 750);
+		// document.getElementById('inp').value = "";
 		return;
 	}
 	var ajax = new XMLHttpRequest();
