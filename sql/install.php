@@ -27,7 +27,8 @@ if (isset($_GET["done"]))
 
 if (isset($_POST['passwd']))
 {
-	if ($_POST['passwd'] == "admin123")
+	$passwd = hash('whirlpool', $_POST['passwd']);
+	if ($passwd == "50c467eed9f98a69aa865493113981e7b12faddfabf1139607a3ffb24fb86c6658e6ec7637865d9568d1408ebeddcfb4b31c18facac4cef4385cba6a859df946")
 	{
 		if (file_exists("installed"))
 		{
