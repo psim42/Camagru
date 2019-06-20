@@ -79,23 +79,19 @@ function alertguest()
 	<a href="../view/cam.php" > <img class="cam" src="../resources/img/cam.png" alt="cam"></a>
 </div>
 <div class="container_filtre">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/no_filter.png" alt="no_filter" onclick="switch_filter('no_filter')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/pink-blush.png" alt="pink-blush" onclick="switch_filter('pink-blush')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
-		<input class='filter' id="f_quake" type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' type="image" src="../resources/filter/no_filter.png" alt="no_filter" onclick="switch_filter('no_filter')">
+		<input class='filter' type="image" src="../resources/filter/quake.png" alt="quake" onclick="switch_filter('quake')">
+		<input class='filter' type="image" src="../resources/filter/pink-blush.png" alt="pink-blush" onclick="switch_filter('pink-blush')">
+		<input class='filter' type="image" src="../resources/filter/pinkcat.png" alt="pinkcat" onclick="switch_filter('pinkcat')">
+		<input class='filter' type="image" src="../resources/filter/dog.png" alt="dog" onclick="switch_filter('dog')">
+		<input class='filter' type="image" src="../resources/filter/flower.png" alt="flower" onclick="switch_filter('flower')">
+		<input class='filter' type="image" src="../resources/filter/heart.png" alt="heart" onclick="switch_filter('heart')">
+		<input class='filter' type="image" src="../resources/filter/666.png" alt="filter" onclick="switch_filter('666')">
+		<input class='filter' type="image" src="../resources/filter/licorne.png" alt="filter" onclick="switch_filter('licorne')">
+		<input class='filter' type="image" src="../resources/filter/flower2.png" alt="filter" onclick="switch_filter('flower2')">
+		<input class='filter' type="image" src="../resources/filter/HP.png" alt="filter" onclick="switch_filter('HP')">
 	</div>
+<p class='info'>Vous pouvez utiliser les flèches directionnelles ainsi que '+" et "-" pour placer le filtre</p>
 <div class="container1">
 	<div class="containerCam">
 		<div id='filterPreviw'>
@@ -106,11 +102,12 @@ function alertguest()
 			<canvas id="canvas" width=1000 height=750></canvas>
 		</div>
 		<input id="capture" type="image" onclick="capture()" src="../resources/img/capture.png">
+		<input id="capture2" type="image" onclick="capture()" src="../resources/img/capture.png">
 		<div class="container_button">
 			<button type="button" onclick="stop()">Stop</button>
 			<button type="button" onclick="startcam()">Start</button>
-			<button type="button" onclick="capture()" >Take picture</button>
-			<input id="inp" type="file" accept="image/*" onclick="file()">
+			<input id="inp" type="file" accept="image/*" onclick="file()" name="myfile" />
+			<label for="inp" class="label-file">Choisir une image</label>
 		</div>
 	</div>
 </div>
