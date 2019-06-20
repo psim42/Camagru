@@ -1,4 +1,5 @@
-REPARER BANNIERE (verif)
+
+REPARER BANNIERE (verif) + redirection logout
 front can bouton et filter
 HASH le ADMIN123 INSTALL + prootect prepare in data.php
 install makefavicon racine /

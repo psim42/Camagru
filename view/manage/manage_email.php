@@ -7,7 +7,17 @@ if (isset($_POST['logout']))
 	session_start();
 	header("Refresh:0");// Pour acctualiser sans avoir a resouscrire le formulaire
 }
-
+if (!(isset($_SESSION['login'])))
+{
+	echo"
+	<script> 
+	alert('Acces interdit au invités'); 
+	window.location='../../index.php';
+	</script>";
+	
+	// header('Location: ../../index.php');
+	exit();
+}
 ?>
 
 <html>

@@ -33,14 +33,13 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		echo "<p>Veuillez entrer un Login avec au moins 3 caractères s'il vous plait</p>";
 		$e = 1;
 	}
-
+	
 	if (isset($login) && (strlen($login) > 20 && (strlen($login) != 0)))
 	{
 		echo "<p>Veuillez entrer un Login de moins de 20 caractères s'il vous plait</p>";
 		$e = 1;
 	}
-
-	if (isset($login) && !preg_match('/^[a-zA-Z\d_-]$/i', $login))
+	if (isset($login) && !preg_match('/^[a-z\d_-]*$/i', $login))
 	{
 		echo "<p>Veuillez entrer un login ne contenant pas de caractères spéciaux</p>";
 		$e = 1;	

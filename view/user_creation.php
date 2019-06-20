@@ -31,7 +31,7 @@ if (isset($_POST['submit']))
 </head>
 <body>
 <div class="banniere">
-		<a href="index.php" style="text-decoration: none">
+		<a href="../index.php" style="text-decoration: none">
 			<h1 id="nom-site">CAMAGRU</h1>
 		</a>
 </div>
@@ -41,9 +41,9 @@ if (isset($_POST['submit']))
 		<p class ='main_title'>Créer votre compte</p>
 		<p>Veuillez compléter ce formulaire. Un email de confirmation vous sera envoyé.</p>
 		<form method="POST" action ='' accept-charset='UTF-8'>
-				<input class="manage_text" type="text" name="email" value="" placeholder="Adresse email" required=""/>
+				<input class="manage_text" type="text" name="email" value="<?php echo isset($_POST['email']) ? $_POST['email'] : '' ?>" placeholder="Adresse email" required=""/>
 					<br />
-				<input class="manage_text" type="text" name="login" value="" placeholder="Identifiant" required=""/>
+				<input class="manage_text" type="text" name="login" value="<?php echo isset($_POST['login']) ? $_POST['login'] : '' ?>" placeholder="Identifiant" required=""/>
 					<br />
 					
 				<input class="manage_text" type="password" name="passwd" value="" placeholder="Mot de Passe" required=""/>

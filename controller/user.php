@@ -23,7 +23,7 @@ function auth($login, $passwd){
 			$mail = $donnees['mail'];
 		}
 	}
-	if ($good_info != 1)
+	if ($good_info != 1 && $_SERVER['PHP_SELF'] == "/Camagru_OurGit/index.php" )
 	{
 		echo "Mauvaise information de connexion"." ";
 		echo "<a href='./view/manage/forgot_pwd.php'>Mot de passe oublié ?</a>";
@@ -79,7 +79,7 @@ function create_user($mail, $login, $passwd, $passwd2){
 		echo "<p>Veuillez entrer un Login de moins de 20 caractères s'il vous plait</p>";
 		$e = 1;
 	}
-	if (isset($login) && !preg_match('/^[a-zA-Z\d_-]$/i', $login))
+	if (isset($login) && !preg_match('/^[a-z\d_-]*$/i', $login))
 	{
 		echo "<p>Veuillez entrer un login ne contenant pas de caractères spéciaux</p>";
 		$e = 1;	
@@ -90,13 +90,12 @@ function create_user($mail, $login, $passwd, $passwd2){
 		echo "<p>Veuillez entrer un Mot de passe s'il vous plait</p>";
 		$e = 1;
 	}
-
-	if ((strlen($passwd) < 6) && (strlen($passwd) != 0))
+	if (((strlen($passwd) < 6) || (strlen($passwd) > 16)) && (strlen($passwd) != 0))
 	{
 		echo "<p>Veuillez entrer un Mot de passe avec entre 6 et 16 caractères s'il vous plait</p>";
 		$e = 1;
 	}
-	elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,16}$/', $passwd))
+	elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/', $passwd))
 	{
 		echo "<p>Veuillez entrer un Mot de passe avec au moins 1 minuscule, 1 majuscule et 1 chiffre</p>";
 		$e = 1;
@@ -171,7 +170,6 @@ function mod_user($login, $va2){
 	{
 		
 		$npasswd = $va2;
-		$hashnpw = hash("sha512", $npasswd);
 		$hashpw = hash('whirlpool', $va2);
 		$stmt = $db->prepare("UPDATE user SET password = :hashpw WHERE login = :login ");
 		$stmt->bindValue(':hashpw', $hashpw, PDO::PARAM_STR);

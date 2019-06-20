@@ -27,13 +27,13 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		$e = 1;
 	}
 
-	if ((strlen($pw) < 6) && (strlen($pw) != 0))
+	if (((strlen($pw) < 6) || (strlen($pw) > 16)) && (strlen($pw) != 0))
 	{
-		echo "<p>Veuillez entrer un Mot de passe avec au moins 6 caractères s'il vous plait</p>";
+		echo "<p>Veuillez entrer un Mot de passe avec entre 6 et 16 caractères s'il vous plait</p>";
 		$e = 1;
 	}
 
-	elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{6,16}$/', $passwd))
+	elseif (!preg_match('/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).*$/', $pw))
 	{
 		echo "<p>Veuillez entrer un Mot de passe avec au moins 1 minuscule, 1 majuscule et 1 chiffre</p>";
 		$e = 1;

@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" media="screen" href="css/register.css" />
 	<script>
 	setTimeout(function(){
-  	window.location = "/Camagru/index.php";
+  	window.location = "../index.php";
 	}, 3000);
 	</script>
 </head>
