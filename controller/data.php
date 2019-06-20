@@ -30,32 +30,6 @@ if (isset($_GET['start']) && isset($_GET['limit'])) // SCROLL INFINI LOAD IMAGE 
 		</div>";
 	}
 }
-// elseif (isset($_GET['start2']) && isset($_GET['limit2']) && isset($_GET['user'])) // SCROLL INFINI LOAD IMAGE SCROLL.JS POUR USER PAGE
-// {
-// 	$s = (int)$_GET['start2'];
-// 	$l = (int)$_GET['limit2'];
-// 	$user = $_GET['user'];
-// 	$stmt = $db->prepare("SELECT id, user, path, date, nb_like, nb_comment FROM pic WHERE user = :user ORDER BY date DESC LIMIT :s, :l");
-// 	$stmt->bindValue(':s', $s, PDO::PARAM_INT);
-// 	$stmt->bindValue(':l', $l, PDO::PARAM_INT);
-// 	$stmt->bindValue(':user', $user, PDO::PARAM_STR);
-// 	$stmt->execute();
-// 		// $resultat = $db->query("SELECT id, user, path, date, nb_like, nb_comment FROM pic ORDER BY date DESC LIMIT $s, $l");
-// 		while ($data = $stmt->fetch())
-// 		{
-// 			echo "<div class='img'>
-// 			<div class='imgdetail2'>
-// 				<div class='likecom'>
-// 					<img class='coeur_com' src='../resources/img/comment-icon.png' alt='C'> 
-// 					<div class='containerlikecom'id='containercom'>".$data['nb_comment']."</div>
-// 					<img class='coeur_com' src='../resources/img/coeurP.png' alt='C'> 
-// 					<div class='containerlikecom' id='containerlike".$data['id']."'>". $data['nb_like']."</div>
-// 				</div>
-// 			</div>
-// 			<img class='fil' id='".$data['id']."' src='".$data['path']."' alt='Pic' onclick='enlarge(this)'>
-// 		</div>";
-// 		}
-// }
 elseif (isset($_GET['like'])) // LOAD LIKE WHITEBOX.JS
 {
 	$id = $_GET['like'];
@@ -196,15 +170,40 @@ elseif (isset($_POST['idPicCom']) && isset($_POST['comment']))
 	//id	date	id_pic	user	comment
 	$comment = htmlentities($_POST['comment']);
 	$id = $_POST['idPicCom'];
+	$sender = $_SESSION['login'];
 	$stmt = $db->prepare("INSERT INTO tab_comment(id_pic, `date`, user, comment) VALUES (:id_pic, NOW(), :user, :comment) ");
 	$stmt->bindValue(':id_pic', $id, PDO::PARAM_INT);
 	$stmt->bindValue(':user', $_SESSION['login'], PDO::PARAM_STR);
 	$stmt->bindValue(':comment', $comment, PDO::PARAM_STR);
 	$stmt->execute();
-	// if (!$stmt->execute()){
-	// 	$error = implode( ", ", $stmt->errorInfo() );
-	// 	exit($error);
-	// }
+	//Si sendmail est == 1 j'envoie les mails
+	//Je select le login de l'auteur de l'image
+	$stmt = $db->prepare("SELECT user FROM pic WHERE id = :id");
+	$stmt->bindValue(":id", $id, PDO::PARAM_INT);
+	$stmt->execute();
+	$row = $stmt->fetch();
+	$row = $row['user'];
+	//Je select l'adresse mail du login
+	$stmt = $db->prepare("SELECT mail FROM user WHERE login = :login");
+	$stmt->bindValue(":login", $row, PDO::PARAM_STR);
+	$stmt->execute();
+	$row = $stmt->fetch();
+	$row = $row['mail'];
+	//Si sendmail est == 1 j'envoie les mails
+	$stmt = $db->prepare("SELECT sendmail FROM user WHERE mail = :mail");
+	$stmt->bindValue(":mail", $row, PDO::PARAM_STR);
+	$stmt->execute();
+	$sendmail= $stmt->fetch();
+	$sendmail= $sendmail['sendmail'];
+	if ($sendmail == 1)
+	{
+		$to_email = $row;
+		$subject = "Camagru - Nouveau commentaire de $sender";
+		$message = "Bonjour,\n Vous avez reçu un nouveau commentaire de $sender sur votre photo :\n
+		$comment";
+		$headers = 'From: noreply@camagru.com';
+		mail($to_email,$subject,$message,$headers);
+	}
 	exit($id);
 }
 else

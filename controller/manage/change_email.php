@@ -118,7 +118,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'OK')
 		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
 		$stmt->bindValue(':mail', $mail, PDO::PARAM_STR);
 		$stmt->execute();
-		echo "<p>Bravo vous avez changer votre adresse E-Mail</p>";
+		echo "<p>Bravo vous avez changé votre adresse E-Mail</p>";
 		$stmt = $db->prepare("UPDATE user SET token = '' WHERE login = :login ");
 		$stmt->bindValue(':login', $login, PDO::PARAM_STR);
 		$stmt->execute();

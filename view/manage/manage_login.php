@@ -15,7 +15,6 @@ if (isset($_POST['logout']))
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Change Login</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="../css/extern.css">
 	<link rel="stylesheet" href="../../css/style.css">
 	<link rel="stylesheet" href="../../css/manage.css">
@@ -23,7 +22,7 @@ if (isset($_POST['logout']))
 </head>
 <body>
 <div class="banniere">
-			<a href="../index.php" style="text-decoration: none">
+			<a href="../../index.php" style="text-decoration: none">
 				<h1 id="nom-site">CAMAGRU</h1>
 			</a>
 			
@@ -55,17 +54,19 @@ if (isset($_POST['logout']))
 				</form>
 			</div>
 			
-		<a href="../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
+		<a href="../../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
 	</div>
 	<div class="center" style="color: black;">
 
 	<p class='main_title'>Manage your account</p>
+	<a href="manage.php"><button class="button">Settings</button></a>
 	<a href="manage_login.php"><button class="button_selected">Change your Login</button></a>
 	<a href="manage_email.php"><button class="button" >Change your Email</button></a>
 	<a href="manage_pw.php"><button class="button" >Change your Password</button></a>
 	<a href="manage_del.php" ><button class="button_delete" >Delete your Account</button></a>
 	<div style="color: black;">
 		<form id='manage.php' name="manage.php" action='manage_login.php' method='post' accept-charset='UTF-8'>
+		<br />
 			<input class="manage_text" placeholder="New Login" type="login" name="newlogin" value="" required=""/>
 			<input class="manage_text" placeholder="Confirmation" type="password" name="newloginconf" value="" required=""/>
 			<br />
