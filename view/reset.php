@@ -1,5 +1,5 @@
 <?php
-	include '../controller/control_reset_pwd.php';
+include '../controller/control_reset_pwd.php';
 ?>
 <html>
 <head>

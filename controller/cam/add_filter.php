@@ -14,7 +14,6 @@ function resize($src, $newWidth) {
 	imagecopyresampled($new_filter, imagecreatefrompng($src), 0, 0, 0, 0, $newWidth, $newHeight, $w, $h);
 	return(array($new_filter, $newWidth, $newHeight));
 }
-
 include '../../controller/db_root_login.php';
 session_start();
 

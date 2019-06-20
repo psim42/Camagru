@@ -1,6 +1,6 @@
 <?php
-	include '../controller/user.php';
-	session_start();
+include '../controller/user.php';
+session_start();
 if ((isset($_SESSION['login'])))
 {
 	echo"

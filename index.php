@@ -34,8 +34,6 @@ if (isset($_POST['setting']))
 
 
 
-
-
 				<!-- // HTML_HTML_HTML_HTML // -->
 <!-- <!doctype html> -->
 <html lang="fr">

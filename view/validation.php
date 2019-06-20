@@ -1,5 +1,5 @@
 <?php
-	include '../controller/control_validation.php';
+include '../controller/control_validation.php';
 ?>
 <html>
 <head>

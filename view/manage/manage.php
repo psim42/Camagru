@@ -1,6 +1,5 @@
 <?php
 include '../../controller/db_root_login.php';
-// include '../../controller/user.php';
 include '../../controller/manage/settings.php';
 
 if (!(isset($_SESSION['login'])))

@@ -1,27 +1,10 @@
-
+MAIL TOKEN a check, verif lien de validation mail et redirection
 SUP INSTALLED ADD AUTHOR jmoussu
-REPARER BANNIERE (verif) + redirection logout
 install makefavicon racine /
 .ht accsess
-
-footer obligatoire toute les page view (pagination infini oups ballec)
-
-verif lien de validation mail et redirection
+footer obligatoire toute les page view (fixe))
 (verif)ENVOYER SUR PARGE protect quand non co
 FIFERFOX COMPATIBILITY (verif)
-
-MAIL AU COMENTAIRE
-SETTING POUR RETIRER L'envoie de mail (test)
-
-`Un fichier config/setup.php, capable de créer ou recréer le schéma de la base de
-données, en utilisant les infos contenues dans le fichier config/database.php.
-Un fichier config/database.php, contenant la configuration de votre base de
-données qui sera instanciée via PDO au format suivant :` (relou balec)
-
-
-pregmatch user a verifier pregmatch...strlen
-(Forgot password) (a verif)
-
 
 
 Bonus liste : page user 

@@ -1,10 +1,11 @@
 <?php
-include 'database.php';
 function install()
 {
+	$path = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '/', 1)); // '/Camagru_OurGit'
+	include $_SERVER['DOCUMENT_ROOT'].$path.'/config/database.php';
 	try
 	{
-		$db = new PDO('mysql:host=localhost;', 'root', 'admin123');
+		$db = new PDO($DB_DSN, $DB_USER , $DB_PASSWORD);
 	}
 	catch (Exception $e)
 	{

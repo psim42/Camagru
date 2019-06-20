@@ -38,6 +38,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Token')
 	if ($e == 0)
 	{
 		$token = token4();
+		$path = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '/', 1)); // '/Camagru_OurGit'
 		$stmt = $db->prepare("UPDATE user SET token = :token WHERE login = :login");
 		$stmt->bindValue(':token', hash('whirlpool', $token), PDO::PARAM_STR);
 		$stmt->bindValue(':login', $_SESSION['login'], PDO::PARAM_STR);
@@ -45,7 +46,7 @@ if (isset($_POST['submit']) && $_POST['submit'] == 'Token')
 		$subject = "Camagru - Changement d'adresse mail";
 		$message = "Bonjour,\nNous avons enregistré votre demande de changement de mail, voici le token a saisir:\n $token\n\n\n
 		Vous n'etes pas l'auteur de cette demande ? Votre compte a peut etre été piraté, veuillez changer de mot de passe :\n
-		http://localhost:8100/Camagru/view/manage/manage_pw.php";
+		http://".$_SERVER['HTTP_HOST'].$path."/view/manage/manage_pw.php";
 		$headers = 'From: noreply@camagru.com';
 		mail($to_email,$subject,$message,$headers);
 	}

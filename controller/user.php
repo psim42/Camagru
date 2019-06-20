@@ -1,6 +1,5 @@
 <?php
 include 'token.php';
-
 function auth($login, $passwd){
 	include 'db_root_login.php';
 	if	(!($login) || !($passwd))
@@ -30,7 +29,11 @@ function auth($login, $passwd){
 		echo "<a href='./view/manage/forgot_pwd.php'>Mot de passe oublié ?</a>";
 		return(FALSE);
 	}
-	
+	if ($good_info != 1 && $_SERVER['PHP_SELF'] != "$path/index.php" )
+	{
+		return(FALSE);
+	}
+
 	if ($valide == 0)
 	{
 		echo "Merci de cliquer sur le lien de validation qui vous as été envoyer par mail à ".$mail." pour vous connecter !";
@@ -45,7 +48,6 @@ function auth($login, $passwd){
 }
 
 function create_user($mail, $login, $passwd, $passwd2){
-
 	include 'db_root_login.php';
 
 	$e = 0;
