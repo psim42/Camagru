@@ -1,6 +1,17 @@
 <?php
 	include '../controller/user.php';
 	session_start();
+if ((isset($_SESSION['login'])))
+{
+	echo"
+	<script> 
+	 alert('Acces au invités seulement'); 
+	 window.location='../index.php';
+	 </script>";
+	
+	// header('Location: ../../index.php');
+	exit();
+}
 if (isset($_POST['logout']))
 {
 	session_unset();
