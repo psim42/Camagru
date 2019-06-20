@@ -1,3 +1,4 @@
+
 function file(){
 	document.getElementById('inp').onchange = function(e) {
 		stop2();

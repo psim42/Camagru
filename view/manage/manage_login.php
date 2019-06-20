@@ -68,7 +68,7 @@ if (isset($_POST['logout']))
 		<form id='manage.php' name="manage.php" action='manage_login.php' method='post' accept-charset='UTF-8'>
 		<br />
 			<input class="manage_text" placeholder="New Login" type="login" name="newlogin" value="<?php echo isset($_POST['newlogin']) ? $_POST['newlogin'] : '' ?>" required=""/>
-			<input class="manage_text" placeholder="Confirmation" type="password" name="newloginconf" value="" required=""/>
+			<input class="manage_text" placeholder="Confirmation" type="login" name="newloginconf" value="" required=""/>
 			<br />
 			<br />
 			<input class="manage_text" placeholder="Password" type="password" name="password" value="" required=""/>

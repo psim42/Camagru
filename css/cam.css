@@ -1,3 +1,10 @@
+p.info{
+	text-align: center;
+}
+h2.title{
+	padding-top: 10px;
+	padding-bottom: 0px;
+}
 div.container1{
 	position: relative;
 	/* border:blue solid; */
@@ -40,6 +47,15 @@ div.containerCam {
 	margin-top: -100px;
 	filter: invert(100%);
 }
+#capture2{
+	position: absolute;
+	overflow: hidden;
+	width: 60px;
+	z-index: 80;
+	margin-left: 465px;
+	margin-top: -95px;
+	filter: invert(100%);
+}
 div.canvasdiv {
 	/* position: relative; */
 	position:absolute;
@@ -67,15 +83,68 @@ div.container_button{
 	position: relative;
 	top: -5px;
 	text-align: center;
-	background: #7a60ffc8;
+	background: #7d63fec8;
 	padding: 2px;
 	border-radius: 10px;
 	margin: 25px auto;
 	display: inline block;
-	z-index: 8;
+	z-index: 8; 
 }
 button{
-	margin: 5px auto;
+	background-color: #796eb6;
+	border: 2px solid #e3deff;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	/* margin: 4px 2px; */
+	cursor: pointer;
+	transition-duration: 0.1s;
+	border-radius: 10px/10px;
+	padding: 3px;
+	/* font-size: 100px; */
+}
+
+div.container_button > button:hover {
+	
+	transition-duration: 0.4s;
+	background-color: #4a417d;
+	border: 2px solid #e3deff;
+	border-radius: 10px/10px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+	transform:translate(0px,-2px);
+}
+#inp{
+	display: none;
+}
+.label-file {
+	font-family: 'Rubik';
+	padding: 3px;
+	background-color: #796eb6;
+	border: 2px solid #e3deff;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	/* margin: 4px 2px; */
+	cursor: pointer;
+	transition-duration: 0.1s;
+	border-radius: 10px/10px;
+
+}
+.label-file:hover {
+	transition-duration: 0.4s;
+	background-color: #4a417d;
+	border: 2px solid #e3deff;
+	border-radius: 10px/10px;
+	-webkit-box-shadow: 0 8px 6px -6px black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+	transform:translate(0px,-2px);
 }
 
 div.container_filtre{
