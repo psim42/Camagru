@@ -23,11 +23,11 @@ function auth($login, $passwd){
 			$mail = $donnees['mail'];
 		}
 	}
-	if ($good_info != 1 && $_SERVER['PHP_SELF'] == "/Camagru_OurGit/index.php" )
+	$path = substr($_SERVER['REQUEST_URI'], 0, strpos($_SERVER['REQUEST_URI'], '/', 1)); // '/Camagru_OurGit'
+	if ($good_info != 1 && $_SERVER['PHP_SELF'] == "$path/index.php" )
 	{
 		echo "Mauvaise information de connexion"." ";
 		echo "<a href='./view/manage/forgot_pwd.php'>Mot de passe oublié ?</a>";
-
 		return(FALSE);
 	}
 	
