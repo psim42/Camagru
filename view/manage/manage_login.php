@@ -46,7 +46,7 @@ if (isset($_POST['logout']))
 					</div> 
 					</br>';
 					echo '<input class= "log_bouton" type="submit" name="logout" value="Logout"/>';
-					echo '<input class= "setting_bouton" type="button" name="setting" value="Setting" onclick="window.location.href=\'manage/manage.php\'"/>';
+					echo '<input class= "setting_bouton" type="button" name="setting" value="Setting" onclick="window.location.href=\'manage.php\'"/>';
 					
 				}
 				?>
