@@ -66,4 +66,7 @@ if (isset($_POST['submit']))
 		</form>
 		<a href="../index.php"><button type="button" class="submit"><span>Index</button></span></a>
 </div>
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 </html>

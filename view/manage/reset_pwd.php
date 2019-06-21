@@ -57,10 +57,10 @@ if (isset($_POST['submit']) && isset($_POST['newpw']) && isset($_POST['newpwconf
 </head>
 <body>
 <div class="banniere">
-			<a href="../index.php" style="text-decoration: none">
+			<a href="../../index.php" style="text-decoration: none">
 				<h1 id="nom-site">CAMAGRU</h1>
 			</a>	
-		<a href="../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
+		<a href="../../view/cam.php" > <img class="cam" src="../../resources/img/cam.png" alt="cam"></a>
 	</div>	
 	<div class="center" style="color: black;">
 	<p class='main_title'>Enter your new password</p>

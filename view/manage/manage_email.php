@@ -86,5 +86,8 @@ if (!(isset($_SESSION['login'])))
 		<a href="../../index.php"><button type="button" class="submit"><span>Index</button></span></a>
 		</div>
 	</div>
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 </body>
 </html>

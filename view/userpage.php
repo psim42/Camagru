@@ -113,7 +113,9 @@ if (!isset($_GET['login']))
 	</div>
 
 </div>
-
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 <!-- WHITEBOX WHITEBOX WHITEBOX WHITEBOX WHITEBOX -->
 
 <div id="id01" class="modal">

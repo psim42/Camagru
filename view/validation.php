@@ -14,4 +14,5 @@ include '../controller/control_validation.php';
 </head>
 			<!-- <a href="../index.php"><button type="button" >Index</button></a> -->
 			<p>Redirection dans 3 secondes ...</p>
+			
 </html>

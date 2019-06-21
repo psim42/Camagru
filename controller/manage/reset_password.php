@@ -2,6 +2,10 @@
 include '../token.php';
 include '../db_root_login.php';
 
+if (!isset($_POST['login']))
+{
+    exit();
+}
 $login = $_POST['login'];
 $e = 0;
 $stmt = $db->prepare("SELECT token FROM user WHERE login = :login");

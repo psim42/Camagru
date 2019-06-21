@@ -19,6 +19,9 @@
 	</div>	
 	<div class="center" style="color: black;">
 	<p class='main_title'>Un email de réinitialisation a été envoyé</p>
-    </div>
+	</div>
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 </body>
 </html>

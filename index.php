@@ -116,6 +116,9 @@ if (isset($_POST['setting']))
 	</div>
 </div>
 
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 
 <!-- WHITEBOX WHITEBOX WHITEBOX WHITEBOX WHITEBOX -->
 
@@ -136,7 +139,6 @@ if (isset($_POST['setting']))
 	</div>
 	<div id="coms_container" class="coms_container"></div>
 </div>
-
 
 
 </body>

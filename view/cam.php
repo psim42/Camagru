@@ -142,7 +142,9 @@ function alertguest()
 	</div>
 
 </div>
-
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 <!-- WHITEBOX WHITEBOX WHITEBOX WHITEBOX WHITEBOX -->
 
 <div id="id01" class="modal">
@@ -162,5 +164,6 @@ function alertguest()
 	</div>
 	<div id="coms_container" class="coms_container"></div>
 </div>
+
 </body>
 </html>

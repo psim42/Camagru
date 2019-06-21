@@ -7,7 +7,7 @@ if ((isset($_SESSION['login'])))
 	echo"
 	<script> 
 	 alert('Acces au invités seulement'); 
-	 window.location='../index.php';
+	 window.location='../../index.php';
 	 </script>";
 	
 	// header('Location: ../../index.php');
@@ -43,5 +43,8 @@ if ((isset($_SESSION['login'])))
     <a href="../../index.php"><button type="button" class="submit"><span>Index</button></span></a>
 		</div>
 	</div>
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
 </body>
 </html>

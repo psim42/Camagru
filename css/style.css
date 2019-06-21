@@ -389,7 +389,24 @@ div#status{
 	/* a sup a la fin */
 }
 
+div.footer{ 
+	width: 100%;
+	position: fixed;
+	font-size: 10px;
+	bottom: 0px;
 
+	text-align: right;
+	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,0) 1%, rgba(255,255,255,1) 72%, rgba(255,255,255,1) 99%);
+	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 72%,rgba(255,255,255,1) 99%);
+	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,0) 1%,rgba(255,255,255,1) 72%,rgba(255,255,255,1) 99%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+
+
+}
+div.footer > p{
+	margin-right: 20px;
+	font-size: 10px;
+}
 
 /* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */
 /* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */ /* RESPONSVIE MODE */

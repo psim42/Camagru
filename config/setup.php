@@ -36,14 +36,14 @@ if (isset($_POST['passwd']))
 			echo "
 			<h2>La base de donnee est deja initialisee. Voulez vous forcer la reinitialisation ?</h2>
 			<form method='POST' action = >
-			<input type='submit' name='force' value='force' href='install.php'/>
+			<input type='submit' name='force' value='force' href='setup.php'/>
 			<br />
 			";
 		}
 		else
 		{
 			install();
-			header('Location: install.php?done'); 
+			header('Location: setup.php?done'); 
 		}
 	}
 	else
@@ -54,7 +54,7 @@ if (isset($_POST['passwd']))
 if (isset($_POST['force']))
 	{
 		install();
-		header('Location: install.php?done'); 	
+		header('Location: setup.php?done'); 	
 	}
 
 ?>
@@ -72,7 +72,7 @@ echo"
 <form method='POST' action = >
 		<input type='password' name='passwd' value='' placeholder='Mot de Passe'/>
 		<br />
-		<input type='submit' name='submit' value='OK' href='install.php'/>
+		<input type='submit' name='submit' value='OK' href='setup.php'/>
 			<br />
 </form>";
 ?>

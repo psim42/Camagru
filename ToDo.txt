@@ -1,48 +1,20 @@
 MAIL TOKEN a check, verif lien de validation mail et redirection
 SUP INSTALLED ADD AUTHOR jmoussu
-install makefavicon racine /
-.ht accsess
-footer obligatoire toute les page view (fixe))
-(verif)ENVOYER SUR PARGE protect quand non co
-FIFERFOX COMPATIBILITY (verif)
 
 
-Bonus liste : page user 
-ajax server 
-scroll infini 
+Bonus liste : 
+page user 
+ajax server
+scroll infini
 whitbox
-previsualisation (A FAIRE MIEUX) 
-suprimer son comte (A FAIRE MIEUX) 
-changer son mail (A FAIRE MIEUX)
-
-ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE 
-	POUR CA MAP KEY EN JS (diferent de add event listener pour gerer plusieur touche) 
-	CONVERT \N TO BR nl2br + POST (GET MARCHE PAS) + protection si trop de \n
-entrer pour comment et Echap pour quiter la WB !
+previsualisation filter
+placement filter
+changer son mail token
+changer login change comment like pic
+Gestion du clavier:
+	ENTRER POUR COMMENT SHIFT ENTRER POUR RETOUR A LA LIGNE 
+		-POUR CA MAP KEY EN JS (diferent de add event listener pour gerer plusieur touche) 
+		-CONVERT \N TO BR nl2br + POST (GET MARCHE PAS) + protection si trop de \n
+	entrer pour comment et Echap pour quiter la WB !
 coeur vide coeur plein.
 camera mirrored view + photo de camera et pas de file mirrored donc (pas simple)
-
-
-
-/////////////Idex///////////////////////////
-
-// if (isset($_POST['mail']))
-// {
-// 	$to_email = 'mouenba@hotmail.fr';
-// 	$subject = 'Testing PHP Mail';
-// 	$message = 'This mail is sent using the PHP mail function';
-// 	$headers = 'From: noreply@camagru.com';
-// 	mail($to_email,$subject,$message,$headers);
-// }
-
-// echo '<input id= "mail_bouton" type="submit" name="mail" value="mail"/>';
-
-///////////////////////////////////////////////////////
-
-// $src = imagecreatefromjpeg('resources/img/crayon.jpg');
-// $dst = imagecreatetruecolor(576,576);
-// $filter = imagecreatefrompng('resources/img/filter.png');
-
-// imagecopy($dst, $src, 0, 0, 0, 0, 576, 576);
-// imagecopy($dst, $filter, 60, 60, 0, 0, 318, 479);
-// imagejpeg($dst, 'resources/img/result.jpg');

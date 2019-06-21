@@ -6,6 +6,7 @@ include '../controller/control_reset_pwd.php';
 	<meta charset="utf-8" />
 	<title>Camagru</title>
 	<link rel="stylesheet" type="text/css" media="screen" href="css/register.css" />
-    <p>test</p>
-    
 </head>
+<div class='footer'>
+	<p>© camagru 42<p>
+</div>
