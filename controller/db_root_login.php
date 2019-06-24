@@ -4,6 +4,7 @@ include $_SERVER['DOCUMENT_ROOT'].$path.'/config/database.php';
 try
 {
 	$db = new PDO($DB_DSN_TABLE, $DB_USER, $DB_PASSWORD);
+	$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	// $db = new PDO('mysql:host=localhost;dbname=camagru;charset=utf8', 'root', 'admin123');
 }
 catch (Exception $e)
