@@ -14,7 +14,7 @@ $res = $stmt->execute();
 $row = $stmt->fetch();
 if (!empty($row['token']))
 {
-    echo "Fatal error";
+    echo "Probleme token du a une fausse manipulation, contacter un administrateur";
     $e = 1;
 }
 $token = token();

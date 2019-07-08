@@ -19,7 +19,7 @@ if (isset($_POST['submit']) && isset($_POST['newpw']) && isset($_POST['newpwconf
 		echo "<p>Les 2 mots de passe ne correspondent pas</p>";
 		$e = 1;
 	}
-	if (strlen($_POST['reset'] < 2))
+	if (strlen($_POST['reset']) < 2)
 	{
 		echo "<p>Erreur token</p>";
 		$e = 1;
@@ -34,7 +34,6 @@ if (isset($_POST['submit']) && isset($_POST['newpw']) && isset($_POST['newpwconf
 		$stmt = $db->prepare("UPDATE user SET token = '' WHERE token = :token");
 		$stmt->bindValue(':token', hash('whirlpool', $_POST['reset']), PDO::PARAM_STR);
 		$res = $stmt->execute();
-		$row = $stmt->fetch();
 		$_POST['reset'] = "";
 		echo "<p>Votre mot de passe a bien été changé</p>";
 		sleep (3);
